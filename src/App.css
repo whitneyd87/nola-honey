@@ -1,0 +1,882 @@
+
+/*MAIN*/
+
+
+.App {
+  text-align: center;
+}
+
+.bee-icon {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%
+}
+
+#bee-container { 
+  margin: 0;
+  padding: 0 30px 30px 0;
+  width: 35%; 
+  z-index: 9;
+}
+
+@keyframes flutter {
+  from {
+    transform: translateX(0) translateY(0);
+  }
+  to {
+    transform: rotate(-45deg) translateX(-330px) translateY(180px);
+  }
+}
+
+@-webkit-keyframes flutter {
+  from {
+    -webkit-transform: translateX(0) translateY(0);
+  }
+  to {
+    -webkit-transform: rotate(-45deg) translateX(-330px) translateY(180px);
+  }
+}
+
+#leftwing_1_,
+#rightwing  {
+  animation: flutter 0.07s infinite alternate;
+  -webkit-animation: flutter 0.07s infinite alternate;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@-webkit-keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+#head,
+#eye,
+#upperbody,
+#abdomen {
+  animation: float 0.7s infinite alternate;
+  -webkit-animation: float 0.7s infinite alternate;
+}
+
+@keyframes wobble {
+  from {
+    transform: translateX(0) translateY(0);
+  }
+  to {
+    transform: translateX(-10px) translateY(-10px);
+  }
+}
+
+@-webkit-keyframes wobble {
+  from {
+    -webkit-transform: translateX(0) translateY(0);
+  }
+  to {
+    -webkit-transform: translateX(-10px) translateY(-10px);
+  }
+}
+
+#frontleg,
+#middleleg,
+#backleg,
+#leftantenna {
+  animation: wobble 0.7s infinite alternate;
+  -webkit-animation: wobble 0.7s infinite alternate;
+}
+
+@keyframes wobbleright {
+  from {
+    transform: translateX(0) translateY(0);
+  }
+  to {
+    transform: rotate(5deg) translateX(20px) translateY(-30px);
+  }
+}
+
+@-webkit-keyframes wobbleright {
+  from {
+    -webkit-transform: translateX(0) translateY(0);
+  }
+  to {
+    -webkit-transform: rotate(5deg) translateX(20px) translateY(-30px);
+  }
+}
+
+#rightantenna {
+  animation: wobbleright 0.7s infinite alternate;
+  -webkit-animation: wobbleright 0.7s infinite alternate;
+}
+
+.hive {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin-top: -10px;
+  padding-bottom: 50px;
+}
+
+.comb-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.nav-comb,
+.transition {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.nav-comb .comb-container,
+.transition .comb-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.row {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -20px;
+  width: 100%;
+}
+
+.middle-hive {
+  margin-left: -30%;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+polygon {
+  fill: none;
+  stroke: #fbb03b;
+  stroke-width: 10;
+  stroke-miterlimit: 10;
+}
+
+@keyframes honey {
+  from {
+    transform: translate(300px, 300px) scale(0);
+  }
+  to {
+    transform: translate(0, 0) scale(1) ;
+  }
+}
+
+.honey {
+  stroke: transparent;
+}
+
+.comb-fill {
+  fill: url(#honey-fill) !important;
+  animation: honey 1s 1 linear;
+  animation-timing-function: cubic-bezier(.2, .4, .1, .4);
+}
+
+@keyframes aboutComb {
+  from {
+    transform: translate(50%, -82%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+.about {
+  transform: translate(50%, -82%);
+}
+
+.about-active {
+  animation: aboutComb 1s 1 linear forwards;
+}
+
+@keyframes merchComb {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.merch {
+  transform: translateX(-100%);
+}
+
+.merch-active {
+  animation: merchComb 1s 1 linear forwards;
+}
+
+@keyframes emptyComb {
+  from {
+    transform: translate(50%, 82%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+.empty {
+  transform: translate(50%, 82%);
+}
+
+.empty-active {
+  animation: emptyComb 1s 1 linear forwards;
+}
+
+.selected {
+  color: #ffffff !important;
+}
+
+.nav-comb {
+  position: relative;
+}
+
+a.nav-link {
+  color: #1a1a1a;
+  font-size: 1.5rem;
+  font-weight: 700;
+  height: 100%;
+  letter-spacing: 1px;
+  margin: 0;
+  padding-top: 35%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.content {
+  width: 80%;
+}
+
+.content-wrapper,
+.about-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  padding: 60px 0 90px 0;
+}
+
+
+/*ORDER*/
+
+
+a.order-link {
+  color: #fbb03b;
+  display: none;
+  font-family: 'Tangerine', cursive;
+  font-size: 2.25rem;
+  font-weight: 700;
+  height: 40%;
+  letter-spacing: 1px;
+  margin: 0;
+  padding-top: 30%;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  text-align: center;
+  text-decoration: none;
+  width: 50%;
+}
+
+.show-orderlink {
+  display: block !important;
+}
+
+.underlined {
+  border-bottom: 1px solid #fbb03b;
+}
+
+.itemFigure {
+  margin: 0;
+  overflow: hidden;
+  padding: 50px 0;
+  width: 100%;
+}
+
+.shirtsFigure {
+  height: 300px;
+  margin: 0;
+  overflow: hidden;
+  padding: 50px 0;
+  width: 100%;
+}
+
+.itemImage {
+  width: 100%;
+}
+
+.order-data {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.selectionBox {
+  margin: 50px 0;
+  width: 100%;
+}
+
+.option {
+  font-size: 1rem;
+  width: 50%;
+}
+
+.quantity {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.quantity-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.quantity-shirts {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.quantityBtn {
+  background-color: #fbb03b;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 1px 2px rgba(0,0,0,0.3);
+  color: #ffffff;
+  font-size: 1.5rem;
+  height: 30px;
+  width: 30px;
+  padding: 0;
+}
+
+#addBtn {
+  background-color: #fbb03b;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 2px rgba(0,0,0,0.3);
+  color: #ffffff;
+  font-size: 1.5rem;
+  height: 50px;
+  letter-spacing: 1.5px;
+  margin: 30px 0 50px 0;
+  width: 100%;
+}
+
+.accredit {
+  color: #828080;
+  font-size: 0.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.accredit a {
+  color: #828080;
+  text-decoration: none;
+}
+
+.honeypotFigure {
+  margin: 0 0 10px 30px;
+  width: 10%;
+}
+
+.honeypotImage {
+  display: none;
+  width: 100%;
+}
+
+.honeypotActive {
+  display: block !important;
+}
+
+.merch-nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 150px;
+  width: 100%;
+}
+
+.merch-nav li {
+  height: 100%;
+  width: 35%;
+}
+
+.merch-nav li a {
+  text-decoration: none;
+}
+
+.link-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin: 0;
+  padding-top: 50%;
+}
+
+.link-active {
+  color: #ffffff !important;
+  filter: grayscale(0%) !important;
+  margin: 0;
+  text-shadow: 2px 2px 12px #000000;
+}
+
+.shirts-link {
+  background-image: url('./components/img/womens-goodhives.png');
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+  display: block;
+  filter: grayscale(90%);
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.mugs-link {
+  background-image: url('./components/img/tea.png');
+  background-size: cover;
+  background-position: right;
+  color: transparent;
+  display: block;
+  filter: grayscale(90%);
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.content-nested {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  padding-top: 50px;
+  text-align: center;
+}
+
+
+/*ABOUT*/
+
+
+.about-figure {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 210px;
+  margin: 30px 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+.about-photo {
+  width: 100%;
+}
+
+.title-first {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.title-second {
+  color: #fbb03b;
+  font-family: 'Tangerine', cursive;
+  font-size: 1.825rem;
+}
+
+.about-text {
+  letter-spacing: 1px;
+  line-height: 2;
+}
+
+
+/*CONTACT*/
+
+
+.contact-info,
+.sign-up {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+.social-network {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.social-media {
+  color: #1a1a1a;
+}
+
+.email-container {
+  position: relative;
+  width: 100%;
+}
+
+input[type = 'email'] {
+  border: 1px solid #1a1a1a;
+  height: 40px;
+  width: 100%;
+}
+
+#emailBtn {
+  background-color: #fbb03b;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 2px rgba(0,0,0,0.3);
+  color: #ffffff;
+  height: 30px;
+  letter-spacing: 3px;
+  position: absolute;
+  top: 7px;
+  left: 75%;
+  width: 50px;
+}
+
+.contact-address {
+  font-size: 1.5rem;
+  font-style: normal;
+  letter-spacing: 1px;
+  line-height: 2;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.contact-address a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.social-network {
+  padding: 20px 0 40px 0;
+}
+
+.mailing-list {
+  letter-spacing: 1px;
+  line-height: 1.5;
+  padding: 20px 0;
+}
+
+
+  @media only screen and (min-width: 650px) {
+
+
+    /*HIVE*/
+
+    a.nav-link {
+      font-size: 2.5rem;
+    }
+
+    .about {
+      transform: translate(50%, -90%);
+    }
+
+    .merch {
+      transform: translateX(-100%);
+    }
+
+    .empty {
+      transform: translate(50%, 90%);
+    }
+
+
+    /*ORDER*/
+
+
+    a.order-link {
+      font-size: 3.5rem;
+    }
+
+    .merch-nav {
+      height: 200px;
+    }
+
+    .link-text {
+      font-size: 2.5rem;
+      padding-top:45%;
+    }
+
+    .shirtsFigure {
+      height: 500px;
+    }
+
+
+    /*ABOUT*/
+
+
+    .about-wrapper {
+      height: 1600px;
+    }
+
+    .about-text {
+      font-size: 1.25rem;
+    }
+
+    .title-first {
+      font-size: 1.875rem; 
+    }
+
+    .title-second {
+      font-size: 2.25rem;
+    }
+
+
+    /*CONTACT*/
+
+
+    .contact-address,
+    .mailing-list {
+      width: 100%;
+    }
+
+    .mailing-list {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    #emailBtn {
+      left: 85%;
+    }
+
+  }
+
+  @media only screen and (min-width: 768px) {
+
+
+    /*HIVE*/
+
+
+    #bee-container {
+      margin-top: -50px;
+      width: 25%; 
+    }
+
+    .hive {
+      margin: -50px 0 0 120px;
+    }
+
+    .content {
+      margin-left: -120px;
+    }
+
+
+    /*ORDER*/
+
+
+    .honeypotFigure {
+      margin: 0 0 10px 50px;
+    }
+
+    .order-data {
+      font-size: 1.5rem;
+    }
+
+    #addBtn {
+      font-size: 2rem;
+      height: 70px;
+    }
+
+
+    /*CONTACT*/
+
+
+    .social-network {
+      padding: 50px 0;
+    }
+
+    input[type ='email'] {
+      height: 50px;
+    }
+
+    #emailBtn {
+      font-size: 1.875rem;
+      height: 45px;
+      left: 85%;
+      width: 90px;
+    }
+
+  }
+
+  @media only screen and (min-width: 1200px) {
+
+
+   /*HIVE*/
+
+
+    #bee-container {
+      margin-top: 50px;
+    }
+
+    a.nav-link {
+      font-size: 2rem;
+    }
+
+    .about {
+      transform: translate(50%, -87%);
+    }
+
+    .empty {
+      transform: translate(50%, 87%);
+    }
+
+
+    /*ORDER*/
+
+
+    a.order-link {
+      font-size: 3rem;
+    }
+
+    .content-wrapper {
+      justify-content: space-around;
+      margin-left: -600px;
+      padding-top: 200px;
+      width: 1000px;
+    }
+
+    .itemFigure {
+      padding: 0 0 50px 0;
+      width: 30%;
+    }
+
+    .order-data {
+      width: 35%;
+    }
+
+    .selectionBox {
+      margin-top: 0;
+    }
+
+    #addBtn {
+      margin: 50px 0 0 0;
+    }
+
+    .accredit {
+      padding-top: 50px; 
+      width: 100%;
+    }
+
+    .link-text {
+      padding-top: 20%;
+    }
+
+    .content-nested {
+      align-items: flex-start;
+      justify-content: space-around;
+      padding-top: 200px;
+    }
+
+    .shirtsFigure {
+      height: 370px;
+      padding: 0;
+      width: 35%;
+    }
+
+    .quantity-shirts {
+      width: 250px;
+    }
+
+    .mugFigure {
+      width: 50%;
+    }
+
+
+
+    /*ABOUT*/
+
+
+    .about-wrapper {
+      height: 1200px;
+      justify-content: space-between;
+      margin-left: -600px;
+      padding-top: 100px;
+      width: 1000px;
+    }
+
+    .about-figure {
+      width: 35%;
+    }
+
+    .about-text {
+      width: 50%;
+    }
+
+    .bees {
+      height: 200px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+
+    /*CONTACT*/
+
+
+    .contact-info,
+    .sign-up {
+      align-items: flex-start;
+      height: 500px;
+      width: 45%;
+    }
+
+    input[type='email'] {
+      font-size: 1.275rem;
+      margin: 50px 0;
+    }
+
+    #emailBtn {
+      top: 55px;
+      left: 75%;
+    }
+
+  }
+
+  @media only screen and (min-width: 1800px){
+  
+    .about {
+      transform: translate(50%, -92%);
+    }
+
+    .empty {
+      transform: translate(50%, 92%);
+    }
+
+  }
