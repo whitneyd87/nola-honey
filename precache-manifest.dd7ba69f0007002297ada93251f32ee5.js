@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "82ba466123b42cf48956030578ffa578",
+    "revision": "c3ac9abcdc012d7472fed189bfb745b0",
     "url": "/nola-honey/index.html"
   },
   {
-    "revision": "bb95cc407bf5b8d3b848",
-    "url": "/nola-honey/static/css/main.bc18d76f.chunk.css"
+    "revision": "a50bd37a6a5ff0dfc326",
+    "url": "/nola-honey/static/css/main.55639e6b.chunk.css"
   },
   {
     "revision": "9c26526f1b89234492a6",
     "url": "/nola-honey/static/js/2.3a32f007.chunk.js"
   },
   {
-    "revision": "bb95cc407bf5b8d3b848",
+    "revision": "a50bd37a6a5ff0dfc326",
     "url": "/nola-honey/static/js/main.e4f79129.chunk.js"
   },
   {
