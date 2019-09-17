@@ -26,10 +26,10 @@ function Content({ location }) {
 
 						<Switch location= {location}>
 
-							<Route exact path="/nola-honey/honey" component={Honey}/>
-							<Route path="/nola-honey/merch" component={Merch}/>
-							<Route exact path="/nola-honey/about" component={About}/>
-							<Route exact path="/nola-honey/contact" component={Contact}/>
+							<Route exact path="/honey" component={Honey}/>
+							<Route path="/merch" component={Merch}/>
+							<Route exact path="/about" component={About}/>
+							<Route exact path="/contact" component={Contact}/>
 
 						</Switch>
 
