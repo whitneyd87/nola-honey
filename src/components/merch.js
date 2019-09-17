@@ -16,7 +16,7 @@ export default class Merch extends Component {
 
 					<li>
 					
-						<NavLink className="shirts-link" activeClassName="link-active" to="/merch/shirts">
+						<NavLink className="shirts-link" activeClassName="link-active" to="/honey-nola/merch/shirts">
 
 							<p className="link-text">Shirts</p>
 
@@ -26,7 +26,7 @@ export default class Merch extends Component {
 
 					<li>
 					
-						<NavLink  className="mugs-link" activeClassName="link-active" to="/merch/mugs">
+						<NavLink  className="mugs-link" activeClassName="link-active" to="/honey-nola/merch/mugs">
 
 							<p className="link-text">Mugs</p>						
 
