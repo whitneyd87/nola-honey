@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/nola-honey/static/css/main.e5ed4573.chunk.css",
+    "main.js": "/nola-honey/static/js/main.e4f79129.chunk.js",
+    "main.js.map": "/nola-honey/static/js/main.e4f79129.chunk.js.map",
+    "runtime~main.js": "/nola-honey/static/js/runtime~main.4614a757.js",
+    "runtime~main.js.map": "/nola-honey/static/js/runtime~main.4614a757.js.map",
+    "static/js/2.3a32f007.chunk.js": "/nola-honey/static/js/2.3a32f007.chunk.js",
+    "static/js/2.3a32f007.chunk.js.map": "/nola-honey/static/js/2.3a32f007.chunk.js.map",
+    "index.html": "/nola-honey/index.html",
+    "precache-manifest.b02f205fcfde96211a83bb99bfd0965d.js": "/nola-honey/precache-manifest.b02f205fcfde96211a83bb99bfd0965d.js",
+    "service-worker.js": "/nola-honey/service-worker.js",
+    "static/css/main.e5ed4573.chunk.css.map": "/nola-honey/static/css/main.e5ed4573.chunk.css.map",
+    "static/media/bees.jpg": "/nola-honey/static/media/bees.42dd7b4e.jpg",
+    "static/media/holding.jpg": "/nola-honey/static/media/holding.a4771008.jpg",
+    "static/media/honeycase.png": "/nola-honey/static/media/honeycase.fbe40260.png",
+    "static/media/honeyjar.png": "/nola-honey/static/media/honeyjar.917e2bac.png",
+    "static/media/honeypot.png": "/nola-honey/static/media/honeypot.666abcf9.png",
+    "static/media/keepers.jpg": "/nola-honey/static/media/keepers.c3d8233e.jpg",
+    "static/media/mens-getdathoney.png": "/nola-honey/static/media/mens-getdathoney.ca25ce97.png",
+    "static/media/mens-goodhives.png": "/nola-honey/static/media/mens-goodhives.76577749.png",
+    "static/media/mug.png": "/nola-honey/static/media/mug.959f67b8.png",
+    "static/media/App.css": "/nola-honey/static/media/tea.b1d00583.png",
+    "static/media/womens-getdathoney.png": "/nola-honey/static/media/womens-getdathoney.182bc42e.png",
+    "static/media/womens-goodhives.png": "/nola-honey/static/media/womens-goodhives.bdbc16da.png"
+  }
+}
