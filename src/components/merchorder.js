@@ -48,7 +48,7 @@ export default class MerchLink extends Component {
 
 				</svg>
 
-				<NavLink to="/nola-honey/merch/shirts" className={`order-link ${isVisible ? "show-orderlink" : " "}`} activeClassName="underlined">merch</NavLink>
+				<NavLink to="/merch/shirts" className={`order-link ${isVisible ? "show-orderlink" : " "}`} activeClassName="underlined">merch</NavLink>
 				
 			</div>
 		)

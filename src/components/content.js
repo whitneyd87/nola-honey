@@ -18,18 +18,18 @@ function Content({ location }) {
 				<CSSTransition
 
 					key={location.key}
-					timeout={{ enter: 1000, exit: 1000}}
-					className="fade"
+					timeout={{ enter: 500, exit: 500}}
+					classNames="fade"
 				>
 
 					<section className="route-section">
 
 						<Switch location= {location}>
 
-							<Route exact path="/nola-honey/honey" component={Honey}/>
-							<Route path="/nola-honey/merch" component={Merch}/>
-							<Route exact path="/nola-honey/about" component={About}/>
-							<Route exact path="/nola-honey/contact" component={Contact}/>
+							<Route exact path="/honey" component={Honey}/>
+							<Route path="/merch" component={Merch}/>
+							<Route exact path="/about" component={About}/>
+							<Route exact path="/contact" component={Contact}/>
 
 						</Switch>
 

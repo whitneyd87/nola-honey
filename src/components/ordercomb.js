@@ -47,7 +47,7 @@ export default class Ordercomb extends Component {
 
 				</svg>
 
-				<NavLink to="/nola-honey/honey" className="nav-link" activeClassName="selected">order</NavLink>
+				<NavLink to="/honey" className="nav-link" activeClassName="selected">order</NavLink>
 				
 			</div>
 		)

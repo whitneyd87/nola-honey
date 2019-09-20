@@ -119,24 +119,6 @@
   -webkit-animation: wobbleright 0.7s infinite alternate;
 }
 
-.fade-enter {
-  opacity: 0.01;
-}
-
-.fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms ease-in;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit.fade-exit-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
-}
-
 .hive {
   align-items: center;
   display: flex;
@@ -285,6 +267,24 @@ a.nav-link {
   text-align: center;
   text-decoration: none;
   width: 100%;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
 }
 
 .content {
