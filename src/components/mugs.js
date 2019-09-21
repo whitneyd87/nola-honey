@@ -5,41 +5,27 @@ export default class Mugs extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-
 			value: "Tea Mug - Tea. Bee.",
 			clicks: 1
-
 		};
-
 	}
 
-	incrementItem() {
-		
+	incrementItem() {	
 		if (this.state.clicks < 30) {
-
 			this.setState({
-
 				clicks: this.state.clicks + 1
-
 			});
-
 		}
-
 	}
 
 	decreaseItem() {
-
-			if (this.state.clicks > 1) {
-
+		if (this.state.clicks > 1) {
 			this.setState({
-
 				clicks: this.state.clicks - 1
-
 			});
-
 		}
-
 	}
+	
 
 	render () {
 

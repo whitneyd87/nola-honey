@@ -6,11 +6,25 @@ import Mugs from './mugs.js';
 
 export default class Merch extends Component {
 	
+	constructor(props) {
+		super(props);
+		this.scrollIntoFocus = React.createRef();
+	}
+
+	componentDidMount() {
+		if(this.scrollIntoFocus.current){
+            this.scrollIntoFocus.current.scrollIntoView({ 
+               behavior: "smooth", 
+               block: "nearest"
+            })
+        }
+	}
+
 	render () {
 
 		return (
 
-			<div className= "content-wrapper">
+			<div className= "content-wrapper" ref={this.scrollIntoFocus}>
 				
 				<ul className="merch-nav">
 

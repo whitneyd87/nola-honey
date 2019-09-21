@@ -5,56 +5,48 @@ export default class Honey extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { 
-
 			value: "./img/honeyjar.png",
 			clicks: 1
-
 		};
+		this.scrollIntoFocus = React.createRef();
 	}
 
 	handleChange(e) {	
-
 		this.setState({
-
 			value: e.target.value
-
 		});
-
 	}
 
 	incrementItem() {
-
 		if (this.state.clicks < 8) {
-
 			this.setState({
-
 				clicks: this.state.clicks + 1
-
 			});
-
 		}
-
 	}
 
 	decreaseItem() {
-
-			if (this.state.clicks > 1) {
-
+		if (this.state.clicks > 1) {
 			this.setState({
-
 				clicks: this.state.clicks - 1
-
 			});
-
 		}
+	}
 
+	componentDidMount() {
+		if(this.scrollIntoFocus.current){
+            this.scrollIntoFocus.current.scrollIntoView({ 
+               behavior: "smooth", 
+               block: "start"
+            })
+        }
 	}
 
 	render () {
 
 		return (
 
-			<div className= "content-wrapper">
+			<div className= "content-wrapper" ref={this.scrollIntoFocus}>
 
 				<figure className="itemFigure">
 

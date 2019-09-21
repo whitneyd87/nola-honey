@@ -13,7 +13,7 @@ function Content({ location }) {
 
 		<div>
 
-			<TransitionGroup className= "transition-group">
+			<TransitionGroup>
 
 				<CSSTransition
 
@@ -22,7 +22,7 @@ function Content({ location }) {
 					classNames="fade"
 				>
 
-					<section className="route-section">
+					<section>
 
 						<Switch location= {location}>
 

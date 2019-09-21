@@ -787,13 +787,21 @@ input[type = 'email'] {
     .content-wrapper {
       justify-content: space-around;
       margin-left: -600px;
-      padding-top: 200px;
+      padding-top: 100px;
       width: 1000px;
     }
 
     .itemFigure {
       padding: 0 0 50px 0;
       width: 30%;
+    }
+
+    .merch-nav {
+      height: 150px;
+    }
+
+    .merch-nav li {
+      width: 25%;
     }
 
     .order-data {
@@ -820,7 +828,7 @@ input[type = 'email'] {
     .content-nested {
       align-items: flex-start;
       justify-content: space-around;
-      padding-top: 200px;
+      padding-top: 100px;
     }
 
     .shirtsFigure {
@@ -836,7 +844,6 @@ input[type = 'email'] {
     .mugFigure {
       width: 50%;
     }
-
 
 
     /*ABOUT*/

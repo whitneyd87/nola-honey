@@ -6,7 +6,7 @@ export default class Aboutcomb extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isAbout: false
+			isAbout: false,
 		};
 	}
 
@@ -22,10 +22,11 @@ export default class Aboutcomb extends Component {
 		});
 	}
 
+
 	render () {
 
 		const{isAbout} = this.state;
-		
+			
 		return (
 			
 			<div className="comb-container" >

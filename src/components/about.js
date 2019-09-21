@@ -2,11 +2,25 @@ import React, { Component } from "react";
 
 export default class About extends Component {
 
+	constructor(props) {
+		super(props);
+		this.scrollIntoFocus = React.createRef();
+	}
+
+	componentDidMount() {
+		if(this.scrollIntoFocus.current){
+            this.scrollIntoFocus.current.scrollIntoView({ 
+               behavior: "smooth", 
+               block: "start"
+            })
+        }
+	}
+
 	render () {
 
 		return (
 
-		<div className= "about-wrapper">
+		<div className= "about-wrapper" ref={this.scrollIntoFocus}>
 
 			<figure className="about-figure">
 

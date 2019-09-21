@@ -3,11 +3,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class Contact extends Component {
 
+	constructor(props) {
+		super(props);
+		this.scrollIntoFocus = React.createRef();
+	}
+
+	componentDidMount() {
+		if(this.scrollIntoFocus.current){
+            this.scrollIntoFocus.current.scrollIntoView({ 
+               behavior: "smooth", 
+               block: "start"
+            })
+        }
+	}
+
 	render () {
 
 		return (
 
-			<div className= "content-wrapper">
+			<div className= "content-wrapper" ref={this.scrollIntoFocus}>
 
 				<div className="contact-info">
 
