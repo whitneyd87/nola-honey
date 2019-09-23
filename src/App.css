@@ -761,7 +761,8 @@ input[type = 'email'] {
 
 
     #bee-container {
-      margin-top: 50px;
+      margin-top: 0;
+      padding: 0 30px 0 0;
     }
 
     a.nav-link {
@@ -786,7 +787,7 @@ input[type = 'email'] {
 
     .content-wrapper {
       justify-content: space-around;
-      margin-left: -600px;
+      margin-left: -650px;
       padding-top: 100px;
       width: 1000px;
     }
@@ -794,6 +795,11 @@ input[type = 'email'] {
     .itemFigure {
       padding: 0 0 50px 0;
       width: 30%;
+    }
+
+    .honeypotFigure {
+      margin: 10px 0px 10px 30px;
+      width: 7%;
     }
 
     .merch-nav {
