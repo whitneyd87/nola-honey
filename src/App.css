@@ -297,7 +297,7 @@ a.nav-link {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  padding: 60px 0 90px 0;
+  padding: 60px 0 60px 0;
 }
 
 
@@ -766,7 +766,7 @@ input[type = 'email'] {
     }
 
     a.nav-link {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
 
     .about {
@@ -782,7 +782,7 @@ input[type = 'email'] {
 
 
     a.order-link {
-      font-size: 3rem;
+      font-size: 2.5rem;
     }
 
     .content-wrapper {
@@ -794,7 +794,7 @@ input[type = 'email'] {
 
     .itemFigure {
       padding: 0 0 50px 0;
-      width: 30%;
+      width: 25%;
     }
 
     .honeypotFigure {
@@ -811,7 +811,7 @@ input[type = 'email'] {
     }
 
     .order-data {
-      width: 35%;
+      width: 30%;
     }
 
     .selectionBox {
