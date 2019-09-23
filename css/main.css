@@ -119,6 +119,28 @@ footer {
   }
 }
 
+@-webkit-keyframes load {
+
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes load {
+
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
   animation: load 500ms ease-out forwards;
   -webkit-animation: load 500ms ease-out forwards;
