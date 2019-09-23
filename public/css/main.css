@@ -142,9 +142,9 @@ footer {
 }
 
 body {
-  animation: load 500ms ease-out forwards;
-  -webkit-animation: load 500ms ease-out forwards;
-  -moz-animation: load 500ms ease-out forwards;
+  animation: load 500ms ease-in forwards;
+  -webkit-animation: load 500ms ease-in forwards;
+  -moz-animation: load 500ms ease-in forwards;
 }
 
 
