@@ -763,6 +763,7 @@ input[type = 'email'] {
     #bee-container {
       margin-top: 0;
       padding: 0 30px 0 0;
+      width: 20%;
     }
 
     a.nav-link {
