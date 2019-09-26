@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "338f0231478ea10a7b9dba82323574f8",
+    "revision": "6158c0295474044fe4b233a7e37d151d",
     "url": "/nola-honey/index.html"
   },
   {
-    "revision": "eec578f9050bb6a92d1a",
+    "revision": "7790ee395713fbf81085",
     "url": "/nola-honey/static/css/main.3ef62043.chunk.css"
   },
   {
-    "revision": "800aeeced862cf66aa4c",
-    "url": "/nola-honey/static/js/2.11def81b.chunk.js"
+    "revision": "9c26526f1b89234492a6",
+    "url": "/nola-honey/static/js/2.3a32f007.chunk.js"
   },
   {
-    "revision": "eec578f9050bb6a92d1a",
-    "url": "/nola-honey/static/js/main.8cfea2e4.chunk.js"
+    "revision": "7790ee395713fbf81085",
+    "url": "/nola-honey/static/js/main.052adbea.chunk.js"
   },
   {
     "revision": "130b398f7dde84ffae4b",
@@ -58,10 +58,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "b1d005833590b4b4350732463ea23368",
     "url": "/nola-honey/static/media/tea.b1d00583.png"
-  },
-  {
-    "revision": "37efeed2feff22d431bef63b78b7bcc2",
-    "url": "/nola-honey/static/media/web.config.37efeed2.xml"
   },
   {
     "revision": "182bc42ec5ea20eec671ab49647a884e",
