@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
+import App from './app.js';
 import About from './about.js';
 import Contact from './contact.js';
 import Honey from './honey.js';
@@ -25,7 +25,8 @@ function Content({ location }) {
 					<section>
 
 						<Switch location= {location}>
-
+							
+							<Route exact path="/" component {...App} />
 							<Route exact path="/honey" component={Honey}/>
 							<Route path="/merch" component={Merch}/>
 							<Route exact path="/about" component={About}/>
