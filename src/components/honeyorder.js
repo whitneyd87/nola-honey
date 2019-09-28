@@ -48,7 +48,7 @@ export default class HoneyLink extends Component {
 
 				</svg>
 
-				<NavLink to="/honey" className={`order-link ${isVisible ? "show-orderlink" : " "}`} activeClassName="underlined">honey</NavLink>
+				<NavLink to="/honey/" className={`order-link ${isVisible ? "show-orderlink" : " "}`} activeClassName="underlined">honey</NavLink>
 				
 			</div>
 		)

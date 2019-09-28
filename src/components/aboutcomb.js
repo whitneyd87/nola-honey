@@ -48,7 +48,7 @@ export default class Aboutcomb extends Component {
 
 				</svg>
 
-				<NavLink to="/about" className="nav-link" activeClassName="selected">about</NavLink>
+				<NavLink to="/about/" className="nav-link" activeClassName="selected">about</NavLink>
 				
 			</div>
 		)

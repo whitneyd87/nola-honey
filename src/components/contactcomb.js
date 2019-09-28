@@ -48,7 +48,7 @@ export default class Contactcomb extends Component {
 
 				</svg>
 
-				<NavLink to="/contact" className="nav-link" activeClassName="selected">contact</NavLink>
+				<NavLink to="/contact/" className="nav-link" activeClassName="selected">contact</NavLink>
 				
 			</div>
 		)
