@@ -787,7 +787,7 @@ input[type = 'email'] {
 
     .content-wrapper {
       justify-content: space-around;
-      margin-left: -700px;
+      margin-left: -650px;
       padding-top: 120px;
       width: 1000px;
     }
@@ -859,7 +859,7 @@ input[type = 'email'] {
     .about-wrapper {
       height: 1200px;
       justify-content: space-between;
-      margin-left: -600px;
+      margin-left: -625px;
       padding-top: 100px;
       width: 1000px;
     }
@@ -886,7 +886,16 @@ input[type = 'email'] {
     .sign-up {
       align-items: flex-start;
       height: 500px;
-      width: 45%;
+      width: 40%;
+    }
+
+    .contact-address,
+    .mailing-list {
+      font-size: 1.275rem;
+    }
+
+    .mailing-list {
+      line-height: 2;
     }
 
     input[type='email'] {
@@ -895,8 +904,10 @@ input[type = 'email'] {
     }
 
     #emailBtn {
+      font-size: 1.275rem;
       top: 55px;
-      left: 75%;
+      left: 80%;
+      width: 70px;
     }
 
   }
