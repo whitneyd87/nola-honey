@@ -50,9 +50,9 @@ export default class Merch extends Component {
 				
 				</ul>
 
-				<Route path={'/merch/shirts'} component={ Shirts } />
+				<Route path={'/nola-honey/merch/shirts'} component={ Shirts } />
 
-				<Route path={'/merch/mugs'} component={ Mugs } />
+				<Route path={'/nola-honey/merch/mugs'} component={ Mugs } />
 
 			</div>
 
