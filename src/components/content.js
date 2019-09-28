@@ -26,7 +26,7 @@ function Content({ location }) {
 
 						<Switch location= {location}>
 
-							<Route exact path="path={process.env.PUBLIC_URL + '/honey'}" component={Honey}/>
+							<Route exact path="{process.env.PUBLIC_URL + '/honey'}" component={Honey}/>
 							<Route path="/merch" component={Merch}/>
 							<Route exact path="/about" component={About}/>
 							<Route exact path="/contact" component={Contact}/>
