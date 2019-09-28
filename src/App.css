@@ -585,7 +585,7 @@ input[type = 'email'] {
   letter-spacing: 3px;
   position: absolute;
   top: 7px;
-  left: 75%;
+  left: 80%;
   width: 50px;
 }
 
@@ -758,6 +758,13 @@ input[type = 'email'] {
 
    /*HIVE*/
 
+    main {
+      width: 50%;
+    }
+
+    #content-container {
+      width: 90%;
+    }
 
     #bee-container {
       margin-top: 0;
@@ -787,7 +794,7 @@ input[type = 'email'] {
 
     .content-wrapper {
       justify-content: space-around;
-      margin-left: -650px;
+      margin-left: -600px;
       padding-top: 120px;
       width: 1000px;
     }
@@ -859,7 +866,7 @@ input[type = 'email'] {
     .about-wrapper {
       height: 1200px;
       justify-content: space-between;
-      margin-left: -625px;
+      margin-left: -600px;
       padding-top: 100px;
       width: 1000px;
     }
