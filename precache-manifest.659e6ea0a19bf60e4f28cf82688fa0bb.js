@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "90e918c0a517b9a3ed1087f4e6fdd6cc",
+    "revision": "f8bd467156fc8848a87a739a2976dfb1",
     "url": "/nola-honey/index.html"
   },
   {
-    "revision": "797f6464f0d7b8b76346",
+    "revision": "d24022bddc8c3b3af3ff",
     "url": "/nola-honey/static/css/main.e700a3a3.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nola-honey/static/js/2.3a32f007.chunk.js"
   },
   {
-    "revision": "797f6464f0d7b8b76346",
-    "url": "/nola-honey/static/js/main.93924012.chunk.js"
+    "revision": "d24022bddc8c3b3af3ff",
+    "url": "/nola-honey/static/js/main.8b8eb7b9.chunk.js"
   },
   {
     "revision": "130b398f7dde84ffae4b",
