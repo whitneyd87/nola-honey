@@ -424,14 +424,14 @@ a.order-link {
 }
 
 .accredit {
-  color: #828080;
-  font-size: 0.5rem;
+  color: #CCCCCC;
+  font-size: 0.75rem;
   text-align: center;
   width: 100%;
 }
 
 .accredit a {
-  color: #828080;
+  color: #B3B3B3;
   text-decoration: none;
 }
 
@@ -488,6 +488,7 @@ a.order-link {
   background-image: url('./components/img/womens-goodhives.png');
   background-size: cover;
   background-position: center;
+  border-radius: 12px;
   color: transparent;
   display: block;
   filter: grayscale(90%);
@@ -500,6 +501,7 @@ a.order-link {
   background-image: url('./components/img/tea.png');
   background-size: cover;
   background-position: right;
+  border-radius: 12px;
   color: transparent;
   display: block;
   filter: grayscale(90%);
@@ -512,12 +514,13 @@ a.order-link {
 /*ABOUT*/
 
 
-.about-figure {
+.aboutFigure {
   align-items: center;
   display: flex;
   justify-content: center;
   height: 210px;
   margin: 30px 0;
+  overflow: hidden;
   padding-right: 0;
   width: 100%;
 }
@@ -659,7 +662,7 @@ input[type = 'email'] {
     }
 
     .itemFigure {
-      width: 60%;
+      width: 45%;
     }
 
     .order-data {
@@ -683,6 +686,11 @@ input[type = 'email'] {
       font-size: 1.25rem;
     }
 
+    .aboutFigure {
+      height: 210px;
+      width: 80%;
+    }
+
     .title-first {
       font-size: 1.875rem; 
     }
@@ -694,6 +702,7 @@ input[type = 'email'] {
 
     /*CONTACT*/
 
+
     .contact-info,
     .sign-up {
       width: 80%;
@@ -703,7 +712,7 @@ input[type = 'email'] {
       padding: 50px 0 25px 0;
     }
 
-     .contact-info h1,
+    .contact-info h1,
     .sign-up h1 {
       margin: 0;
     }
@@ -745,13 +754,15 @@ input[type = 'email'] {
     }
 
     .content-wrapper {
+      justify-content: space-between;
       width: 100%;
     }
 
+
     /*ORDER*/
 
+
     .content-nested {
-      align-items: flex-start;
       justify-content: space-between;
       flex-flow: row nowrap;
       padding: 100px 0 25px 0;
@@ -762,7 +773,7 @@ input[type = 'email'] {
     }
 
     .selectionBox {
-      margin-top: 0;
+      margin: 20px 0 20px 0;
     }
 
     .shirtsFigure {
@@ -777,7 +788,7 @@ input[type = 'email'] {
     #addBtn {
       font-size: 1.5rem;
       height: 50px;
-      margin: 50px 0 30px 0; 
+      margin: 30px 0 15px 0; 
     }
 
     .accredit {
@@ -787,6 +798,11 @@ input[type = 'email'] {
 
     /*CONTACT*/
 
+
+    .contact-info,
+    .sign-up {
+      width: 100%;
+    }
 
     .social-network {
       padding: 50px 0;
@@ -868,12 +884,15 @@ input[type = 'email'] {
     }
 
     .merch-nav {
-      height: 150px;
-      padding-top: 20px;
+      height: 115px;
     }
 
     .merch-nav li {
-      width: 25%;
+      width: 20%;
+    }
+
+    .link-text {
+      padding-top: 18%;
     }
 
     .order-data {
@@ -894,10 +913,6 @@ input[type = 'email'] {
     .accredit {
       padding-top: 50px; 
       width: 100%;
-    }
-
-    .link-text {
-      padding-top: 20%;
     }
 
     .content-nested {
