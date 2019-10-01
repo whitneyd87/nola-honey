@@ -35,15 +35,15 @@ export default class Contact extends Component {
 					 <div className="social-network">
 
 						<a href={"https://www.facebook.com/"} target={"_blank"} className="social-media">
-							<FontAwesomeIcon icon={["fab", "facebook-f"]} size="3x" />
+							<FontAwesomeIcon icon={["fab", "facebook-f"]} size="2x" />
 						</a> 
 
 						<a href={"https://www.instagram.com/?hl=en"} target={"_blank"} className="social-media">
-							<FontAwesomeIcon icon={["fab", "instagram"]} size="3x" />
+							<FontAwesomeIcon icon={["fab", "instagram"]} size="2x" />
 						</a> 
 
 						<a href={"https://twitter.com/?lang=en"} target={"_blank"} className="social-media">
-							<FontAwesomeIcon icon={["fab", "twitter"]} size="3x" />
+							<FontAwesomeIcon icon={["fab", "twitter"]} size="2x" />
 						</a> 
 
 					</div>

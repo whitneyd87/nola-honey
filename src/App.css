@@ -303,6 +303,15 @@ a.nav-link {
   padding: 60px 0 60px 0;
 }
 
+.content-nested {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  padding-top: 100px;
+  text-align: center;
+}
+
 
 /*ORDER*/
 
@@ -336,7 +345,6 @@ a.order-link {
 .itemFigure {
   margin: 0;
   overflow: hidden;
-  padding: 50px 0;
   width: 100%;
 }
 
@@ -344,7 +352,6 @@ a.order-link {
   height: 300px;
   margin: 0;
   overflow: hidden;
-  padding: 50px 0;
   width: 100%;
 }
 
@@ -449,13 +456,13 @@ a.order-link {
   list-style: none;
   margin: 0;
   padding: 0;
-  height: 150px;
+  height: 125px;
   width: 100%;
 }
 
 .merch-nav li {
   height: 100%;
-  width: 35%;
+  width: 30%;
 }
 
 .merch-nav li a {
@@ -499,15 +506,6 @@ a.order-link {
   height: 100%;
   text-align: center;
   width: 100%;
-}
-
-.content-nested {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap;
-  padding-top: 50px;
-  text-align: center;
 }
 
 
@@ -648,16 +646,29 @@ input[type = 'email'] {
     }
 
     .merch-nav {
-      height: 200px;
+      height: 100px;
+    }
+
+    .merch-nav li {
+      width: 30%;
     }
 
     .link-text {
-      font-size: 2.5rem;
-      padding-top:45%;
+      font-size: 2rem;
+      padding-top: 20%;
+    }
+
+    .itemFigure {
+      width: 60%;
+    }
+
+    .order-data {
+      width: 60%;
     }
 
     .shirtsFigure {
-      height: 500px;
+      height: 350px;
+      width: 60%;
     }
 
 
@@ -683,6 +694,21 @@ input[type = 'email'] {
 
     /*CONTACT*/
 
+    .contact-info,
+    .sign-up {
+      width: 80%;
+    }
+
+    .sign-up {
+      padding: 50px 0 25px 0;
+    }
+
+     .contact-info h1,
+    .sign-up h1 {
+      margin: 0;
+    }
+
+    .social-network {}
 
     .contact-address,
     .mailing-list {
@@ -705,7 +731,6 @@ input[type = 'email'] {
 
     /*HIVE*/
 
-
     #bee-container {
       margin-top: -50px;
       width: 25%; 
@@ -719,21 +744,44 @@ input[type = 'email'] {
       margin-left: -120px;
     }
 
+    .content-wrapper {
+      width: 100%;
+    }
 
     /*ORDER*/
 
+    .content-nested {
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-flow: row nowrap;
+      padding: 100px 0 25px 0;
+    }
+
+    .order-data {
+      width: 45%;
+    }
+
+    .selectionBox {
+      margin-top: 0;
+    }
+
+    .shirtsFigure {
+      height: 250px;
+      width: 40%;
+    }
 
     .honeypotFigure {
       margin: 0 0 10px 50px;
     }
 
-    .order-data {
+    #addBtn {
       font-size: 1.5rem;
+      height: 50px;
+      margin: 50px 0 30px 0; 
     }
 
-    #addBtn {
-      font-size: 2rem;
-      height: 70px;
+    .accredit {
+      font-size: 0.25rem;
     }
 
 
@@ -751,13 +799,14 @@ input[type = 'email'] {
     #emailBtn {
       font-size: 1.875rem;
       height: 45px;
-      left: 82%;
-      width: 90px;
+      left: 80%;
+      width: 75px;
     }
 
   }
 
   @media only screen and (min-width: 1200px) {
+
 
 
    /*HIVE*/
@@ -767,6 +816,7 @@ input[type = 'email'] {
     }
 
     #content-container {
+      position: relative;
       width: 90%;
     }
 
@@ -798,13 +848,17 @@ input[type = 'email'] {
 
     .content-wrapper {
       justify-content: space-around;
-      margin-left: -600px;
+      position: relative;
       padding-top: 120px;
+      top: 0;
+      left: 0;
+      transform: translateX(-600px);
       width: 1000px;
     }
 
     .itemFigure {
       padding: 0 0 50px 0;
+      height: 225px;
       width: 25%;
     }
 
@@ -827,10 +881,13 @@ input[type = 'email'] {
     }
 
     .selectionBox {
-      margin-top: 0;
+      font-size: 1rem;
+      margin-top: 10px;
     }
 
     #addBtn {
+      font-size: 1.5rem;
+      height: 50px;
       margin: 50px 0 0 0;
     }
 
@@ -844,7 +901,7 @@ input[type = 'email'] {
     }
 
     .content-nested {
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-around;
       padding-top: 100px;
     }
@@ -856,6 +913,7 @@ input[type = 'email'] {
     }
 
     .quantity-shirts {
+      font-size: 1rem;
       width: 250px;
     }
 

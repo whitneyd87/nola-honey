@@ -78,7 +78,7 @@ export default class Shirts extends Component {
 
 							<button className="quantityBtn" onClick={()=>this.decreaseItem()}> - </button>
 
-							<h2> {this.state.clicks} </h2>
+							<p> {this.state.clicks} </p>
 
 							<button className="quantityBtn" onClick={()=>this.incrementItem()}> + </button>
 
