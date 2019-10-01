@@ -22,7 +22,7 @@ export default class About extends Component {
 
 		<div className= "about-wrapper" ref={this.scrollIntoFocus}>
 
-			<figure className="aboutFigure">
+			<figure className="aboutFigure bees">
 
 				<img className="about-photo" src={ require ('./img/keepers.jpg') } alt="bee keepers" />
 
@@ -40,7 +40,7 @@ export default class About extends Component {
 			<p className="about-text"><span className="title-first">OUR</span> <span className="title-second">mission</span> is to provide the Greater New Orleans Area with the pure, sweet taste of local honey. 
 			Our honey is as good for your health as it is to your tummy. <img src={ require ('./img/yummy.png') }  alt="yum emoji"/></p>
 
-			<figure className="aboutFigure bees">
+			<figure className="aboutFigure">
 
 				<img className="about-photo" src={ require ('./img/bees.jpg') } alt="close up of bees on a frame" />
 		

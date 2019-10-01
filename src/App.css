@@ -873,8 +873,6 @@ input[type = 'email'] {
     }
 
     .itemFigure {
-      padding: 0 0 50px 0;
-      height: 225px;
       width: 25%;
     }
 
@@ -901,7 +899,7 @@ input[type = 'email'] {
 
     .selectionBox {
       font-size: 1rem;
-      margin-top: 10px;
+      margin: 50px 0;
     }
 
     #addBtn {
@@ -911,6 +909,7 @@ input[type = 'email'] {
     }
 
     .accredit {
+      font-size: 0.5rem;
       padding-top: 50px; 
       width: 100%;
     }
@@ -933,6 +932,7 @@ input[type = 'email'] {
     }
 
     .mugFigure {
+      height: 270px;
       width: 50%;
     }
 
@@ -948,8 +948,9 @@ input[type = 'email'] {
       width: 1000px;
     }
 
-    .about-figure {
-      width: 35%;
+    .aboutFigure {
+      height: 250px;
+      width: 45%;
     }
 
     .about-text {
@@ -957,7 +958,6 @@ input[type = 'email'] {
     }
 
     .bees {
-      height: 200px;
       overflow: hidden;
       width: 100%;
     }
@@ -969,8 +969,12 @@ input[type = 'email'] {
     .contact-info,
     .sign-up {
       align-items: flex-start;
-      height: 500px;
+      /*height: 500px;*/
       width: 40%;
+    }
+
+    .sign-up {
+      padding: 0;
     }
 
     .contact-address,
@@ -980,6 +984,8 @@ input[type = 'email'] {
 
     .mailing-list {
       line-height: 2;
+      margin: 0;
+      padding: 30px 0;
     }
 
     input[type='email'] {
