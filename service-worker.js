@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/nola-honey/precache-manifest.6b22abd9c4e44d07a4b07f9822e191c5.js"
+  "/nola-honey/precache-manifest.769b86025f44c4a88da12b0434acf534.js"
 );
 
 self.addEventListener('message', (event) => {
