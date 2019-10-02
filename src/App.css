@@ -312,6 +312,10 @@ a.nav-link {
   text-align: center;
 }
 
+.sideNav {
+  display: none;
+}
+
 
 /*ORDER*/
 
