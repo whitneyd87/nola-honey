@@ -28,7 +28,7 @@ function Content({ location }) {
 
 							<Route exact path={"/honey"} component={Honey}/>
 							<Route path={"/merch"} component={Merch}/>
-							<Route exact path={"/about"} component={About}/>
+							<Route exact path={"/nola-honey/about"} component={About}/>
 							<Route exact path={"/contact"} component={Contact}/>
 
 						</Switch>
