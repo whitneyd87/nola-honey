@@ -864,7 +864,7 @@ input[type = 'email'] {
       padding: 0;
       position: absolute;
       top: 10%;
-      left: 0;
+      left: -5%;
       list-style: none; 
       width: 20px;
     }
@@ -881,17 +881,20 @@ input[type = 'email'] {
     /*ORDER*/
 
 
+    nav {
+      width: 100%;
+    }
+
     a.order-link {
       font-size: 2.5rem;
     }
 
     .content-wrapper {
       justify-content: space-around;
-      position: relative;
       padding-top: 120px;
+      position: relative;
       top: 0;
-      left: 0;
-      transform: translateX(-650px);
+      left: -600px;
       width: 1000px;
     }
 
@@ -941,6 +944,18 @@ input[type = 'email'] {
       align-items: center;
       justify-content: space-around;
       padding-top: 100px;
+      position: relative;
+      top: 0;
+      left: -80px;
+    }
+
+    .content-nested nav {
+      width: 20px;
+    }
+
+    .content-nested .sideNav ul {
+      top: 15%;
+      left: 0;
     }
 
     .shirtsFigure {
@@ -968,7 +983,15 @@ input[type = 'email'] {
       justify-content: space-between;
       margin-left: -600px;
       padding-top: 100px;
+      position: relative;
+      top: 0;
+      left: 5%;
       width: 1000px;
+    }
+
+    .about-wrapper .sideNav ul {
+      top: 45%;
+      left: -10%;
     }
 
     .aboutFigure {
