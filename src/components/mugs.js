@@ -51,6 +51,16 @@ export default class Mugs extends Component {
 
 						<li>
 
+							<NavLink to={"/honey"} className="sideLink">
+								
+								<FontAwesomeIcon icon={["fas", "tint"]} size="xs" />
+							
+							</NavLink> 
+
+						</li>
+
+						<li>
+
 							<NavLink to={"/merch/shirts"} className="sideLink">
 								
 								<FontAwesomeIcon icon={["fas", "tshirt"]} size="xs" />

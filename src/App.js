@@ -7,9 +7,9 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faCoffee, faTshirt, faInfo, faAt } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faTshirt, faInfo, faAt, faTint } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab, faFacebookF, faInstagram, faTwitter, fas, faCoffee, faTshirt, faAt, faInfo);
+library.add(fab, faFacebookF, faInstagram, faTwitter, fas, faCoffee, faTshirt, faAt, faInfo, faTint);
 
 class App extends React.Component {  	
 
