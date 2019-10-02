@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/nola-honey/static/css/main.0eb6f985.chunk.css",
+    "main.css": "/nola-honey/static/css/main.f9fc2eed.chunk.css",
     "main.js": "/nola-honey/static/js/main.9d2fa3fc.chunk.js",
     "main.js.map": "/nola-honey/static/js/main.9d2fa3fc.chunk.js.map",
     "runtime~main.js": "/nola-honey/static/js/runtime~main.4614a757.js",
@@ -8,9 +8,9 @@
     "static/js/2.d7b17c70.chunk.js": "/nola-honey/static/js/2.d7b17c70.chunk.js",
     "static/js/2.d7b17c70.chunk.js.map": "/nola-honey/static/js/2.d7b17c70.chunk.js.map",
     "index.html": "/nola-honey/index.html",
-    "precache-manifest.37ba3c3ef3b9771aa6c17ff2499441c1.js": "/nola-honey/precache-manifest.37ba3c3ef3b9771aa6c17ff2499441c1.js",
+    "precache-manifest.9de6e0c943b63e70509533d248a53bee.js": "/nola-honey/precache-manifest.9de6e0c943b63e70509533d248a53bee.js",
     "service-worker.js": "/nola-honey/service-worker.js",
-    "static/css/main.0eb6f985.chunk.css.map": "/nola-honey/static/css/main.0eb6f985.chunk.css.map",
+    "static/css/main.f9fc2eed.chunk.css.map": "/nola-honey/static/css/main.f9fc2eed.chunk.css.map",
     "static/media/bees.jpg": "/nola-honey/static/media/bees.42dd7b4e.jpg",
     "static/media/holding.jpg": "/nola-honey/static/media/holding.a4771008.jpg",
     "static/media/honeycase.png": "/nola-honey/static/media/honeycase.fbe40260.png",
