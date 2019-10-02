@@ -540,12 +540,15 @@ a.order-link {
 .title-first {
   font-size: 1.5rem;
   font-weight: bold;
+  line-height: 1;
 }
 
 .title-second {
   color: #fbb03b;
   font-family: 'Tangerine', cursive;
   font-size: 1.825rem;
+  line-height: 1;
+  padding: 0 5px;
 }
 
 .about-text {
@@ -1008,6 +1011,7 @@ input[type = 'email'] {
     }
 
     .about-text {
+      font-size: 1.125rem;
       width: 50%;
     }
 
