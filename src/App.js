@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import './App.css';
 import Bee from './components/bee.js';
 import Hive from './components/hive.js';
@@ -17,7 +17,7 @@ class App extends React.Component {
 		
 		return (
 
-			<Router>
+			<Router basename= {"/"}>
 
 			  	<div>	
 				  	
