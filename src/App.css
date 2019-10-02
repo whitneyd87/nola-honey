@@ -862,6 +862,10 @@ input[type = 'email'] {
       transform: translate(50%, 87%);
     }
 
+    .sideNav {
+      display: block;
+    }
+
     .sideNav ul {
       align-items: center;
       display: flex;
