@@ -902,7 +902,7 @@ input[type = 'email'] {
 
     .content-wrapper {
       justify-content: space-around;
-      padding-top: 120px;
+      padding: 120px 0;
       position: relative;
       top: 0;
       left: -600px;
@@ -1027,16 +1027,12 @@ input[type = 'email'] {
     .contact-info,
     .sign-up {
       align-items: flex-start;
+      height: 300px;
       width: 40%;
     }
 
     .sign-up {
       padding: 0;
-    }
-
-    .contact-info h1,
-    .sign-up h1 {
-      padding-bottom: 30px;
     }
 
     .contact-address,

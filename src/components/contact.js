@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Contact extends Component {
@@ -29,33 +30,41 @@ export default class Contact extends Component {
 
 						<li>
 
-							<a href={"/about"} target={"_blank"} className="sideLink">
+							<NavLink to={"/about"} className="sideLink">
+								
 								<FontAwesomeIcon icon={["fas", "info"]} size="xs" />
-							</a> 
+
+							</NavLink> 
 
 						</li>
 
 						<li>
 
-							<a href={"/merch/shirts"} target={"_blank"} className="sideLink">
+							<NavLink to={"/merch/shirts"} className="sideLink">
+								
 								<FontAwesomeIcon icon={["fas", "tshirt"]} size="xs" />
-							</a> 
+							
+							</NavLink> 
 
 						</li>
 
 						<li>
 
-							<a href={"/merch/mugs"} target={"_blank"} className="sideLink">
+							<NavLink to={"/merch/mugs"} className="sideLink">
+								
 								<FontAwesomeIcon icon={["fas", "coffee"]} size="xs" />
-							</a> 
+							
+							</NavLink> 
 
 						</li>
 
 						<li>
 
-							<a href={"/contact"} target={"_blank"} className="sideLink">
+							<NavLink to={"/contact"} className="sideLink">
+								
 								<FontAwesomeIcon icon={["fas", "at"]} size="xs" />
-							</a> 
+							
+							</NavLink> 
 
 						</li>
 
