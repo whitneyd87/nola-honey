@@ -1034,6 +1034,11 @@ input[type = 'email'] {
       padding: 0;
     }
 
+    .contact-info h1,
+    .sign-up h1 {
+      padding-bottom: 30px;
+    }
+
     .contact-address,
     .mailing-list {
       font-size: 1.275rem;
