@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import Comb from './comb.js';
 import Content from './content.js';
-import Ordercomb from './ordercomb.js'
-import Aboutcomb from './aboutcomb.js'
-import Contactcomb from './contactcomb.js'
-import HoneyLink from './honeyorder.js'
-import MerchLink from './merchorder.js'
+import Ordercomb from './ordercomb.js';
+import Aboutcomb from './aboutcomb.js';
+import Contactcomb from './contactcomb.js';
+import HoneyLink from './honeyorder.js';
+import MerchLink from './merchorder.js';
 
 
 export default class Hive extends Component {

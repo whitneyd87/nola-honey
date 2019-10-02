@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Contact extends Component {
 
@@ -22,6 +22,46 @@ export default class Contact extends Component {
 		return (
 
 			<div className= "content-wrapper" ref={this.scrollIntoFocus}>
+
+				<nav className="sideNav">
+
+					<ul>
+
+						<li>
+
+							<a href={"/about"} target={"_blank"} className="sideLink">
+								<FontAwesomeIcon icon={["fas", "info"]} size="xs" />
+							</a> 
+
+						</li>
+
+						<li>
+
+							<a href={"/merch/shirts"} target={"_blank"} className="sideLink">
+								<FontAwesomeIcon icon={["fas", "tshirt"]} size="xs" />
+							</a> 
+
+						</li>
+
+						<li>
+
+							<a href={"/merch/mugs"} target={"_blank"} className="sideLink">
+								<FontAwesomeIcon icon={["fas", "coffee"]} size="xs" />
+							</a> 
+
+						</li>
+
+						<li>
+
+							<a href={"/contact"} target={"_blank"} className="sideLink">
+								<FontAwesomeIcon icon={["fas", "at"]} size="xs" />
+							</a> 
+
+						</li>
+
+					</ul>
+
+				</nav>
 
 				<div className="contact-info">
 

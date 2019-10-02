@@ -824,8 +824,8 @@ input[type = 'email'] {
   @media only screen and (min-width: 1200px) {
 
 
-
    /*HIVE*/
+
 
     main {
       width: 50%;
@@ -854,6 +854,29 @@ input[type = 'email'] {
       transform: translate(50%, 87%);
     }
 
+    .sideNav ul {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex-flow: row wrap;
+      height: 450px;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 10%;
+      left: 0;
+      list-style: none; 
+      width: 20px;
+    }
+
+    .sideLink {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      color: #1a1a1a;
+      width: 20px;
+    }
+
 
     /*ORDER*/
 
@@ -868,7 +891,7 @@ input[type = 'email'] {
       padding-top: 120px;
       top: 0;
       left: 0;
-      transform: translateX(-600px);
+      transform: translateX(-650px);
       width: 1000px;
     }
 
@@ -969,7 +992,6 @@ input[type = 'email'] {
     .contact-info,
     .sign-up {
       align-items: flex-start;
-      /*height: 500px;*/
       width: 40%;
     }
 
