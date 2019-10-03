@@ -14,7 +14,7 @@ export default class Merch extends Component {
 		if(this.scrollIntoFocus.current){
             this.scrollIntoFocus.current.scrollIntoView({ 
                behavior: "smooth", 
-               block: "start"
+               block: "center"
             })
         }
 	}
