@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
 import About from './about.js';
 import Contact from './contact.js';
 import Honey from './honey.js';

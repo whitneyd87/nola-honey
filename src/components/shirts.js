@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 
 export default class Shirts extends Component {
 
@@ -40,64 +37,6 @@ export default class Shirts extends Component {
 		return (
 
 			<div className="content-nested">
-
-				<nav className="sideNav">
-
-					<ul>
-
-						<li>
-
-							<NavLink to={"/about"} className="sideLink">
-								
-								<FontAwesomeIcon icon={["fas", "info"]} size="xs" />
-							
-							</NavLink> 
-
-						</li>
-
-						<li>
-
-							<NavLink to={"/honey"} className="sideLink">
-								
-								<FontAwesomeIcon icon={["fas", "tint"]} size="xs" />
-							
-							</NavLink> 
-
-						</li>
-
-						<li>
-
-							<NavLink to={"/merch/shirts"} className="sideLink">
-								
-								<FontAwesomeIcon icon={["fas", "tshirt"]} size="xs" />
-							
-							</NavLink> 
-
-						</li>
-
-						<li>
-
-							<NavLink to={"/merch/mugs"} className="sideLink">
-								
-								<FontAwesomeIcon icon={["fas", "coffee"]} size="xs" />
-							
-							</NavLink> 
-
-						</li>
-
-						<li>
-
-							<NavLink to={"/contact"} className="sideLink">
-								
-								<FontAwesomeIcon icon={["fas", "at"]} size="xs" />
-							
-							</NavLink> 
-
-						</li>
-
-					</ul>
-
-				</nav>
 
 				<figure className="shirtsFigure">
 

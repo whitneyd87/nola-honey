@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Comb from './comb.js';
 import Content from './content.js';
 import Ordercomb from './ordercomb.js';
@@ -14,13 +16,46 @@ export default class Hive extends Component {
 		super(props);
 		this.state = {
 			isMoved: true,
-			isShown: false
+			isShown: false,
+			isNav: false
 		}
 		this.orderComb = React.createRef();
 		this.aboutComb = React.createRef();
 		this.contactComb = React.createRef();
 		this.honeyOrder = React.createRef();
 		this.merchOrder = React.createRef();
+		this.hivePosition = React.createRef();
+		this.handleScroll =  this.handleScroll.bind(this);
+	}
+
+	componentWillMount() {
+    	window.addEventListener('scroll', this.handleScroll);
+  	}
+
+    componentWillUnmount() {
+    	window.removeEventListener('scroll', this.handleScroll);
+  	}
+
+	handleScroll(e) {
+		let lastScrollTop = 0;
+		const currentScrollTop = this.hive.scrollY;
+		console.log(currentScrollTop);
+	
+		if (currentScrollTop > lastScrollTop) {
+	  		
+	  		this.setState({ 
+	  			isNav: true 
+	  		});
+
+		} else if(currentScrollTop < lastScrollTop) {
+	  		
+	  		this.setState({ 
+	  			isNav: false 
+	  		});
+
+		}
+
+		lastScrollTop = currentScrollTop;
 	}
 
 	handleOrder() {
@@ -59,14 +94,72 @@ export default class Hive extends Component {
 		this.merchOrder.current.handleHide();
 	}
 
-
 	render () {
 		const{isMoved} = this.state;
 		const{isShown} = this.state;
+		const{isNav} = this.state;
 		
 		return (
 
-			<div className="hive">
+			<div className="hive" ref={this.hive}>
+
+			<nav className={`${isNav ? "sideNav" : "sideNavHide"}`}>
+
+				<ul>
+
+					<li>
+
+						<NavLink to={"/about"} className="sideLink">
+							
+							<FontAwesomeIcon icon={["fas", "info"]} size="xs" />
+						
+						</NavLink> 
+
+					</li>
+
+					<li>
+
+						<NavLink to={"/honey"} className="sideLink">
+							
+							<FontAwesomeIcon icon={["fas", "tint"]} size="xs" />
+						
+						</NavLink> 
+
+					</li>
+
+					<li>
+
+						<NavLink to={"/merch/shirts"} className="sideLink">
+							
+							<FontAwesomeIcon icon={["fas", "tshirt"]} size="xs" />
+						
+						</NavLink> 
+
+					</li>
+
+					<li>
+
+						<NavLink to={"/merch/mugs"} className="sideLink">
+							
+							<FontAwesomeIcon icon={["fas", "coffee"]} size="xs" />
+						
+						</NavLink> 
+
+					</li>
+
+					<li>
+
+						<NavLink to={"/contact"} className="sideLink">
+							
+							<FontAwesomeIcon icon={["fas", "at"]} size="xs" />
+						
+						</NavLink> 
+
+					</li>
+
+				</ul>
+
+			</nav>
 
 				<section className="row">
 

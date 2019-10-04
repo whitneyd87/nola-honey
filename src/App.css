@@ -843,7 +843,6 @@ input[type = 'email'] {
     }
 
     #content-container {
-      position: relative;
       width: 90%;
     }
 
@@ -865,6 +864,10 @@ input[type = 'email'] {
       transform: translate(50%, 87%);
     }
 
+    .sideNavHide {
+      display: none;
+    }
+
     .sideNav {
       display: block;
     }
@@ -874,12 +877,12 @@ input[type = 'email'] {
       display: flex;
       justify-content: center;
       flex-flow: row wrap;
-      height: 450px;
+      height: 400px;
       margin: 0;
       padding: 0;
       position: absolute;
-      top: 15%;
-      left: -5%;
+      top: 475px;
+      left: 20px;
       list-style: none; 
       width: 20px;
     }
@@ -955,18 +958,10 @@ input[type = 'email'] {
       align-items: center;
       justify-content: space-around;
       padding-top: 100px;
-      position: relative;
-      top: 0;
-      left: -80px;
     }
 
     .content-nested nav {
       width: 20px;
-    }
-
-    .content-nested .sideNav ul {
-      top: 15%;
-      left: 0;
     }
 
     .shirtsFigure {

@@ -22,7 +22,6 @@ export default class Aboutcomb extends Component {
 		});
 	}
 
-
 	render () {
 
 		const{isAbout} = this.state;
