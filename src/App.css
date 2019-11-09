@@ -312,6 +312,10 @@ a.nav-link {
   text-align: center;
 }
 
+.sideNavHide {
+  display: none;
+}
+
 .sideNav {
   display: none;
 }
