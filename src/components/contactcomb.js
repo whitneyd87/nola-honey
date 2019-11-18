@@ -12,8 +12,8 @@ export default class Contactcomb extends Component {
 	}
 
 	componentWillMount() {
-		localStorage.getItem('isContact') && this.setState({
-			isContact: JSON.parse(localStorage.getItem('isContact'))
+		sessionStorage.getItem('isContact') && this.setState({
+			isContact: JSON.parse(sessionStorage.getItem('isContact'))
 		});
 	}
 
@@ -21,14 +21,14 @@ export default class Contactcomb extends Component {
 		this.setState({
 			isContact: true
 		});
-		localStorage.setItem('isContact', true);
+		sessionStorage.setItem('isContact', true);
 	}
 
 	emptyComb () {
 		this.setState({
 			isContact: false
 		});
-		localStorage.setItem('isContact', false);
+		sessionStorage.setItem('isContact', false);
 	}
 
 	render () {

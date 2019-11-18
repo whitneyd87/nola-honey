@@ -41,9 +41,9 @@ export default class Hive extends Component {
 	}
 
 	componentWillMount() {
-		localStorage.getItem('isMoved') && localStorage.getItem('isShown') && this.setState({
-			isMoved: JSON.parse(localStorage.getItem('isMoved')),
-			isShown: JSON.parse(localStorage.getItem('isShown'))
+		sessionStorage.getItem('isMoved') && sessionStorage.getItem('isShown') && this.setState({
+			isMoved: JSON.parse(sessionStorage.getItem('isMoved')),
+			isShown: JSON.parse(sessionStorage.getItem('isShown'))
 		});
 	}
 
@@ -62,8 +62,8 @@ export default class Hive extends Component {
 		this.honeyOrder.current.handleShow();
 		this.merchOrder.current.handleShow();
 
-		localStorage.setItem('isMoved', false);
-		localStorage.setItem('isShown', true);
+		sessionStorage.setItem('isMoved', false);
+		sessionStorage.setItem('isShown', true);
 	}	
 
 	handleAbout() {
@@ -77,8 +77,8 @@ export default class Hive extends Component {
 		this.honeyOrder.current.handleHide();
 		this.merchOrder.current.handleHide();
 
-		localStorage.setItem('isMoved', false);
-		localStorage.setItem('isShown', false);
+		sessionStorage.setItem('isMoved', false);
+		sessionStorage.setItem('isShown', false);
 	}	
 
 	handleContact() {
@@ -92,8 +92,8 @@ export default class Hive extends Component {
 		this.honeyOrder.current.handleHide();
 		this.merchOrder.current.handleHide();
 
-		localStorage.setItem('isMoved', false);
-		localStorage.setItem('isShown', false);
+		sessionStorage.setItem('isMoved', false);
+		sessionStorage.setItem('isShown', false);
 	}
 
 	render () {

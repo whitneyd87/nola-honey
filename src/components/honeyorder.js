@@ -11,8 +11,8 @@ export default class HoneyLink extends Component {
 	}
 
 	componentWillMount() {
-		localStorage.getItem('isVisible') && this.setState({
-			isVisible: JSON.parse(localStorage.getItem('isVisible'))
+		sessionStorage.getItem('isVisible') && this.setState({
+			isVisible: JSON.parse(sessionStorage.getItem('isVisible'))
 		});
 	}
 
@@ -20,14 +20,14 @@ export default class HoneyLink extends Component {
 		this.setState({
 			isVisible: false
 		});
-		localStorage.setItem('isVisible', false);
+		sessionStorage.setItem('isVisible', false);
 	}
 
 	handleShow () {
 		this.setState({
 			isVisible: true
 		});
-		localStorage.setItem('isVisible', true);
+		sessionStorage.setItem('isVisible', true);
 	}
 
 	render () {

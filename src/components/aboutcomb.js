@@ -13,8 +13,8 @@ export default class Aboutcomb extends Component {
 	}
 
 	componentWillMount() {
-		localStorage.getItem('isAbout') && this.setState({
-			isAbout: JSON.parse(localStorage.getItem('isAbout'))
+		sessionStorage.getItem('isAbout') && this.setState({
+			isAbout: JSON.parse(sessionStorage.getItem('isAbout'))
 		});
 	}
 
@@ -22,14 +22,14 @@ export default class Aboutcomb extends Component {
 		this.setState({
 			isAbout: true
 		});
-		localStorage.setItem('isAbout', true);
+		sessionStorage.setItem('isAbout', true);
 	}
 
 	emptyComb () {
 		this.setState({
 			isAbout: false
 		});
-		localStorage.setItem('isAbout', false);
+		sessionStorage.setItem('isAbout', false);
 	}
 
 

@@ -11,8 +11,8 @@ export default class Ordercomb extends Component {
 	}
 
 	componentWillMount() {
-		localStorage.getItem('isOrder') && this.setState({
-			isOrder: JSON.parse(localStorage.getItem('isOrder'))
+		sessionStorage.getItem('isOrder') && this.setState({
+			isOrder: JSON.parse(sessionStorage.getItem('isOrder'))
 		});
 	}
 
@@ -20,14 +20,14 @@ export default class Ordercomb extends Component {
 		this.setState({
 			isOrder: true
 		});
-		localStorage.setItem('isOrder', true);
+		sessionStorage.setItem('isOrder', true);
 	}
 
 	emptyComb () {
 		this.setState({
 			isOrder: false
 		});
-		localStorage.setItem('isOrder', false);
+		sessionStorage.setItem('isOrder', false);
 	}
 
 	render () {
