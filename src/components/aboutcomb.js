@@ -5,26 +5,37 @@ export default class Aboutcomb extends Component {
 
 	constructor(props) {
 		super(props);
+
 		this.state = {
-			isAbout: false,
+			isAbout: false
 		};
+
+	}
+
+	componentWillMount() {
+		localStorage.getItem('isAbout') && this.setState({
+			isAbout: JSON.parse(localStorage.getItem('isAbout'))
+		});
 	}
 
 	fillComb () {
 		this.setState({
 			isAbout: true
 		});
+		localStorage.setItem('isAbout', true);
 	}
 
 	emptyComb () {
 		this.setState({
 			isAbout: false
 		});
+		localStorage.setItem('isAbout', false);
 	}
+
 
 	render () {
 
-		const{isAbout} = this.state;
+		const{isAbout} = this.state;	
 			
 		return (
 			

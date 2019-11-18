@@ -10,16 +10,24 @@ export default class MerchLink extends Component {
 		};
 	}
 
+	componentWillMount() {
+		localStorage.getItem('isVisible') && this.setState({
+			isVisible: JSON.parse(localStorage.getItem('isVisible'))
+		});
+	}
+
 	handleHide () {
 		this.setState({
 			isVisible: false
 		});
+		localStorage.setItem('isVisible', false);
 	}
 
 	handleShow () {
 		this.setState({
 			isVisible: true
 		});
+		localStorage.setItem('isVisible', true);
 	}
 
 	render () {

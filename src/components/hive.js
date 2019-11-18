@@ -40,9 +40,17 @@ export default class Hive extends Component {
 		}
 	}
 
+	componentWillMount() {
+		localStorage.getItem('isMoved') && localStorage.getItem('isShown') && this.setState({
+			isMoved: JSON.parse(localStorage.getItem('isMoved')),
+			isShown: JSON.parse(localStorage.getItem('isShown'))
+		});
+	}
+
 	componentDidMount() {
 		window.addEventListener('scroll', this.handleScroll);
 	}
+
 	handleOrder() {
 		this.setState({
 			isMoved: false,
@@ -53,6 +61,9 @@ export default class Hive extends Component {
 		this.contactComb.current.emptyComb();
 		this.honeyOrder.current.handleShow();
 		this.merchOrder.current.handleShow();
+
+		localStorage.setItem('isMoved', false);
+		localStorage.setItem('isShown', true);
 	}	
 
 	handleAbout() {
@@ -65,6 +76,9 @@ export default class Hive extends Component {
 		this.contactComb.current.emptyComb();
 		this.honeyOrder.current.handleHide();
 		this.merchOrder.current.handleHide();
+
+		localStorage.setItem('isMoved', false);
+		localStorage.setItem('isShown', false);
 	}	
 
 	handleContact() {
@@ -77,6 +91,9 @@ export default class Hive extends Component {
 		this.contactComb.current.fillComb();
 		this.honeyOrder.current.handleHide();
 		this.merchOrder.current.handleHide();
+
+		localStorage.setItem('isMoved', false);
+		localStorage.setItem('isShown', false);
 	}
 
 	render () {
@@ -94,7 +111,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/about"} className="sideLink">
+							<NavLink to={"/about"} className="sideLink" onClick={()=> this.handleAbout()}>
 								
 								<FontAwesomeIcon icon={["fas", "info"]} size="xs" />
 							
@@ -104,7 +121,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/honey"} className="sideLink">
+							<NavLink to={"/honey"} className="sideLink" onClick={()=> this.handleOrder()}>
 								
 								<FontAwesomeIcon icon={["fas", "tint"]} size="xs" />
 							
@@ -114,7 +131,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/merch/shirts"} className="sideLink">
+							<NavLink to={"/merch/shirts"} className="sideLink" onClick={()=> this.handleOrder()}>
 								
 								<FontAwesomeIcon icon={["fas", "tshirt"]} size="xs" />
 							
@@ -124,7 +141,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/merch/mugs"} className="sideLink">
+							<NavLink to={"/merch/mugs"} className="sideLink" onClick={()=> this.handleOrder()}>
 								
 								<FontAwesomeIcon icon={["fas", "coffee"]} size="xs" />
 							
@@ -134,7 +151,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/contact"} className="sideLink">
+							<NavLink to={"/contact"} className="sideLink" onClick={()=> this.handleContact()}>
 								
 								<FontAwesomeIcon icon={["fas", "at"]} size="xs" />
 							

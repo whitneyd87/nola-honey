@@ -6,6 +6,12 @@ import * as serviceWorker from './serviceWorker';
 
 var domContainer = document.querySelector('#content-container');
 
+var logo = document.getElementById('logo');
+
+logo.addEventListener('click', function(){
+	localStorage.clear();
+});
+
 ReactDOM.render(<App />, domContainer);
 
 // If you want your app to work offline and load faster, you can change
