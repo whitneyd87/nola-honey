@@ -37,7 +37,7 @@ export default class Contactcomb extends Component {
 		
 		return (
 			
-			<div className="comb-container">
+			<section className="comb-container">
 
 				<svg id='comb' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'>
 				    <polygon points='555,155.432 555.037,446.808 302.037,591.346 49,444.507 48.963,153.131 301.963,8.593'
@@ -58,7 +58,7 @@ export default class Contactcomb extends Component {
 
 				<NavLink to="/contact" className="nav-link" activeClassName="selected">contact</NavLink>
 				
-			</div>
+			</section>
 		)
 	}
 }

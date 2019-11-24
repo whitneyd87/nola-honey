@@ -22,7 +22,7 @@ export default class Comb extends Component {
 		
 		return (
 			
-			<div className="comb-container" onClick={()=> this.handleClick()} >
+			<section className="comb-container" onClick={()=> this.handleClick()} >
 
 				<svg id='comb' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'>
 				    
@@ -42,7 +42,7 @@ export default class Comb extends Component {
 
 				</svg>
 				
-			</div>
+			</section>
 		)
 	}
 }

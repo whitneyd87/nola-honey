@@ -21,7 +21,7 @@ export default class Contact extends Component {
 
 		return (
 
-			<div className= "content-wrapper" ref={this.scrollIntoFocus}>
+			<section className= "content-wrapper" ref={this.scrollIntoFocus}>
 
 				<div className="contact-info">
 
@@ -66,7 +66,7 @@ export default class Contact extends Component {
 
 				</div>
 				
-			</div>
+			</section>
 
 		)
 

@@ -7,7 +7,7 @@ export default class Bee extends Component {
 
     return (
 
-      <div className="bee-icon">
+      <section className="bee-icon">
 
         <figure id="bee-container">
 
@@ -221,7 +221,7 @@ export default class Bee extends Component {
 
         </figure>
 
-      </div>
+      </section>
 
     )
 

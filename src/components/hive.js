@@ -6,8 +6,6 @@ import Content from './content.js';
 import Ordercomb from './ordercomb.js';
 import Aboutcomb from './aboutcomb.js';
 import Contactcomb from './contactcomb.js';
-import HoneyLink from './honeyorder.js';
-import MerchLink from './merchorder.js';
 
 
 export default class Hive extends Component {
@@ -15,15 +13,13 @@ export default class Hive extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isMoved: true,
 			isShown: false,
 			isNav: false
 		}
 		this.orderComb = React.createRef();
 		this.aboutComb = React.createRef();
 		this.contactComb = React.createRef();
-		this.honeyOrder = React.createRef();
-		this.merchOrder = React.createRef();
+
 		this.handleScroll = this.handleScroll.bind(this);
 	}
 
@@ -41,8 +37,8 @@ export default class Hive extends Component {
 	}
 
 	componentWillMount() {
-		sessionStorage.getItem('isMoved') && sessionStorage.getItem('isShown') && this.setState({
-			isMoved: JSON.parse(sessionStorage.getItem('isMoved')),
+		sessionStorage.getItem('isShown') && this.setState({
+		
 			isShown: JSON.parse(sessionStorage.getItem('isShown'))
 		});
 	}
@@ -53,57 +49,40 @@ export default class Hive extends Component {
 
 	handleOrder() {
 		this.setState({
-			isMoved: false,
 			isShown: true
 		});	
 		this.orderComb.current.fillComb();
 		this.aboutComb.current.emptyComb();
 		this.contactComb.current.emptyComb();
-		this.honeyOrder.current.handleShow();
-		this.merchOrder.current.handleShow();
 
-		sessionStorage.setItem('isMoved', false);
 		sessionStorage.setItem('isShown', true);
 	}	
 
 	handleAbout() {
 		this.setState({
-			isMoved: false,
 			isShown: false
 		});	
 		this.orderComb.current.emptyComb();
 		this.aboutComb.current.fillComb();
 		this.contactComb.current.emptyComb();
-		this.honeyOrder.current.handleHide();
-		this.merchOrder.current.handleHide();
 
-		sessionStorage.setItem('isMoved', false);
 		sessionStorage.setItem('isShown', false);
 	}	
 
 	handleContact() {
-		this.setState({
-			isMoved: false,
-			isShown: false
-		});	
 		this.orderComb.current.emptyComb();
 		this.aboutComb.current.emptyComb();
 		this.contactComb.current.fillComb();
-		this.honeyOrder.current.handleHide();
-		this.merchOrder.current.handleHide();
-
-		sessionStorage.setItem('isMoved', false);
-		sessionStorage.setItem('isShown', false);
 	}
 
 	render () {
-		const{isMoved} = this.state;
+
 		const{isShown} = this.state;
 		const{isNav} = this.state;
 		
 		return (
 
-			<div className="hive">
+			<section className="hive">
 
 				<nav className={`${isNav ? "sideNav" : "sideNavHide"}`}>
 
@@ -121,7 +100,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/honey"} className="sideLink" onClick={()=> this.handleOrder()}>
+							<NavLink to={"/merch"} className="sideLink" onClick={()=> this.handleOrder()}>
 								
 								<FontAwesomeIcon icon={["fas", "tint"]} size="xs" />
 							
@@ -131,7 +110,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/merch/shirts"} className="sideLink" onClick={()=> this.handleOrder()}>
+							<NavLink to={"/merch"} className="sideLink" onClick={()=> this.handleOrder()}>
 								
 								<FontAwesomeIcon icon={["fas", "tshirt"]} size="xs" />
 							
@@ -141,7 +120,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/merch/mugs"} className="sideLink" onClick={()=> this.handleOrder()}>
+							<NavLink to={"/merch"} className="sideLink" onClick={()=> this.handleOrder()}>
 								
 								<FontAwesomeIcon icon={["fas", "coffee"]} size="xs" />
 							
@@ -183,39 +162,21 @@ export default class Hive extends Component {
 
 				<section className="row middle-hive">
 
-					<div className={`transition empty ${isMoved ? " " : "empty-active"}`} >
+					<Comb />
 
-						<Comb />
+					<div className="nav-comb" onClick={()=> this.handleAbout()}>
 
-					</div>
-
-					<div className={`transition merch ${isMoved ? " " : "merch-active"}`} >
-
-						<HoneyLink ref={this.honeyOrder} />
+						<Aboutcomb ref={this.aboutComb}/>
 
 					</div>
 
-					<div className="nav-comb" >
-
-						<MerchLink ref={this.merchOrder} />
-
-					</div>
+					<Comb />
 
 				</section>
 
-				<div className="content">
-
-					<Content />
-
-				</div>
-
 				<section className="row">		
 
-					<div className={`nav-comb about ${ isMoved ? " " : "about-active"}`} onClick={()=> this.handleAbout()}>
-
-						<Aboutcomb ref={this.aboutComb}/>	
-
-					</div>
+					<Comb />
 
 					<div className="nav-comb" onClick={()=> this.handleContact()}>
 
@@ -225,7 +186,13 @@ export default class Hive extends Component {
 
 				</section>
 
-			</div>
+				<section className="content">
+
+					<Content />
+
+				</section>
+
+			</section>
 
 		)
 		

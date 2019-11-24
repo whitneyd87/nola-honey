@@ -280,6 +280,13 @@ footer {
    Modify as content requires.
    ========================================================================== */
 
+   @media only screen and (min-width: 768px) {
+
+      header figure {
+        width: 250px;
+      }
+   }
+
    @media only screen and (min-width: 1200px) {
     
     body {
