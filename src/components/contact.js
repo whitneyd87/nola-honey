@@ -25,7 +25,7 @@ export default class Contact extends Component {
 
 				<div className="contact-info">
 
-					<h1>Get in Touch</h1>
+					<h2>Get in Touch</h2>
 
 					<address className="contact-address"> 
 						<a href={"tel:+15045554444"} target={"_blank"}>(504) 555 - 4444</a> <br/>
@@ -52,9 +52,9 @@ export default class Contact extends Component {
 
 				<div className="sign-up">
 
-					<h1>Join the Hive</h1>
+					<h2>Join the Hive</h2>
 
-					<p className="mailing-list">Sign up for Our Mailing List & we'll <br />send you all our buzz worthy news!</p>
+					<p className="mailing-list">Sign up for Our Mailing List to get all things buzz worthy!</p>
 
 					<div className="email-container">
 

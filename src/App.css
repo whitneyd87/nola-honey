@@ -161,8 +161,12 @@
 
 svg {
   height: 100%;
-  filter: drop-shadow( 4px 2px 4px rgba(0,0,0,0.3));
   width: 100%;
+}
+
+.nav-comb svg,
+.bee-icon svg {
+ filter: drop-shadow( 4px 2px 4px rgba(0,0,0,0.3));
 }
 
 polygon {
@@ -201,7 +205,7 @@ polygon {
 
 a.nav-link {
   color: #1a1a1a;
-  font-size: 1.5rem;
+  font-size: 6vw;
   font-weight: 700;
   height: 100%;
   letter-spacing: 1px;
@@ -271,14 +275,18 @@ nav {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  padding-bottom: 100px;
-  width: 90%;
+  padding: 100px 0;
+  width: 55%;
 }
 
 .itemFigure {
   margin: 0;
   overflow: hidden;
   width: 100%;
+}
+
+#honey .itemFigure {
+  width: 85%;
 }
 
 .itemImage {
@@ -288,27 +296,28 @@ nav {
 .order-data {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-flow: row wrap;
-  padding-top: 50px;
+  padding-top: 60px;
   width: 100%;
 }
 
 .selectionBox {
-  margin: 50px 0;
+  margin: 20px 0;
   width: 100%;
 }
 
 .option {
-  font-size: 1rem;
+  font-size: 1.25rem;
   width: 50%;
 }
 
 .quantity {
   align-items: center;
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  font-size: 1.25rem;
+  justify-content: space-between;
+  width: 50%;
 }
 
 .quantity-container {
@@ -321,7 +330,7 @@ nav {
 .quantity-shirts {
   align-items: center;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 50%;
 }
 
@@ -331,9 +340,10 @@ nav {
   border-radius: 50%;
   box-shadow: 1px 2px rgba(0,0,0,0.3);
   color: #ffffff;
-  font-size: 1.5rem;
-  height: 30px;
-  width: 30px;
+  font-size: 1.125rem;
+  font-weight: bold;
+  height: 20px;
+  width: 20px;
   padding: 0;
 }
 
@@ -343,16 +353,17 @@ nav {
   border-radius: 10px;
   box-shadow: 1px 2px rgba(0,0,0,0.3);
   color: #ffffff;
-  font-size: 1.5rem;
-  height: 50px;
-  letter-spacing: 1.5px;
-  margin: 30px 0 50px 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  height: 40px;
+  letter-spacing: 1px;
+  margin: 20px 0;
   width: 100%;
 }
 
 .accredit {
   color: #CCCCCC;
-  font-size: 0.75rem;
+  font-size: 0.5rem;
   text-align: center;
   width: 100%;
 }
@@ -385,7 +396,7 @@ nav {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  padding-bottom: 30px;
+  padding: 100px 0 50px 0;
 }
 
 .aboutFigure {
@@ -404,7 +415,7 @@ nav {
 }
 
 .title-first {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   line-height: 1;
 }
@@ -412,13 +423,14 @@ nav {
 .title-second {
   color: #fbb03b;
   font-family: 'Tangerine', cursive;
-  font-size: 1.825rem;
+  font-size: 2.25rem;
   line-height: 1;
   padding: 0 5px;
 }
 
 .about-text {
-  letter-spacing: 1px;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
   line-height: 2;
   margin: 0;
   padding: 0 0 60px 0;
@@ -434,15 +446,15 @@ nav {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  padding-top: 100px;
   text-align: center;
-}
-
-.sign-up {
-  padding-top: 60px;
 }
 
 .contact-info h1,
 .sign-up h1 {
+  margin: 0;
   width: 100%;
 }
 
@@ -450,6 +462,7 @@ nav {
   align-items: center;
   display: flex;
   justify-content: space-around;
+  padding: 50px;
   width: 100%;
 }
 
@@ -457,14 +470,41 @@ nav {
   color: #1a1a1a;
 }
 
+.contact-address {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  font-style: normal;
+  line-height: 2;
+  padding: 30px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.contact-address a {
+  color: #1a1a1a;
+  text-decoration: none;
+  width: 100%
+}
+
+.mailing-list {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 0;
+  padding: 30px 0;
+  text-align: center;
+  width: 100%;
+}
+
 .email-container {
   position: relative;
-  width: 100%;
+  width: 350px;
 }
 
 input[type = 'email'] {
   border: 1px solid #1a1a1a;
-  height: 40px;
+  padding: 10px;
   width: 100%;
 }
 
@@ -473,110 +513,17 @@ input[type = 'email'] {
   border: none;
   border-radius: 10px;
   box-shadow: 1px 2px rgba(0,0,0,0.3);
-  color: #ffffff;
-  height: 30px;
-  letter-spacing: 3px;
+  color: #ffffff; 
+  font-size: 1.125rem;
+  font-weight: bold;
+  letter-spacing: 4px;
+  padding: 9px 5px 7px 10px;
   position: absolute;
-  top: 7px;
-  left: 80%;
-  width: 50px;
-}
-
-.contact-address {
-  font-size: 1.5rem;
-  font-style: normal;
-  letter-spacing: 1px;
-  line-height: 2;
-  padding: 30px 0;
-  text-align: center;
-  width: 60%;
-}
-
-.contact-address a {
-  color: #1a1a1a;
-  text-decoration: none;
-}
-
-.social-network {
-  padding: 20px 0 40px 0;
-}
-
-.mailing-list {
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-  line-height: 1.5;
-  margin: 0;
-  padding: 30px 0;
-  text-align: center;
-  width: 60%;
+  top: 10%;
+  left: 85%;
 }
 
 
-  @media only screen and (min-width: 650px) {
-
-
-    /*HIVE*/
-
-    .hive {
-      width: 80%;
-    }
-
-    a.nav-link {
-      font-size: 1.875rem;
-    }
-
-
-    /*ORDER*/
-
-
-    .order-section {
-      padding: 100px 0;
-      width: 75%;
-    }
-
-    .itemFigure {
-      width: 80%;
-    }
-
-
-    /*ABOUT*/
-
-
-    .about-text {
-      font-size: 1.25rem;
-    }
-
-    .title-first {
-      font-size: 1.875rem; 
-    }
-
-    .title-second {
-      font-size: 2.25rem;
-    }
-
-
-    /*CONTACT*/
-
-
-    .contact-info,
-    .sign-up {
-      width: 80%;
-    }
-
-    .sign-up {
-      padding: 50px 0 25px 0;
-    }
-
-    .contact-info h1,
-    .sign-up h1 {
-      margin: 0;
-    }
-
-    #emailBtn {
-      left: 85%;
-    }
-
-  }
 
   @media only screen and (min-width: 768px) {
 
@@ -590,25 +537,25 @@ input[type = 'email'] {
 
     #bee-container {
       padding: 0 15% 5% 0;
-      width: 100px; 
+      width: 18%; 
     }
 
     .hive {
       margin: 0 0 0 35%;
-      width: 400px;
+      width: 50%;
     }
 
     .honeypotFigure {
-      width: 35px;
+      width: 10%;
     }
 
     a.nav-link {
-      font-size: 1.5rem;
+      font-size: 3vw;
     }
 
     .content {
-      margin-left: -50%;
-      width: 120%;
+      margin-left: -45%;
+      width: 150%;
     }
 
     .content-wrapper {
@@ -631,6 +578,10 @@ input[type = 'email'] {
       width: 45%;
     }
 
+    #honey .itemFigure {
+      width: 40%;
+    }
+
     .order-data {
       padding-top: 0;
       width: 40%;
@@ -638,10 +589,6 @@ input[type = 'email'] {
 
     .selectionBox {
       margin: 20px 0;
-    }
-
-    .honeypotFigure {
-      margin: 0 0 10px 50px;
     }
 
     #addBtn {
@@ -659,16 +606,26 @@ input[type = 'email'] {
 
 
     .about-section {
-      flex-flow: row wrap;
-      padding-bottom: 90px;
+      flex-flow: row nowrap;
+      justify-content: space-between;
     }
 
     .aboutFigure {
-      width: 60%;
+      width: 45%;
+    }
+
+    .title-first {
+      font-size: 1.25rem;
+    }
+
+    .title-second {
+      font-size: 1.75rem;
     }
 
     .about-text {
-      width: 60%;
+      font-size: 1rem;
+      letter-spacing: 0.25px;
+      width: 50%;
     }
 
 
@@ -681,29 +638,28 @@ input[type = 'email'] {
       width: 45%;
     }
 
-    .sign-up {
-      padding: 0;
+    .contact-address,
+    .mailing-list { 
+      font-size: 1rem;
+      width: 100%;
     }
 
-    .contact-address,
     .mailing-list {
-      font-size: 1.125rem;
-      width: 80%;
+      line-height: 2;
     }
 
     .social-network {
-      padding: 50px 0;
+      font-size: 0.875rem;
+      padding: 10px 0;
     }
 
     input[type ='email'] {
-      height: 45px;
+      font-size: 1rem;
     }
 
     #emailBtn {
-      font-size: 1.125rem;
-      height: 35px;
-      left: 75%;
-      width: 60px;
+      font-size: 1rem;
+      top: 6%;
     }
 
   }

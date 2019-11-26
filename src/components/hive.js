@@ -16,8 +16,9 @@ export default class Hive extends Component {
 			isShown: false,
 			isNav: false
 		}
-		this.orderComb = React.createRef();
+
 		this.aboutComb = React.createRef();
+		this.orderComb = React.createRef();
 		this.contactComb = React.createRef();
 
 		this.handleScroll = this.handleScroll.bind(this);
@@ -40,6 +41,7 @@ export default class Hive extends Component {
 		sessionStorage.getItem('isShown') && this.setState({
 		
 			isShown: JSON.parse(sessionStorage.getItem('isShown'))
+			
 		});
 	}
 
@@ -51,8 +53,9 @@ export default class Hive extends Component {
 		this.setState({
 			isShown: true
 		});	
-		this.orderComb.current.fillComb();
+
 		this.aboutComb.current.emptyComb();
+		this.orderComb.current.fillComb();
 		this.contactComb.current.emptyComb();
 
 		sessionStorage.setItem('isShown', true);
@@ -62,16 +65,17 @@ export default class Hive extends Component {
 		this.setState({
 			isShown: false
 		});	
-		this.orderComb.current.emptyComb();
+
 		this.aboutComb.current.fillComb();
+		this.orderComb.current.emptyComb();
 		this.contactComb.current.emptyComb();
 
 		sessionStorage.setItem('isShown', false);
 	}	
 
 	handleContact() {
-		this.orderComb.current.emptyComb();
 		this.aboutComb.current.emptyComb();
+		this.orderComb.current.emptyComb();
 		this.contactComb.current.fillComb();
 	}
 
@@ -148,7 +152,7 @@ export default class Hive extends Component {
 
 					<div className="nav-comb" onClick={()=> this.handleOrder()}>
 
-						<Ordercomb ref={this.orderComb}/>	
+						<Aboutcomb ref={this.orderComb}/>	
 
 					</div>
 
@@ -166,7 +170,7 @@ export default class Hive extends Component {
 
 					<div className="nav-comb" onClick={()=> this.handleAbout()}>
 
-						<Aboutcomb ref={this.aboutComb}/>
+						<Ordercomb ref={this.aboutComb}/>
 
 					</div>
 
