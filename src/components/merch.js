@@ -64,7 +64,7 @@ export default class Merch extends Component {
 					
 					</figure>
 
-					<div className="order-data">
+					<div id="honey" className="order-data">
 
 						<select className="selectionBox" onChange={(e)=> this.handleHoney(e)}>
 
@@ -90,7 +90,7 @@ export default class Merch extends Component {
 
 				</div>
 
-				<div className="order-section" id="shirts">
+				<div id="shirt" className="order-section">
 
 					<figure className="itemFigure">
 
@@ -146,7 +146,7 @@ export default class Merch extends Component {
 
 				</div>
 
-				<div className="order-section" id="mugs">
+				<div id="mug" className="order-section">
 
 					<figure className="itemFigure">
 

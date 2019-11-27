@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavHashLink as NavLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Comb from './comb.js';
 import Content from './content.js';
@@ -26,7 +26,7 @@ export default class Hive extends Component {
 
 	handleScroll() {
 		var y = window.scrollY;
-		if( y > 50 ) {
+		if( y > 200 ) {
 			this.setState({
 				isNav: true
 			});
@@ -104,7 +104,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/merch"} className="sideLink" onClick={()=> this.handleOrder()}>
+							<NavLink to={"/merch#honey"} className="sideLink" onClick={()=> this.handleOrder()}>
 								
 								<FontAwesomeIcon icon={["fas", "tint"]} size="xs" />
 							
@@ -114,7 +114,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/merch"} className="sideLink" onClick={()=> this.handleOrder()}>
+							<NavLink to={"/merch#shirt"} className="sideLink" onClick={()=> this.handleOrder()}>
 								
 								<FontAwesomeIcon icon={["fas", "tshirt"]} size="xs" />
 							
@@ -124,7 +124,7 @@ export default class Hive extends Component {
 
 						<li>
 
-							<NavLink to={"/merch"} className="sideLink" onClick={()=> this.handleOrder()}>
+							<NavLink to={"/merch#mug"} className="sideLink" onClick={()=> this.handleOrder()}>
 								
 								<FontAwesomeIcon icon={["fas", "coffee"]} size="xs" />
 							
@@ -150,9 +150,9 @@ export default class Hive extends Component {
 
 					<Comb />
 
-					<div className="nav-comb" onClick={()=> this.handleOrder()}>
+					<div className="nav-comb" onClick={()=> this.handleAbout()}>
 
-						<Aboutcomb ref={this.orderComb}/>	
+						<Aboutcomb ref={this.aboutComb}/>	
 
 					</div>
 
@@ -168,9 +168,9 @@ export default class Hive extends Component {
 
 					<Comb />
 
-					<div className="nav-comb" onClick={()=> this.handleAbout()}>
+					<div className="nav-comb" onClick={()=> this.handleOrder()}>
 
-						<Ordercomb ref={this.aboutComb}/>
+						<Ordercomb ref={this.orderComb}/>
 
 					</div>
 
