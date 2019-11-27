@@ -280,12 +280,19 @@ footer {
    Modify as content requires.
    ========================================================================== */
 
+   @media only screen and (min-width: 768px) {
+
+      header figure {
+        width: 250px;
+      }
+   }
+
    @media only screen and (min-width: 1200px) {
     
     body {
       align-items: flex-start;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       flex-flow: row wrap;
       padding-top: 50px;
     }
@@ -293,19 +300,24 @@ footer {
     header {
       align-items: center;
       display: flex;
-      justify-content: center;
-      padding: 0;
-      width: 45%;
+      justify-content: flex-end;
+      height: 450px;
+      width: 30%;
     }
 
     header figure {
-      margin-top: 15%;
-      height: 100%;
-      width: 50%;
+      width: 70%;
     }
 
     main {
-      width: 45%;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      width: 60%;
+    }
+
+    footer {
+      padding-top: 100px;
     }
   }
 
