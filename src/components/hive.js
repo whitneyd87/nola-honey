@@ -26,6 +26,7 @@ export default class Hive extends Component {
 
 	handleScroll() {
 		var y = window.scrollY;
+
 		if( y > 200 ) {
 			this.setState({
 				isNav: true
@@ -74,6 +75,10 @@ export default class Hive extends Component {
 	}	
 
 	handleContact() {
+		this.setState({
+			isShown: false
+		});	
+		
 		this.aboutComb.current.emptyComb();
 		this.orderComb.current.emptyComb();
 		this.contactComb.current.fillComb();

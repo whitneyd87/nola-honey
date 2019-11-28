@@ -24,18 +24,15 @@ export default class Merch extends Component {
 			this.setState({
 				arrowFirst: false
 			});
-		} else {
-			this.setState({
-				arrowFirst: true
-			});
 		}
 
-		if( y > 1500 ) {
+		if( y > 1200 ) {
 			this.setState({
 				arrowSecond: false
 			});
 		} else {
 			this.setState({
+				arrowFirst: true,
 				arrowSecond: true
 			});
 		}
@@ -64,21 +61,6 @@ export default class Merch extends Component {
 		});
 	}
 
-	incrementItem() {
-		if (this.state.clicks < 30) {
-			this.setState({
-				clicks: this.state.clicks + 1
-			});
-		}
-	}
-
-	decreaseItem() {
-		if (this.state.clicks > 1) {
-			this.setState({
-				clicks: this.state.clicks - 1
-			});
-		}
-	}
 
 	render () {
 
@@ -102,20 +84,34 @@ export default class Merch extends Component {
 						<select className="selectionBox" onChange={(e)=> this.handleHoney(e)}>
 
 							<option className="option" value="./img/honeyjar.png">Honey - By the Jar</option>
-
 							<option className="option" value="./img/honeycase.png">Honey - By the Case (9 jars)</option>
 
 						</select>
 
-						<div className="quantity">
+						<select className="selectionBox">
 
-							<button className="quantityBtn" onClick={()=>this.decreaseItem()}> - </button>
+							<option className="option">Qty: 1</option>
+							<option className="option">Qty: 2</option>
+							<option className="option">Qty: 3</option>
+							<option className="option">Qty: 4</option>
+							<option className="option">Qty: 5</option>
+							<option className="option">Qty: 6</option>
+							<option className="option">Qty: 7</option>
+							<option className="option">Qty: 8</option>
+							<option className="option">Qty: 9</option>
+							<option className="option">Qty: 10</option>
+							<option className="option">Qty: 11</option>
+							<option className="option">Qty: 12</option>
+							<option className="option">Qty: 13</option>
+							<option className="option">Qty: 14</option>
+							<option className="option">Qty: 15</option>
+							<option className="option">Qty: 16</option>
+							<option className="option">Qty: 17</option>
+							<option className="option">Qty: 18</option>
+							<option className="option">Qty: 19</option>
+							<option className="option">Qty: 20</option>
 
-							<p> {this.state.clicks} </p>
-
-							<button className="quantityBtn" onClick={()=>this.incrementItem()}> + </button>
-
-						</div>
+						</select>
 
 						<input id="addBtn" type="submit" value="add to pot" />
 
@@ -142,42 +138,46 @@ export default class Merch extends Component {
 						<select className="selectionBox" onChange={(e)=> this.handleShirts(e)}>
 
 							<option className="option" value="./img/mens-getdathoney.png">Mens - Get Dat Honey</option>
-
 							<option className="option" value="./img/womens-getdathoney.png">Womens - Get Dat Honey</option>
-							
 							<option className="option" value="./img/mens-goodhives.png">Mens - Good Hives, Sweet Vibes</option>
-							
 							<option className="option" value="./img/womens-goodhives.png">Womens - Good Hives, Sweet Vibes</option>
 
 						</select>
 
-						<div className="quantity-container">
+						<select className="selectionBox">
 
-							<select>
+							<option>XSmall</option>
+							<option>Small</option>
+							<option>Medium</option>
+							<option>Large</option>
+							<option>XLarge</option>
 
-								<option>XSmall</option>
+						</select>
 
-								<option>Small</option>
+						<select className="selectionBox">
 
-								<option>Medium</option>
+							<option className="option">Qty: 1</option>
+							<option className="option">Qty: 2</option>
+							<option className="option">Qty: 3</option>
+							<option className="option">Qty: 4</option>
+							<option className="option">Qty: 5</option>
+							<option className="option">Qty: 6</option>
+							<option className="option">Qty: 7</option>
+							<option className="option">Qty: 8</option>
+							<option className="option">Qty: 9</option>
+							<option className="option">Qty: 10</option>
+							<option className="option">Qty: 11</option>
+							<option className="option">Qty: 12</option>
+							<option className="option">Qty: 13</option>
+							<option className="option">Qty: 14</option>
+							<option className="option">Qty: 15</option>
+							<option className="option">Qty: 16</option>
+							<option className="option">Qty: 17</option>
+							<option className="option">Qty: 18</option>
+							<option className="option">Qty: 19</option>
+							<option className="option">Qty: 20</option>
 
-								<option>Large</option>
-
-								<option>XLarge</option>
-
-							</select>
-
-							<div className="quantity-shirts">
-
-								<button className="quantityBtn" onClick={()=>this.decreaseItem()}> - </button>
-
-								<p> {this.state.clicks} </p>
-
-								<button className="quantityBtn" onClick={()=>this.incrementItem()}> + </button>
-
-							</div>
-
-						</div>
+						</select>
 
 						<input id="addBtn" type="submit" value="add to pot" />
 
@@ -207,15 +207,30 @@ export default class Merch extends Component {
 
 						</select>
 
-						<div className="quantity">
+						<select className="selectionBox">
 
-							<button className="quantityBtn" onClick={()=>this.decreaseItem()}> - </button>
+							<option className="option">Qty: 1</option>
+							<option className="option">Qty: 2</option>
+							<option className="option">Qty: 3</option>
+							<option className="option">Qty: 4</option>
+							<option className="option">Qty: 5</option>
+							<option className="option">Qty: 6</option>
+							<option className="option">Qty: 7</option>
+							<option className="option">Qty: 8</option>
+							<option className="option">Qty: 9</option>
+							<option className="option">Qty: 10</option>
+							<option className="option">Qty: 11</option>
+							<option className="option">Qty: 12</option>
+							<option className="option">Qty: 13</option>
+							<option className="option">Qty: 14</option>
+							<option className="option">Qty: 15</option>
+							<option className="option">Qty: 16</option>
+							<option className="option">Qty: 17</option>
+							<option className="option">Qty: 18</option>
+							<option className="option">Qty: 19</option>
+							<option className="option">Qty: 20</option>
 
-							<p> {this.state.clicks} </p>
-
-							<button className="quantityBtn" onClick={()=>this.incrementItem()}> + </button>
-
-						</div>
+						</select>
 
 						<input id="addBtn" type="submit" value="add to pot" />
 
