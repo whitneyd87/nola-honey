@@ -298,6 +298,7 @@ nav {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
+  height: 250px;
   padding-top: 60px;
   width: 100%;
 }
@@ -377,7 +378,7 @@ nav {
   align-items: center;
   display: flex;
   justify-content: center;
-  padding-top: 100px;
+  padding-top: 50px;
   width: 100%;
 }
 

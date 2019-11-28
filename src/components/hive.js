@@ -77,6 +77,8 @@ export default class Hive extends Component {
 		this.aboutComb.current.emptyComb();
 		this.orderComb.current.emptyComb();
 		this.contactComb.current.fillComb();
+
+		sessionStorage.setItem('isShown', false);
 	}
 
 	render () {

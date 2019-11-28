@@ -16,7 +16,7 @@ function Content({ location }) {
 				<CSSTransition
 
 					key={location.key}
-					timeout={{ enter: 500, exit: 500}}
+					timeout={{ enter: 1000, exit: 500}}
 					classNames="fade"
 				>
 
