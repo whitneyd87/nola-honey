@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Merch extends Component {
 	
@@ -8,9 +9,36 @@ export default class Merch extends Component {
 		this.state = { 
 			valueOne: "./img/honeyjar.png",
 			valueTwo: "./img/mens-getdathoney.png",
-			clicks: 1
+			clicks: 1,
+			arrowFirst: true,
+			arrowSecond: true
 		};
 		this.scrollIntoFocus = React.createRef();
+		this.handleArrow = this.handleArrow.bind(this);
+	}
+
+	handleArrow() {
+		var y = window.scrollY;
+
+		if( y > 800 ) {
+			this.setState({
+				arrowFirst: false
+			});
+		} else {
+			this.setState({
+				arrowFirst: true
+			});
+		}
+
+		if( y > 1500 ) {
+			this.setState({
+				arrowSecond: false
+			});
+		} else {
+			this.setState({
+				arrowSecond: true
+			});
+		}
 	}
 
 	componentDidMount() {
@@ -20,6 +48,8 @@ export default class Merch extends Component {
                block: "start"
             })
         }
+
+        window.addEventListener('scroll', this.handleArrow);
 	}
 
 	handleHoney(e) {	
@@ -51,6 +81,9 @@ export default class Merch extends Component {
 	}
 
 	render () {
+
+		const{arrowFirst} = this.state;
+		const{arrowSecond} = this.state;
 
 		return (
 
@@ -86,6 +119,12 @@ export default class Merch extends Component {
 
 						<input id="addBtn" type="submit" value="add to pot" />
 
+					</div>
+
+					<div className={`arrow-down ${arrowFirst ? "bounce" : "arrow-hide"}`}>
+
+						<FontAwesomeIcon icon={["fas", "angle-down"]} size="lg" />
+					
 					</div>
 
 				</div>
@@ -142,6 +181,12 @@ export default class Merch extends Component {
 
 						<input id="addBtn" type="submit" value="add to pot" />
 
+					</div>
+
+					<div className={`arrow-down ${arrowSecond ? "bounce" : "arrow-hide"}`}>
+
+						<FontAwesomeIcon icon={["fas", "angle-down"]} size="lg" />
+					
 					</div>
 
 				</div>

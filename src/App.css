@@ -275,8 +275,8 @@ nav {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  padding: 100px 0;
-  width: 55%;
+  padding: 50px 0;
+  width: 75%;
 }
 
 .itemFigure {
@@ -361,6 +361,34 @@ nav {
   width: 100%;
 }
 
+@keyframes bounce {
+  0% { 
+    transform: translateY(0); 
+  }
+  50% { 
+    transform: translateY(-50px); 
+  }
+  100% { 
+    transform: translateY(0); 
+  }
+}
+
+.arrow-down {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  width: 100%;
+}
+
+.bounce {
+  animation: bounce 2s ease infinite;
+}
+
+.arrow-hide {
+  visibility: hidden;
+}
+
 .accredit {
   color: #CCCCCC;
   font-size: 0.5rem;
@@ -396,7 +424,7 @@ nav {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  padding: 100px 0 50px 0;
+  padding: 50px 0 0 0;
 }
 
 .aboutFigure {
@@ -448,7 +476,7 @@ nav {
   flex-flow: row wrap;
   font-size: 1.25rem;
   letter-spacing: 0.5px;
-  padding-top: 100px;
+  padding-top: 50px;
   text-align: center;
 }
 
@@ -499,7 +527,6 @@ nav {
 
 .email-container {
   position: relative;
-  width: 350px;
 }
 
 input[type = 'email'] {
@@ -570,7 +597,7 @@ input[type = 'email'] {
 
     .order-section {
       justify-content: space-between;
-      padding-bottom: 200px;
+      padding-bottom: 80px;
       width: 100%;
     }
 
@@ -743,10 +770,7 @@ input[type = 'email'] {
       width: 35%;
     }
 
-    #honey .itemFigure {
-      width: 30%;
-    }
-
+    #honey .itemFigure,
     .order-data {
       width: 25%;
     }
