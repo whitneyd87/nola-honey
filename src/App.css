@@ -166,7 +166,7 @@ svg {
 
 .nav-comb svg,
 .bee-icon svg {
- filter: drop-shadow( 4px 2px 4px rgba(0,0,0,0.3));
+ filter: drop-shadow( 4px 2px 4px rgba(150,150,150,0.3));
 }
 
 polygon {
