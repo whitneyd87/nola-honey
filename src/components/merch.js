@@ -26,7 +26,7 @@ export default class Merch extends Component {
 			});
 		}
 
-		if( y > 1200 ) {
+		if( y > 1900 ) {
 			this.setState({
 				arrowSecond: false
 			});
