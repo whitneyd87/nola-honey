@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import About from './about.js';
@@ -14,11 +14,9 @@ function Content({ location }) {
 			<TransitionGroup>
 
 				<CSSTransition
-
-					key={location.key}
-					timeout={{ enter: 1000, exit: 500}}
-					classNames="fade"
-				>
+					key={location.pathname}
+					timeout={500}
+					classNames="fade">
 
 					<section>
 
