@@ -126,13 +126,7 @@
   width: 100%;
 }
 
-.comb-container {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  width: 30%;
-}
-
+.comb-container,
 .nav-comb {
   align-items: center;
   display: flex;
