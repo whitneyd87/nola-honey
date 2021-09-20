@@ -111,7 +111,7 @@ const GenerateItemDetails = React.forwardRef((props, ref) => {
 function GenerateCartItems(props) {
   const items = props.items;
   return items.map((item, i) => (
-    <div key={i} data-key={props.mykey}>
+    <div className="item-wrapper" key={i} id={item._id._id}>
       <figure>
         <img src={item._id.image[0].url} alt={item._id.itemType} />
       </figure>
@@ -127,9 +127,9 @@ function GenerateCartItems(props) {
       </div>
       <div>
         <NavLink to={`/shop/mycart/edit`}>
-          <button onClick={props.onClick}>Edit</button>
+          <button>Edit</button>
         </NavLink>
-        <button>Delete</button>
+        <button onClick={props.onClick}>Delete</button>
       </div>
     </div>
   ));

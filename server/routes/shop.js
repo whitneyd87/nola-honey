@@ -5,12 +5,15 @@ const items = require("../controllers/items");
 const carts = require("../controllers/carts");
 
 router.route("/").get(catchAsync(items.index));
-router.route("/mycart/:sessionID").get(catchAsync(carts.myCart));
-router.route("/mycart/edit/:sessionID").put(catchAsync(carts.updateCart));
 router
   .route("/:id")
   .get(catchAsync(items.itemDetails))
   .post(catchAsync(carts.addItem));
-router.route("/:id/addtocart/:sessionID").get(catchAsync(carts.itemDetails));
+router.route("/:id/:sessionID").get(catchAsync(carts.itemDetails));
+router
+  .route("/:id/:sessionID/mycart")
+  .get(catchAsync(carts.myCart))
+  .put(catchAsync(carts.updateCart))
+  .delete(catchAsync(carts.deleteCartItem));
 
 module.exports = router;

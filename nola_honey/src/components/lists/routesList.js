@@ -1,12 +1,13 @@
-import AboutView from "../aboutView.js";
-import ShopView from "../shopView.js";
-import AddToCartView from "../addToCartView.js";
-import ItemView from "../itemView.js";
-import ContactView from "../contactView.js";
-import SignInView from "../signInView.js";
-import CreateAccountView from "../createAccountView.js";
-import MyCart from "../myCartView.js";
-import EditCart from "../editCartView.js";
+import AboutView from "../aboutView";
+import ShopView from "../shopView";
+import ItemView from "../itemView";
+import AddToCartView from "../addToCartView";
+import MyCartView from "../myCartView";
+import EditCartView from "../editCartView";
+import DeleteCartItemView from "../deleteCartItemView";
+import ContactView from "../contactView";
+import SignInView from "../signInView";
+import CreateAccountView from "../createAccountView";
 
 const routes = [
   {
@@ -23,11 +24,15 @@ const routes = [
   },
   {
     path: "/shop/mycart",
-    component: MyCart,
+    component: MyCartView,
   },
   {
     path: "/shop/mycart/edit",
-    component: EditCart,
+    component: EditCartView,
+  },
+  {
+    path: "/shop/mycart/delete/:id",
+    component: DeleteCartItemView,
   },
   {
     path: "/shop/:id",

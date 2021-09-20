@@ -20,7 +20,7 @@ class AddToCartView extends React.Component {
       const { id } = this.props.match.params;
       const sessionID = this.state.sessionID;
       const data = await axios.get(
-        `http://localhost:3001/shop/${id}/addtocart/${sessionID}`
+        `http://localhost:3001/shop/${id}/${sessionID}`
       );
       return data;
     } catch (err) {

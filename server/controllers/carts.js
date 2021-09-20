@@ -1,5 +1,4 @@
 const Cart = require("../models/cart");
-const item = require("../models/item");
 const Item = require("../models/item");
 const Session = require("../models/session");
 
@@ -13,7 +12,7 @@ const findData = async (data, id, dataCollection) => {
       // Find existing Instance
       myData = await dataCollection.findById(id);
       //Add cart item
-      if (dataCollection === Cart) addCartItems(data, myData);
+      if (dataCollection === Cart) await addCartItems(data, myData);
     }
     return myData;
   } catch (err) {
@@ -37,7 +36,7 @@ const addCartItems = (data, myData) => {
         : myData.items[i]
     );
     //Add new item to cart
-  } else myData.items.push(newItems[0]);
+  } else myData.items.push(newItem[0]);
   return myData;
 };
 
@@ -117,7 +116,21 @@ module.exports.updateCart = async (req, res) => {
       items: resetItemIDs,
     });
     await myCart.save();
-    res.send({ update: "Cart Successfully Updated!" });
+    await mySession.save();
+    res.redirect("/shop");
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+module.exports.deleteCartItem = async () => {
+  try {
+    // const { id } = req.params;
+    /*
+    const myCart = await Cart.findByIdAndDelete(id);
+    await myCart.save();
+    */
+    res.send({ deleted: "Item deleted." });
   } catch (err) {
     console.error(err);
   }

@@ -18,7 +18,7 @@ class EditCartView extends React.Component {
     try {
       const sessionID = localStorage.getItem("sessionID");
       const data = await axios.get(
-        `http://localhost:3001/shop/mycart/${sessionID}`
+        `http://localhost:3001/shop/:id/${sessionID}/mycart`
       );
       return data;
     } catch (err) {
@@ -30,7 +30,7 @@ class EditCartView extends React.Component {
     try {
       const sessionID = localStorage.getItem("sessionID");
       const data = await axios.put(
-        `http://localhost:3001/shop/mycart/edit/${sessionID}`,
+        `http://localhost:3001/shop/:id/${sessionID}/mycart`,
         {
           updatedItems: this.state.updatedItems,
         }
