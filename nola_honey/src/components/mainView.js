@@ -3,7 +3,7 @@ import routes from "./lists/routesList";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Switch, Route, withRouter } from "react-router-dom";
 
-function generateRoutes(routes) {
+function GenerateRoutes(routes) {
   return routes.map((route, i) => (
     <Route exact path={route.path} component={route.component} key={i} />
   ));
@@ -22,7 +22,7 @@ function MainView({ location }) {
         classNames="fade"
       >
         <main className="main">
-          <Switch location={location}>{generateRoutes(routes)}</Switch>
+          <Switch location={location}>{GenerateRoutes(routes)}</Switch>
         </main>
       </CSSTransition>
     </TransitionGroup>
@@ -30,3 +30,4 @@ function MainView({ location }) {
 }
 
 export default withRouter(MainView);
+export { GenerateRoutes };

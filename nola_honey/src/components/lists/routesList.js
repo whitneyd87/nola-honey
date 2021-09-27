@@ -1,13 +1,18 @@
 import AboutView from "../aboutView";
 import ShopView from "../shopView";
+import ContactView from "../contactView";
 import ItemView from "../itemView";
 import AddToCartView from "../addToCartView";
 import MyCartView from "../myCartView";
 import EditCartView from "../editCartView";
 import DeleteCartItemView from "../deleteCartItemView";
-import ContactView from "../contactView";
 import SignInView from "../signInView";
 import CreateAccountView from "../createAccountView";
+import MyAccountView from "../myAccountView";
+import AccountDetailsView from "../accountDetailsView";
+import OrderHistoryView from "../orderHistoryView";
+import SingleOrderView from "../singleOrderView";
+import ReviewsHistoryView from "../reviewsHistoryView";
 
 const routes = [
   {
@@ -31,7 +36,7 @@ const routes = [
     component: EditCartView,
   },
   {
-    path: "/shop/mycart/delete/:id",
+    path: "/shop/mycart/delete",
     component: DeleteCartItemView,
   },
   {
@@ -55,6 +60,10 @@ const routes = [
     component: SignInView,
   },
   {
+    path: "/myaccount",
+    component: MyAccountView,
+  },
+  {
     path: "/facebook",
     component: () => (window.location = "https://www.facebook.com/"),
   },
@@ -69,3 +78,22 @@ const routes = [
 ];
 
 export default routes;
+
+// routes: [
+//   {
+//     path: "/myaccount/accountdetails",
+//     component: AccountDetailsView,
+//   },
+//   {
+//     path: "/myaccount/orders",
+//     component: OrderHistoryView,
+//   },
+//   {
+//     path: "/myaccount/orders/:orderID",
+//     component: SingleOrderView,
+//   },
+//   {
+//     path: "/myaccount/reviews",
+//     component: ReviewsHistoryView,
+//   },
+// ],

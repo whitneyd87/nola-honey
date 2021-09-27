@@ -9,7 +9,6 @@ class EditCartView extends React.Component {
     this.state = {
       items: null,
       updatedItems: null,
-      testItems: null,
       formSubmitted: false,
     };
   }
@@ -61,6 +60,9 @@ class EditCartView extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    this.updateCartData()
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
     this.setState({ formSubmitted: true });
   };
 
@@ -72,15 +74,15 @@ class EditCartView extends React.Component {
       .catch((err) => console.error(err));
   }
 
-  componentWillUnmount() {
-    this.updateCartData()
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
-  }
-
   render() {
     const items = this.state.items;
-    if (this.state.formSubmitted) return <Redirect to="/shop/mycart" />;
+    if (this.state.formSubmitted)
+      return (
+        <Redirect
+          to={{ pathname: "/shop/mycart", state: { redirect: true } }}
+        />
+      );
+
     return (
       <section>
         {items && (

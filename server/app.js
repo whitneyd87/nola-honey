@@ -7,7 +7,6 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const session = require("express-session");
-const flash = require("connect-flash");
 const methodOverride = require("method-override");
 const passport = require("passport");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -55,7 +54,6 @@ const sessionConfig = {
 app.use(express.json());
 app.use(cors());
 app.use(session(sessionConfig));
-app.use(flash());
 app.use(helmet());
 
 //Passport
@@ -69,11 +67,9 @@ passport.deserializeUser(User.deserializeUser());
 //Flash Messages
 
 //Routes
-// app.use("/", (req, res) => {
-
+app.use("/", userRoutes);
 app.use("/shop", shopRoutes);
-//app.use("/shop/:itemID/reviews", reviewRoutes);
-//app.use("/order", orderRoutes);
+// app.use("/order", orderRoutes);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));

@@ -89,17 +89,21 @@ module.exports.itemDetails = async (req, res) => {
 };
 
 module.exports.myCart = async (req, res) => {
-  const { sessionID } = req.params;
-  const mySession = await Session.findById(sessionID).populate({
-    path: "myCart",
-    populate: {
-      path: "items",
+  try {
+    const { sessionID } = req.params;
+    const mySession = await Session.findById(sessionID).populate({
+      path: "myCart",
       populate: {
-        path: "_id",
+        path: "items",
+        populate: {
+          path: "_id",
+        },
       },
-    },
-  });
-  res.send({ items: mySession.myCart.items });
+    });
+    res.send({ items: mySession.myCart.items });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 module.exports.updateCart = async (req, res) => {
@@ -117,19 +121,25 @@ module.exports.updateCart = async (req, res) => {
     });
     await myCart.save();
     await mySession.save();
-    res.redirect("/shop");
+    res.send({ success: "Cart successfully updated!" });
   } catch (err) {
     console.error(err);
   }
 };
 
-module.exports.deleteCartItem = async () => {
+module.exports.deleteCartItem = async (req, res) => {
   try {
-    // const { id } = req.params;
-    /*
-    const myCart = await Cart.findByIdAndDelete(id);
-    await myCart.save();
-    */
+    const { id, sessionID } = req.params;
+    const mySession = await Session.findById(sessionID).populate("myCart");
+    const itemDeleted = mySession.myCart.items.filter(
+      (item) => String(item._id) !== id
+    );
+    const myCart = await Cart.findByIdAndUpdate(mySession.myCart, {
+      items: itemDeleted,
+    });
+    console.log(myCart);
+    // myCart.save();
+    // mySession.save();
     res.send({ deleted: "Item deleted." });
   } catch (err) {
     console.error(err);

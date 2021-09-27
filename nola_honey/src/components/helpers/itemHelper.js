@@ -1,7 +1,7 @@
 import React from "react";
 import { NavHashLink as NavLink } from "react-router-hash-link";
 
-export default function GenerateShopItems(props) {
+function GenerateShopItems(props) {
   const items = props.items;
   return items.map((item, i) => (
     <div className="item-wrapper" key={i}>
@@ -129,7 +129,11 @@ function GenerateCartItems(props) {
         <NavLink to={`/shop/mycart/edit`}>
           <button>Edit</button>
         </NavLink>
-        <button onClick={props.onClick}>Delete</button>
+      </div>
+      <div>
+        <button type="submit" onClick={props.onClick}>
+          Delete
+        </button>
       </div>
     </div>
   ));
@@ -206,6 +210,7 @@ function GenerateItemAdded(props) {
   );
 }
 
+export default GenerateShopItems;
 export {
   GenerateItemDetails,
   GenerateItemAdded,

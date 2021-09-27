@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { GenerateCartItems } from "./helpers/itemHelper";
+import { Redirect } from "react-router";
 
 class MyCartView extends React.Component {
   constructor(props) {
@@ -8,15 +9,20 @@ class MyCartView extends React.Component {
     this.state = {
       items: null,
       sessionID: localStorage.getItem("sessionID"),
+      refresh: false,
+      deletedItemID: null,
     };
-    this._currentItemID = null;
-    this._isMounted = false;
+    this._emptyCart = false;
   }
 
   handleDelete(e) {
     const parentEl = e.target.closest(".item-wrapper");
-    this._currentItemID = parentEl.id;
-    this.setState({ deleteRequested: true });
+    const itemID = parentEl.id;
+    this.setState({ deletedItemID: itemID });
+  }
+
+  handleRefresh() {
+    this.setState({ refresh: true });
   }
 
   getCartData = async () => {
@@ -31,45 +37,30 @@ class MyCartView extends React.Component {
     }
   };
 
-  deleteItem = async () => {
-    try {
-      const id = this._currentItemID;
-      const sessionID = this.state.sessionID;
-      const data = await axios.delete(
-        `http://localhost:3001/shop/${id}/${sessionID}/mycart`
-      );
-      return data;
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   componentDidMount() {
+    if (this.props.location.state) this.handleRefresh();
+
     this.getCartData()
       .then((res) => this.setState({ items: res.data.items }))
       .catch((err) => console.error(err));
   }
 
-  componentDidUpdate() {
-    this._isMounted = true;
-    this.getCartData()
-      .then(
-        (res) => this._isMounted && this.setState({ items: res.data.items })
-      )
-      .catch((err) => console.error(err));
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
   render() {
     const items = this.state.items;
+    const itemID = this.state.deletedItemID;
+    console.log(items);
+    if (itemID)
+      return (
+        <Redirect
+          to={{ pathname: "/shop/mycart/delete", state: { itemID: itemID } }}
+        />
+      );
     return (
       <section>
+        {items && items.length === 0 && <h1>Cart is Empty.</h1>}
         {items && (
           <GenerateCartItems
-            items={items}
+            items={this.state.items}
             onClick={(e) => this.handleDelete(e)}
           />
         )}

@@ -29,16 +29,17 @@ class AddToCartView extends React.Component {
   };
 
   componentDidMount() {
-    this.getItemAddedInfo()
-      .then((res) =>
-        this.setState({
-          item: res.data.item,
-          size: res.data.size,
-          quantity: res.data.quantity,
-          itemsPreview: res.data.itemsPreview,
-        })
-      )
-      .catch((err) => console.error(err));
+    this.state.sessionID &&
+      this.getItemAddedInfo()
+        .then((res) =>
+          this.setState({
+            item: res.data.item,
+            size: res.data.size,
+            quantity: res.data.quantity,
+            itemsPreview: res.data.itemsPreview,
+          })
+        )
+        .catch((err) => console.error(err));
   }
 
   render() {
