@@ -4,9 +4,18 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Switch, Route, withRouter } from "react-router-dom";
 
 function GenerateRoutes(routes) {
-  return routes.map((route, i) => (
-    <Route exact path={route.path} component={route.component} key={i} />
-  ));
+  return routes.map((route, i) =>
+    route.routes ? (
+      <Route
+        path={route.path}
+        render={(props) => (
+          <route.component {...props} routes={route.routes} key={i} />
+        )}
+      />
+    ) : (
+      <Route exact path={route.path} component={route.component} key={i} />
+    )
+  );
 }
 
 function MainView({ location }) {

@@ -1,8 +1,9 @@
 import React from "react";
-import axios from "axios";
-import { Switch, Route, Link } from "react-router-dom";
-// import { NavHashLink as NavLink } from "react-router-hash-link";
-import AccountDetailsView from "./accountDetailsView";
+import { Link, Switch, Route } from "react-router-dom";
+import AccountDetailsView, {
+  OrderHistoryView,
+  ReviewsHistoryView,
+} from "./nestedAccountViews";
 
 class MyAccountView extends React.Component {
   constructor(props) {
@@ -10,25 +11,43 @@ class MyAccountView extends React.Component {
     this.state = {
       user: null,
     };
+    this.component = {
+      accountdetails: AccountDetailsView,
+      orders: OrderHistoryView,
+      reviews: ReviewsHistoryView,
+    };
   }
   render() {
+    const { path } = this.props.match;
     return (
-      <section>
-        <h1>Hello</h1>
+      <div>
         <ul>
           <li>
-            <Link to="/myaccount/accountdetails">Account Details</Link>
+            <Link to={`${path}/accountdetails`}>Account Details</Link>
           </li>
-          <li>{/* <NavLink to="/myaccount/orders">Orders</NavLink> */}</li>
-          <li>{/* <NavLink to="/myaccount/reviews">Reviews</NavLink> */}</li>
+          <li>
+            <Link to={`${path}/orders`}>Orders</Link>
+          </li>
+          <li>
+            <Link to={`${path}/reviews`}>Reviews</Link>
+          </li>
         </ul>
         <div>
-          <Route
-            path="/myaccount/accountdetails"
-            component={AccountDetailsView}
-          />
+          <Switch>
+            <Route
+              exact
+              path={`${path}/accountdetails`}
+              component={AccountDetailsView}
+            />
+            <Route exact path={`${path}/orders`} component={OrderHistoryView} />
+            <Route
+              exact
+              path={`${path}/reviews`}
+              component={ReviewsHistoryView}
+            />
+          </Switch>
         </div>
-      </section>
+      </div>
     );
   }
 }

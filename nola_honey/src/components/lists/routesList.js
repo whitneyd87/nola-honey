@@ -9,10 +9,10 @@ import DeleteCartItemView from "../deleteCartItemView";
 import SignInView from "../signInView";
 import CreateAccountView from "../createAccountView";
 import MyAccountView from "../myAccountView";
-import AccountDetailsView from "../accountDetailsView";
-import OrderHistoryView from "../orderHistoryView";
-import SingleOrderView from "../singleOrderView";
-import ReviewsHistoryView from "../reviewsHistoryView";
+import AccountDetailsView, {
+  OrderHistoryView,
+  ReviewsHistoryView,
+} from "../nestedAccountViews";
 
 const routes = [
   {
@@ -62,6 +62,11 @@ const routes = [
   {
     path: "/myaccount",
     component: MyAccountView,
+    routes: [
+      { path: "/myaccount/accountdetails", component: AccountDetailsView },
+      { path: "/myaccount/orders", component: OrderHistoryView },
+      { path: "/myaccount/reviews", component: ReviewsHistoryView },
+    ],
   },
   {
     path: "/facebook",
@@ -78,22 +83,3 @@ const routes = [
 ];
 
 export default routes;
-
-// routes: [
-//   {
-//     path: "/myaccount/accountdetails",
-//     component: AccountDetailsView,
-//   },
-//   {
-//     path: "/myaccount/orders",
-//     component: OrderHistoryView,
-//   },
-//   {
-//     path: "/myaccount/orders/:orderID",
-//     component: SingleOrderView,
-//   },
-//   {
-//     path: "/myaccount/reviews",
-//     component: ReviewsHistoryView,
-//   },
-// ],
