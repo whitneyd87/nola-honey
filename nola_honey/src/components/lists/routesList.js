@@ -12,7 +12,8 @@ import MyAccountView from "../myAccountView";
 import AccountDetailsView, {
   OrderHistoryView,
   ReviewsHistoryView,
-} from "../nestedAccountViews";
+} from "../helpers/accountHelper";
+import CheckoutView from "../checkoutView";
 
 const routes = [
   {
@@ -38,6 +39,10 @@ const routes = [
   {
     path: "/shop/mycart/delete",
     component: DeleteCartItemView,
+  },
+  {
+    path: "/shop/mycart/checkout",
+    component: CheckoutView,
   },
   {
     path: "/shop/:id",

@@ -90,6 +90,7 @@ module.exports.itemDetails = async (req, res) => {
 
 module.exports.myCart = async (req, res) => {
   try {
+    console.log(req.session);
     const { sessionID } = req.params;
     const mySession = await Session.findById(sessionID).populate({
       path: "myCart",

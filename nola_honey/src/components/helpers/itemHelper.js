@@ -1,7 +1,8 @@
 import React from "react";
 import { NavHashLink as NavLink } from "react-router-hash-link";
 
-function GenerateShopItems(props) {
+// Shop Index
+function GenerateShopIndex(props) {
   const items = props.items;
   return items.map((item, i) => (
     <div className="item-wrapper" key={i}>
@@ -23,6 +24,7 @@ function GenerateShopItems(props) {
   ));
 }
 
+// Item View
 function Options(props) {
   const options = props.options;
   return options.map((option, i) => (
@@ -49,7 +51,7 @@ function Selection(props) {
   );
 }
 
-const GenerateForm = React.forwardRef((props, ref) => {
+const GenerateItemForm = React.forwardRef((props, ref) => {
   const item = props.item;
   return (
     <div>
@@ -90,11 +92,11 @@ const GenerateForm = React.forwardRef((props, ref) => {
   );
 });
 
-const GenerateItemDetails = React.forwardRef((props, ref) => {
+const GenerateItemPreview = React.forwardRef((props, ref) => {
   return (
     <div className="item-wrapper">
       <form onSubmit={props.onSubmit}>
-        <GenerateForm
+        <GenerateItemForm
           item={props.item}
           quantity={props.quantity}
           size={props.size}
@@ -108,46 +110,73 @@ const GenerateItemDetails = React.forwardRef((props, ref) => {
   );
 });
 
-function GenerateCartItems(props) {
-  const items = props.items;
-  return items.map((item, i) => (
-    <div className="item-wrapper" key={i} id={item._id._id}>
+// Item Details
+function GenerateItemDetails(props) {
+  const item = props.item;
+  const size = props.size;
+  const quantity = props.quantity;
+  return (
+    <div className="item-wrapper" id={item._id}>
       <figure>
-        <img src={item._id.image[0].url} alt={item._id.itemType} />
+        <img src={item.image[0].url} alt={item.itemType} />
       </figure>
       <div>
         <p>
-          {item._id.title} {item._id.itemType}
+          {item.title} {item.itemType}
         </p>
-        <p>{item._id.department}</p>
-        {item.size && <p>Size: {item.size.toUpperCase()}</p>}
-        <p>Qty: {item.quantity}</p>
-        <p>Price: ${item._id.price}</p>
-        <p>Total : ${parseInt(item._id.price) * parseInt(item.quantity)}</p>
-      </div>
-      <div>
-        <NavLink to={`/shop/mycart/edit`}>
-          <button>Edit</button>
-        </NavLink>
-      </div>
-      <div>
-        <button type="submit" onClick={props.onClick}>
-          Delete
-        </button>
+        <p>{item.department}</p>
+        {size && <p>Size: {size.toUpperCase()}</p>}
+        <p>Qty: {quantity}</p>
+        <p>Price: ${item.price}</p>
+        <p>Total : ${parseInt(item.price) * parseInt(quantity)}</p>
       </div>
     </div>
-  ));
+  );
 }
 
+// Cart View
+function GenerateCartItems(props) {
+  const items = props.items;
+  return (
+    <section>
+      <div>
+        <NavLink to="/shop/mycart/checkout">
+          <button type="submit">Proceed to Checkout</button>
+        </NavLink>
+      </div>
+      {items.map((item, i) => (
+        <div key={i}>
+          <GenerateItemDetails
+            item={item._id}
+            size={item.size}
+            quantity={item.quantity}
+          />
+          <div>
+            <NavLink to="/shop/mycart/edit">
+              <button>Edit</button>
+            </NavLink>
+          </div>
+          <div>
+            <button type="submit" onClick={props.onClick}>
+              Delete
+            </button>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+}
+
+// Edit Cart View
 function GenerateEditCart(props) {
   const items = props.items;
   return items.map((item, i) => (
     <div className="item-wrapper" key={i} id={`key-${i}`}>
       <form onSubmit={props.onSubmit}>
-        <GenerateForm
+        <GenerateItemForm
           item={item._id}
-          quantity={item.quantity}
           size={item.size}
+          quantity={item.quantity}
           onChange={props.onChange}
         />
         <input className="item-btn" type="submit" value="update"></input>
@@ -156,6 +185,7 @@ function GenerateEditCart(props) {
   ));
 }
 
+// Item Added View
 function GenerateShopPreview(props) {
   const items = props.items;
   return items.map((item, i) => (
@@ -177,23 +207,13 @@ function GenerateShopPreview(props) {
 function GenerateItemAdded(props) {
   const item = props.item;
   const size = props.size;
+  const quantity = props.quantity;
   const itemsPreview = props.items;
   return (
     <div>
-      <figure>
-        <img src={item.image[0].url} alt={item.itemType} />
-      </figure>
       <div>
         <h1>Success!</h1>
-        <p>
-          {item.title} {item.itemType}
-        </p>
-        <p>{item.description}</p>
-        <div>
-          <p>Qty: {props.quantity}</p>
-          {size && <p>Size: {size.toUpperCase()}</p>}
-          <p>Price: ${item.price}</p>
-        </div>
+        <GenerateItemDetails item={item} size={size} quantity={quantity} />
         <NavLink to="/shop/mycart">
           <button>Go to Cart</button>
         </NavLink>
@@ -210,10 +230,31 @@ function GenerateItemAdded(props) {
   );
 }
 
-export default GenerateShopItems;
+// Checkout View
+
+function GenerateCartPreview(props) {
+  const items = props.items;
+  return (
+    <section>
+      {items.map((item, i) => (
+        <div key={i}>
+          <GenerateItemDetails
+            item={item._id}
+            size={item.size}
+            quantity={item.quantity}
+          />
+        </div>
+      ))}
+    </section>
+  );
+}
+
+export default GenerateShopIndex;
 export {
   GenerateItemDetails,
+  GenerateItemPreview,
   GenerateItemAdded,
   GenerateCartItems,
+  GenerateCartPreview,
   GenerateEditCart,
 };

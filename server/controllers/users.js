@@ -16,9 +16,14 @@ module.exports.registerUser = async (req, res, next) => {
   }
 };
 
-module.exports.login = (req, res) => {
-  // req.flash("success", "Welcome back!");
-  res.send({ loggedIn: "Welcome! You are successfully logged in!" });
+module.exports.signin = (req, res) => {
+  try {
+    // req.flash("success", "Welcome back!");
+    console.log(req.session);
+    res.send({ signedIn: "Welcome! You are successfully logged in!" });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 module.exports.logout = (req, res) => {

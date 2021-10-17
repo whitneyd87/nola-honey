@@ -13,6 +13,32 @@ class EditCartView extends React.Component {
     };
   }
 
+  handleChange(e) {
+    const currentItems = this.state.items;
+    const el = e.target;
+    const elName = el.name;
+    const elValue = el.value;
+    const elParent = el.closest(".item-wrapper");
+    const elIndex = parseInt(elParent.id.slice(elParent.id.length - 1));
+    const updatedItems = currentItems.map((item, i) => {
+      if (i === elIndex && elName === "quantity")
+        item[elName] = parseInt(elValue);
+      if (i === elIndex && elName === "size") item[elName] = elValue;
+      return item;
+    });
+    this.setState({
+      updatedItems: updatedItems,
+    });
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    this.updateCartData()
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+    this.setState({ formSubmitted: true });
+  };
+
   getCartData = async () => {
     try {
       const sessionID = localStorage.getItem("sessionID");
@@ -38,32 +64,6 @@ class EditCartView extends React.Component {
     } catch (err) {
       console.error(err);
     }
-  };
-
-  handleChange(e) {
-    const currentItems = this.state.items;
-    const el = e.target;
-    const elName = el.name;
-    const elValue = el.value;
-    const elParent = el.closest(".item-wrapper");
-    const elIndex = parseInt(elParent.id.slice(elParent.id.length - 1));
-    const updatedItems = currentItems.map((item, i) => {
-      if (i === elIndex && elName === "quantity")
-        item[elName] = parseInt(elValue);
-      if (i === elIndex && elName === "size") item[elName] = elValue;
-      return item;
-    });
-    this.setState({
-      updatedItems: updatedItems,
-    });
-  }
-
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    this.updateCartData()
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
-    this.setState({ formSubmitted: true });
   };
 
   componentDidMount() {

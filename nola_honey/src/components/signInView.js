@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
 
-class LogInView extends React.Component {
+class SignInView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: null,
+      username: null,
       password: null,
       formSubmitted: false,
     };
@@ -20,18 +20,24 @@ class LogInView extends React.Component {
     });
   }
 
-  handleSubmit() {
-    this.userLogin()
+  handleSubmit(e) {
+    e.preventDefault();
+    this.userSignIn()
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
+    this.setState({ formSubmitted: true });
   }
 
-  userLogin = async () => {
+  userSignIn = async () => {
     try {
-      const data = await axios.post("http://localhost:3001/signin", {
-        email: this.state.email,
-        password: this.state.password,
-      });
+      const data = await axios.post(
+        "http://localhost:3001/signin",
+        {
+          username: this.state.username,
+          password: this.state.password,
+        },
+        { withCredentials: true }
+      );
       return data;
     } catch (err) {
       console.error(err);
@@ -41,12 +47,13 @@ class LogInView extends React.Component {
   render() {
     return (
       <section className="form-section">
-        <form className="form" onSubmit={this.onSubmit}>
+        <form className="form" onSubmit={(e) => this.handleSubmit(e)}>
           <label className="form-label">
-            Email
+            Username
             <input
-              type="email"
-              name="email"
+              type="text"
+              name="username"
+              id="username"
               onChange={(e) => this.handleChange(e)}
               className="form-input"
             ></input>
@@ -56,6 +63,7 @@ class LogInView extends React.Component {
             <input
               type="password"
               name="password"
+              id="password"
               onChange={(e) => this.handleChange(e)}
               className="form-input"
             ></input>
@@ -67,4 +75,4 @@ class LogInView extends React.Component {
   }
 }
 
-export default LogInView;
+export default SignInView;

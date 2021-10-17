@@ -8,9 +8,8 @@ function GenerateRoutes(routes) {
     route.routes ? (
       <Route
         path={route.path}
-        render={(props) => (
-          <route.component {...props} routes={route.routes} key={i} />
-        )}
+        render={(props) => <route.component {...props} routes={route.routes} />}
+        key={i}
       />
     ) : (
       <Route exact path={route.path} component={route.component} key={i} />

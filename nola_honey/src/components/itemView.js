@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import { GenerateItemDetails } from "./helpers/itemHelper";
+import { GenerateItemPreview } from "./helpers/itemHelper";
 
 class ItemView extends React.Component {
   constructor(props) {
@@ -18,6 +18,22 @@ class ItemView extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+    if (e.target[e.target.selectedIndex]) {
+      this.qtyRef.current.value = "";
+      this.qtyRef.current.max =
+        e.target[e.target.selectedIndex].getAttribute("data-qty");
+    }
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    this.setState({ formSubmitted: true });
+  };
 
   // Item Info
   getItemData = async () => {
@@ -46,22 +62,6 @@ class ItemView extends React.Component {
     }
   };
 
-  handleChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-    if (e.target[e.target.selectedIndex]) {
-      this.qtyRef.current.value = "";
-      this.qtyRef.current.max =
-        e.target[e.target.selectedIndex].getAttribute("data-qty");
-    }
-  }
-
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    this.setState({ formSubmitted: true });
-  };
-
   componentDidMount() {
     this.getItemData()
       .then((res) => {
@@ -88,7 +88,7 @@ class ItemView extends React.Component {
     return (
       <section>
         {item && (
-          <GenerateItemDetails
+          <GenerateItemPreview
             ref={this.qtyRef}
             item={item}
             maxQty={maxQty}

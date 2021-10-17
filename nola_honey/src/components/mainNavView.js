@@ -51,10 +51,6 @@ class MainNavView extends React.Component {
     this.handleClasses = this.handleClasses.bind(this);
   }
 
-  componentDidMount() {
-    this.handleClasses();
-  }
-
   handleClasses() {
     const location = window.location.hash;
     if (location !== "#/") {
@@ -67,6 +63,11 @@ class MainNavView extends React.Component {
       });
     }
   }
+
+  componentDidMount() {
+    this.handleClasses();
+  }
+
   render() {
     const classes = this.state.classes;
     const navLinks = this.navLinks;

@@ -15,7 +15,7 @@ class AddToCartView extends React.Component {
   }
 
   // Get most recent item added to cart
-  getItemAddedInfo = async () => {
+  getItemData = async () => {
     try {
       const { id } = this.props.match.params;
       const sessionID = this.state.sessionID;
@@ -30,7 +30,7 @@ class AddToCartView extends React.Component {
 
   componentDidMount() {
     this.state.sessionID &&
-      this.getItemAddedInfo()
+      this.getItemData()
         .then((res) =>
           this.setState({
             item: res.data.item,

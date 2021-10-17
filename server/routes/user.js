@@ -11,7 +11,7 @@ router.route("/signin").post(
     failureFlash: true,
     failureRedirect: "/signin",
   }),
-  users.login
+  users.signin
 );
 
 router.get("/logout", users.logout);

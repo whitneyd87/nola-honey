@@ -33,9 +33,9 @@ db.once("open", () => {
 });
 
 //Middleware
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-app.use(express.static("public"));
 app.use(mongoSanitize());
 
 //Session
@@ -43,7 +43,7 @@ const sessionConfig = {
   name: "session",
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   cookie: {
     httpOnly: true,
     // secure: true,
@@ -52,7 +52,7 @@ const sessionConfig = {
 };
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(session(sessionConfig));
 app.use(helmet());
 

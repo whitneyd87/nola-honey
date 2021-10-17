@@ -3,7 +3,7 @@ import { Link, Switch, Route } from "react-router-dom";
 import AccountDetailsView, {
   OrderHistoryView,
   ReviewsHistoryView,
-} from "./nestedAccountViews";
+} from "./helpers/accountHelper";
 
 class MyAccountView extends React.Component {
   constructor(props) {

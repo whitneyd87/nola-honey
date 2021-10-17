@@ -11,7 +11,7 @@ module.exports = [
         filename: "NolaHoney/honey-jar_ofug9g",
       },
     ],
-    price: 15,
+    price: 5,
   },
   {
     title: "Tea Bee",
