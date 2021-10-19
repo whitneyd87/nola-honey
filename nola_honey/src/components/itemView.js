@@ -39,7 +39,9 @@ class ItemView extends React.Component {
   getItemData = async () => {
     try {
       const { id } = this.props.match.params;
-      const data = await axios.get(`http://localhost:3001/shop/${id}`);
+      const data = await axios.get(`http://localhost:3001/shop/${id}`, {
+        withCredentials: true,
+      });
       return data;
     } catch (err) {
       console.error(err);
@@ -50,12 +52,16 @@ class ItemView extends React.Component {
   addItem = async () => {
     try {
       const { id } = this.props.match.params;
-      const data = await axios.post(`http://localhost:3001/shop/${id}`, {
-        _id: this.state.item._id,
-        size: this.state.size,
-        quantity: this.state.quantity,
-        sessionID: this.state.sessionID,
-      });
+      const data = await axios.post(
+        `http://localhost:3001/shop/${id}`,
+        {
+          _id: this.state.item._id,
+          size: this.state.size,
+          quantity: this.state.quantity,
+          sessionID: this.state.sessionID,
+        },
+        { withCredentials: true }
+      );
       return data;
     } catch (err) {
       console.error(err);

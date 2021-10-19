@@ -41,15 +41,10 @@ const addCartItems = (data, myData) => {
 };
 
 module.exports.addItem = async (req, res) => {
-  const { _id, size, quantity, sessionID } = req.body;
-  const cookie = req.session.cookie;
-  const sessionExpires = req.session.cookie._expires;
-  //Create or Find Session
-  const mySession = await findData(
-    { cookie, expires: sessionExpires },
-    sessionID,
-    Session
-  );
+  const { _id, size, quantity } = req.body;
+  const sessionID = req.sessionID;
+  console.log(sessionID);
+  /*
   //Create of Find Cart
   const myCart = await findData(
     { items: [{ _id, size, quantity }] },
@@ -63,7 +58,8 @@ module.exports.addItem = async (req, res) => {
   //Save data
   await mySession.save();
   await myCart.save();
-  res.send({ sessionID: mySession._id });
+  */
+  res.send({ sessionID: req.sessionID });
 };
 
 module.exports.itemDetails = async (req, res) => {
@@ -91,7 +87,7 @@ module.exports.itemDetails = async (req, res) => {
 module.exports.myCart = async (req, res) => {
   try {
     console.log(req.session);
-    const { sessionID } = req.params;
+    const { sessionID } = req.sessionID;
     const mySession = await Session.findById(sessionID).populate({
       path: "myCart",
       populate: {

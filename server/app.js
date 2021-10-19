@@ -7,6 +7,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const methodOverride = require("method-override");
 const passport = require("passport");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -18,19 +19,22 @@ const shopRoutes = require("./routes/shop");
 const reviewRoutes = require("./routes/review");
 const orderRoutes = require("./routes/order");
 
-mongoose.connect("mongodb://localhost:27017/nola-honey", {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-});
-
+const clientPromise = mongoose
+  .connect("mongodb://localhost:27017/nola-honey", {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then((m) => m.connection.getClient());
+/*
 const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("Database connected!");
 });
+*/
 
 //Middleware
 app.use(express.static("public"));
@@ -43,7 +47,10 @@ const sessionConfig = {
   name: "session",
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    clientPromise,
+  }),
   cookie: {
     httpOnly: true,
     // secure: true,
