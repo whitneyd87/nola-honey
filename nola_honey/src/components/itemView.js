@@ -11,7 +11,6 @@ class ItemView extends React.Component {
       size: null,
       quantity: null,
       maxQty: 10,
-      sessionID: localStorage.getItem("sessionID"),
       formSubmitted: false,
     };
     this.qtyRef = React.createRef();
@@ -58,7 +57,6 @@ class ItemView extends React.Component {
           _id: this.state.item._id,
           size: this.state.size,
           quantity: this.state.quantity,
-          sessionID: this.state.sessionID,
         },
         { withCredentials: true }
       );
@@ -81,8 +79,7 @@ class ItemView extends React.Component {
 
   componentWillUnmount() {
     this.addItem()
-      // .then((res) => console.log(res))
-      .then((res) => localStorage.setItem("sessionID", res.data.sessionID))
+      .then((res) => console.log(res))
       .catch((err) => console.error(err));
   }
 

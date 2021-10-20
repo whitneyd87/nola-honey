@@ -1,78 +1,71 @@
 const Cart = require("../models/cart");
 const Item = require("../models/item");
-const Session = require("../models/session");
 
-const findData = async (data, id, dataCollection) => {
+const getCart = async (data, id, Cart) => {
   try {
-    let myData;
+    let myCart;
     if (id == "undefined" || id == null) {
       //If id is nullish, create new Instance
-      myData = new dataCollection(data);
+      myCart = new Cart(data);
     } else {
       // Find existing Instance
-      myData = await dataCollection.findById(id);
+      myCart = await Cart.findById(id);
       //Add cart item
-      if (dataCollection === Cart) await addCartItems(data, myData);
+      await addCartItems(data, myCart);
     }
-    return myData;
+    return myCart;
   } catch (err) {
     console.error(err);
   }
 };
 
-const addCartItems = (data, myData) => {
+const addCartItems = (data, myCart) => {
   const newItem = data.items;
   //Update quantity of existing item in cart
   if (
-    myData.items.some(
+    myCart.items.some(
       (item) => item._id == newItem[0]._id && item.size == newItem[0].size
     )
   ) {
-    myData.items.map((item, i) =>
+    myCart.items.map((item, i) =>
       item._id === newItem[0]._id
-        ? (myData.items[i].quantity =
-            parseInt(myData.items[i].quantity) +
+        ? (myCart.items[i].quantity =
+            parseInt(myCart.items[i].quantity) +
             parseInt(data.items[0].quantity))
-        : myData.items[i]
+        : myCart.items[i]
     );
     //Add new item to cart
-  } else myData.items.push(newItem[0]);
-  return myData;
+  } else myCart.items.push(newItem[0]);
+  return myCart;
 };
 
 module.exports.addItem = async (req, res) => {
   const { _id, size, quantity } = req.body;
-  const sessionID = req.sessionID;
-  console.log(sessionID);
-  /*
+  const cartID = req.session.cartID;
   //Create of Find Cart
-  const myCart = await findData(
+  const myCart = await getCart(
     { items: [{ _id, size, quantity }] },
-    mySession.myCart,
+    cartID,
     Cart
   );
-  //Check if myCart exists on session; if not, add cart id
-  mySession.myCart = mySession.myCart ?? myCart._id;
+  //Set cartID
+  req.session.cartID = myCart._id;
   //Add item data to most recent
   myCart.mostRecentItem = { _id, size, quantity };
   //Save data
-  await mySession.save();
   await myCart.save();
-  */
-  res.send({ sessionID: req.sessionID });
+  res.send({ success: "Item added to cart!" });
 };
 
 module.exports.itemDetails = async (req, res) => {
+  const { id } = req.params;
+  const cartID = req.session.cartID;
   try {
-    const { id, sessionID } = req.params;
-    const mySession = await Session.findById(sessionID).populate(
-      "myCart",
-      "mostRecentItem"
-    );
-    const itemDetails = mySession.myCart.mostRecentItem;
+    const myCart = await Cart.findById(cartID);
     const items = await Item.find({});
     const item = await Item.findById(id);
     const itemsPreview = items.splice(1, 4);
+    const itemDetails = myCart.mostRecentItem;
     res.send({
       item: item,
       size: itemDetails.size,
@@ -86,29 +79,19 @@ module.exports.itemDetails = async (req, res) => {
 
 module.exports.myCart = async (req, res) => {
   try {
-    console.log(req.session);
-    const { sessionID } = req.sessionID;
-    const mySession = await Session.findById(sessionID).populate({
-      path: "myCart",
-      populate: {
-        path: "items",
-        populate: {
-          path: "_id",
-        },
-      },
-    });
-    res.send({ items: mySession.myCart.items });
+    const cartID = req.session.cartID;
+    const myCart = await Cart.findById(cartID);
+    console.log(myCart);
+    res.send({ items: null });
   } catch (err) {
-    console.error(err);
+    console.error(err.stack);
   }
 };
 
 module.exports.updateCart = async (req, res) => {
   try {
-    const { sessionID } = req.params;
+    const cartID = req.session.cartID;
     const { updatedItems } = req.body;
-    const mySession = await Session.findById(sessionID);
-    const cartID = mySession.myCart;
     const resetItemIDs = updatedItems.map((item) => {
       item._id = item._id._id;
       return item;
@@ -117,7 +100,6 @@ module.exports.updateCart = async (req, res) => {
       items: resetItemIDs,
     });
     await myCart.save();
-    await mySession.save();
     res.send({ success: "Cart successfully updated!" });
   } catch (err) {
     console.error(err);
@@ -126,7 +108,7 @@ module.exports.updateCart = async (req, res) => {
 
 module.exports.deleteCartItem = async (req, res) => {
   try {
-    const { id, sessionID } = req.params;
+    const { id } = req.params;
     const mySession = await Session.findById(sessionID).populate("myCart");
     const itemDeleted = mySession.myCart.items.filter(
       (item) => String(item._id) !== id
@@ -136,8 +118,7 @@ module.exports.deleteCartItem = async (req, res) => {
     });
     console.log(myCart);
     // myCart.save();
-    // mySession.save();
-    res.send({ deleted: "Item deleted." });
+    res.send({ redirect: true });
   } catch (err) {
     console.error(err);
   }

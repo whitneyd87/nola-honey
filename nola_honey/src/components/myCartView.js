@@ -8,7 +8,6 @@ class MyCartView extends React.Component {
     super(props);
     this.state = {
       items: null,
-      sessionID: localStorage.getItem("sessionID"),
       refresh: false,
       deletedItemID: null,
     };
@@ -27,11 +26,9 @@ class MyCartView extends React.Component {
 
   getCartData = async () => {
     try {
-      const sessionID = this.state.sessionID;
-      const data = await axios.get(
-        `http://localhost:3001/shop/:id/${sessionID}/mycart`,
-        { withCredentials: true }
-      );
+      const data = await axios.get(`http://localhost:3001/shop/mycart`, {
+        withCredentials: true,
+      });
       return data;
     } catch (err) {
       console.error(err);
@@ -48,11 +45,14 @@ class MyCartView extends React.Component {
 
   render() {
     const items = this.state.items;
-    const itemID = this.state.deletedItemID;
-    if (itemID)
+    const deletedItem = this.state.deletedItemID;
+    if (deletedItem)
       return (
         <Redirect
-          to={{ pathname: "/shop/mycart/delete", state: { itemID: itemID } }}
+          to={{
+            pathname: "/shop/mycart/delete",
+            state: { itemID: deletedItem },
+          }}
         />
       );
     return (

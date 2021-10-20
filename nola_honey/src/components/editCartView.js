@@ -41,10 +41,9 @@ class EditCartView extends React.Component {
 
   getCartData = async () => {
     try {
-      const sessionID = localStorage.getItem("sessionID");
-      const data = await axios.get(
-        `http://localhost:3001/shop/:id/${sessionID}/mycart`
-      );
+      const data = await axios.get(`http://localhost:3001/shop/mycart`, {
+        withCredentials: true,
+      });
       return data;
     } catch (err) {
       console.error(err);
@@ -53,12 +52,12 @@ class EditCartView extends React.Component {
 
   updateCartData = async () => {
     try {
-      const sessionID = localStorage.getItem("sessionID");
       const data = await axios.put(
-        `http://localhost:3001/shop/:id/${sessionID}/mycart`,
+        `http://localhost:3001/shop/mycart`,
         {
           updatedItems: this.state.updatedItems,
-        }
+        },
+        { withCredentials: true }
       );
       return data;
     } catch (err) {

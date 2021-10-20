@@ -19,6 +19,7 @@ module.exports.registerUser = async (req, res, next) => {
 module.exports.signin = (req, res) => {
   try {
     // req.flash("success", "Welcome back!");
+    req.session.views = 1;
     console.log(req.sessionID);
     res.send({ signedIn: "Welcome! You are successfully logged in!" });
   } catch (err) {

@@ -10,7 +10,6 @@ class AddToCartView extends React.Component {
       quantity: null,
       size: null,
       itemsPreview: null,
-      sessionID: localStorage.getItem("sessionID"),
     };
   }
 
@@ -18,9 +17,11 @@ class AddToCartView extends React.Component {
   getItemData = async () => {
     try {
       const { id } = this.props.match.params;
-      const sessionID = this.state.sessionID;
       const data = await axios.get(
-        `http://localhost:3001/shop/${id}/${sessionID}`
+        `http://localhost:3001/shop/${id}/addtocart`,
+        {
+          withCredentials: true,
+        }
       );
       return data;
     } catch (err) {
@@ -29,17 +30,16 @@ class AddToCartView extends React.Component {
   };
 
   componentDidMount() {
-    this.state.sessionID &&
-      this.getItemData()
-        .then((res) =>
-          this.setState({
-            item: res.data.item,
-            size: res.data.size,
-            quantity: res.data.quantity,
-            itemsPreview: res.data.itemsPreview,
-          })
-        )
-        .catch((err) => console.error(err));
+    this.getItemData()
+      .then((res) =>
+        this.setState({
+          item: res.data.item,
+          size: res.data.size,
+          quantity: res.data.quantity,
+          itemsPreview: res.data.itemsPreview,
+        })
+      )
+      .catch((err) => console.error(err));
   }
 
   render() {
