@@ -9,7 +9,7 @@ class MyCartView extends React.Component {
     this.state = {
       items: null,
       refresh: false,
-      deletedItemID: null,
+      deletedItem: null,
     };
     this._emptyCart = false;
   }
@@ -17,7 +17,9 @@ class MyCartView extends React.Component {
   handleDelete(e) {
     const parentEl = e.target.closest(".item-wrapper");
     const itemID = parentEl.id;
-    this.setState({ deletedItemID: itemID });
+    const items = this.state.items;
+    const deletedItem = items.filter((item) => item._id === itemID);
+    this.setState({ deletedItem: deletedItem });
   }
 
   handleRefresh() {
@@ -45,18 +47,18 @@ class MyCartView extends React.Component {
 
   render() {
     const items = this.state.items;
-    const deletedItem = this.state.deletedItemID;
-    if (deletedItem)
-      return (
-        <Redirect
-          to={{
-            pathname: "/shop/mycart/delete",
-            state: { itemID: deletedItem },
-          }}
-        />
-      );
+    const deletedItem = this.state.deletedItem;
+
     return (
       <section>
+        {deletedItem && (
+          <Redirect
+            to={{
+              pathname: "/shop/mycart/delete",
+              state: { deletedItem: deletedItem },
+            }}
+          />
+        )}
         {items && items.length === 0 && <h1>Cart is Empty.</h1>}
         {items && (
           <GenerateCartItems

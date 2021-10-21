@@ -7,7 +7,9 @@ const NameSchema = new Schema({
 });
 
 const AddressSchema = new Schema({
-  recipient: [NameSchema],
+  recipient: {
+    type: [NameSchema],
+  },
   addressType: {
     type: String,
     enum: ["billing", "shipping"],

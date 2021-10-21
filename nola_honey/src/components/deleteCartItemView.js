@@ -6,7 +6,7 @@ class DeleteCartItemView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      deletedItem: this.props.location.state.itemID,
+      deletedItem: this.props.location.state.deletedItem,
       redirect: false,
     };
   }
@@ -15,7 +15,7 @@ class DeleteCartItemView extends React.Component {
     try {
       const data = await axios.delete(
         `http://localhost:3001/shop/mycart`,
-        { itemID: this.state.deletedItem },
+        { deletedItem: this.state.deletedItem },
         {
           withCredentials: true,
         }

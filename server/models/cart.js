@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
+const InventorySchema = new Schema({
+  quantity: Number,
+  size: {
+    type: String,
+    enum: [null, "xs", "s", "m", "l", "xl"],
+  },
+});
+
 const CartSchema = new Schema({
   items: [
     {
@@ -8,10 +16,8 @@ const CartSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Item",
       },
-      quantity: Number,
-      size: {
-        type: String,
-        enum: [null, "xs", "s", "m", "l", "xl"],
+      inventory: {
+        type: [InventorySchema],
       },
     },
   ],
@@ -20,10 +26,8 @@ const CartSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Item",
     },
-    quantity: Number,
-    size: {
-      type: String,
-      enum: [null, "xs", "s", "m", "l", "xl"],
+    inventory: {
+      type: [InventorySchema],
     },
   },
   user: {

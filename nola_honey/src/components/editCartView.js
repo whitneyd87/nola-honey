@@ -75,15 +75,14 @@ class EditCartView extends React.Component {
 
   render() {
     const items = this.state.items;
-    if (this.state.formSubmitted)
-      return (
-        <Redirect
-          to={{ pathname: "/shop/mycart", state: { redirect: true } }}
-        />
-      );
-
+    const formSubmitted = this.state.formSubmitted;
     return (
       <section>
+        {formSubmitted && (
+          <Redirect
+            to={{ pathname: "/shop/mycart", state: { redirect: true } }}
+          />
+        )}
         {items && (
           <GenerateEditCart
             onSubmit={this.handleSubmit}
