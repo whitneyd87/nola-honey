@@ -7,9 +7,10 @@ class AddToCartView extends React.Component {
     super(props);
     this.state = {
       item: null,
-      quantity: null,
-      size: null,
+      orderInventory: null,
       itemsPreview: null,
+      cartItems: null,
+      refresh: false,
     };
   }
 
@@ -29,31 +30,44 @@ class AddToCartView extends React.Component {
     }
   };
 
+  // Set localStorage item "cartItems" with cart items data
+  setCartData() {
+    const cartItems = JSON.stringify(this.state.cartItems);
+    localStorage.setItem("cartItems", cartItems);
+  }
+
+  handleRefresh() {
+    this.setState({ refresh: true });
+  }
+
   componentDidMount() {
+    if (this.props.location.state) this.handleRefresh();
     this.getItemData()
       .then((res) =>
         this.setState({
           item: res.data.item,
-          size: res.data.size,
-          quantity: res.data.quantity,
+          orderInventory: res.data.orderInventory,
           itemsPreview: res.data.itemsPreview,
+          cartItems: res.data.cartItems,
         })
       )
       .catch((err) => console.error(err));
   }
 
+  componentWillUnmount() {
+    this.setCartData();
+  }
+
   render() {
     const item = this.state.item;
-    const size = this.state.size;
-    const quantity = this.state.quantity;
+    const orderInventory = this.state.orderInventory;
     const itemsPreview = this.state.itemsPreview;
     return (
       <section>
         {item && (
           <GenerateItemAdded
             item={item}
-            size={size}
-            quantity={quantity}
+            orderInventory={orderInventory}
             items={itemsPreview}
           />
         )}

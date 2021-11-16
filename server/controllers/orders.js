@@ -1,6 +1,7 @@
 const Order = require("../models/order");
 const Item = require("../models/item");
 const User = require("../models/user");
+const randoMatic = require("randomatic");
 
 module.exports.orderHistory = async (req, res) => {
   const orders = await Order.find({});
@@ -8,12 +9,8 @@ module.exports.orderHistory = async (req, res) => {
 };
 
 module.exports.createOrder = async (req, res) => {
-    const {order, item} = req.body;
-    const order = new Order({
-        item: item,
-        quantity: order.ey
-
-    });
+  const { order } = req.body;
+  const order = new Order({ ...order });
 };
 module.exports.editOrder = async (req, res) => {};
 module.exports.cancelOrder = async (req, res) => {};

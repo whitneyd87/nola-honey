@@ -29,10 +29,10 @@ class ItemView extends React.Component {
     }
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit(e) {
     e.preventDefault();
     this.setState({ formSubmitted: true });
-  };
+  }
 
   // Item Info
   getItemData = async () => {
@@ -50,13 +50,17 @@ class ItemView extends React.Component {
   // Add Item to cart
   addItem = async () => {
     try {
-      const { id } = this.props.match.params;
+      const { id } = this.state.item._id;
       const data = await axios.post(
         `http://localhost:3001/shop/${id}`,
         {
           _id: this.state.item._id,
-          size: this.state.size,
-          quantity: this.state.quantity,
+          orderInventory: [
+            {
+              size: this.state.size,
+              quantity: this.state.quantity,
+            },
+          ],
         },
         { withCredentials: true }
       );
@@ -86,10 +90,17 @@ class ItemView extends React.Component {
   render() {
     const item = this.state.item;
     const maxQty = this.state.maxQty;
-    if (this.state.formSubmitted)
-      return <Redirect to={`/shop/${item._id}/addtocart`} />;
+    const formSubmitted = this.state.formSubmitted;
     return (
       <section>
+        {formSubmitted && (
+          <Redirect
+            to={{
+              pathname: `/shop/${item._id}/addtocart`,
+              state: { redirect: true },
+            }}
+          />
+        )}
         {item && (
           <GenerateItemPreview
             ref={this.qtyRef}

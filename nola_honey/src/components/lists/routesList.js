@@ -7,6 +7,7 @@ import MyCartView from "../myCartView";
 import EditCartView from "../editCartView";
 import DeleteCartItemView from "../deleteCartItemView";
 import SignInView from "../signInView";
+import SignOutView from "../signOutView";
 import CreateAccountView from "../createAccountView";
 import MyAccountView from "../myAccountView";
 import AccountDetailsView, {
@@ -63,6 +64,10 @@ const routes = [
   {
     path: "/signin",
     component: SignInView,
+  },
+  {
+    path: "/signout",
+    component: SignOutView,
   },
   {
     path: "/myaccount",

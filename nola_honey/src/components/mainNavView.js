@@ -39,13 +39,14 @@ class MainNavView extends React.Component {
       navLink: "nav-link",
       navLinkText: "nav-link-text",
     };
-    this.navLinks = {
-      mainNav: ["about", "shop", "contact"],
-      logInNav: ["create account", "|", "sign in"],
-      socialNav: ["facebook", "instagram", "twitter"],
-    };
     this.state = {
       classes: this.initClasses,
+      signedIn: JSON.parse(localStorage.getItem("signedIn")),
+      navLinks: {
+        mainNav: ["about", "shop", "contact"],
+        logInNav: ["create account", "|", "sign in"],
+        socialNav: ["facebook", "instagram", "twitter"],
+      },
     };
 
     this.handleClasses = this.handleClasses.bind(this);
@@ -64,13 +65,30 @@ class MainNavView extends React.Component {
     }
   }
 
+  handleLoginNav() {
+    const signedIn = this.state.signedIn;
+    if (signedIn) {
+      const loginLinks = this.state.navLinks.logInNav;
+      const updateLoginNav = loginLinks.map((link, i) => {
+        if (i === 0) link = "my account";
+        if (i === 2) link = "sign out";
+        return link;
+      });
+      const navLinks = this.state.navLinks;
+      navLinks.logInNav = updateLoginNav;
+      this.setState({ navLinks });
+    }
+  }
+
   componentDidMount() {
     this.handleClasses();
+    this.handleLoginNav();
   }
 
   render() {
     const classes = this.state.classes;
-    const navLinks = this.navLinks;
+    const navLinks = this.state.navLinks;
+    const signedIn = this.state.signedIn;
     return (
       <header className={classes.header}>
         <div className={classes.mainNav} onClick={this.handleClasses}>
@@ -80,6 +98,7 @@ class MainNavView extends React.Component {
               classes={classes}
               type="login-nav"
               navLinks={navLinks.logInNav}
+              signedIn={signedIn}
             />
             <GenerateNav
               classes={classes}

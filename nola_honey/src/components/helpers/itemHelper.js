@@ -113,8 +113,7 @@ const GenerateItemPreview = React.forwardRef((props, ref) => {
 // Item Details
 function GenerateItemDetails(props) {
   const item = props.item;
-  const size = props.size;
-  const quantity = props.quantity;
+  const orderInventory = props.orderInventory;
   return (
     <div className="item-wrapper" id={item._id}>
       <figure>
@@ -125,11 +124,17 @@ function GenerateItemDetails(props) {
           {item.title} {item.itemType}
         </p>
         <p>{item.department}</p>
-        {size && <p>Size: {size.toUpperCase()}</p>}
-        <p>Qty: {quantity}</p>
-        <p>Price: ${item.price}</p>
-        <p>Total : ${parseInt(item.price) * parseInt(quantity)}</p>
       </div>
+      {orderInventory.map((inv, i) =>
+        inv.size === null ? (
+          <p key={i}>Qty: {inv.quantity}</p>
+        ) : (
+          <div key={i}>
+            <p>Size: {inv.size}</p>
+            <p>Qty: {inv.quantity}</p>
+          </div>
+        )
+      )}
     </div>
   );
 }
@@ -137,6 +142,7 @@ function GenerateItemDetails(props) {
 // Cart View
 function GenerateCartItems(props) {
   const items = props.items;
+  console.log(items);
   return (
     <section>
       <div>
@@ -148,8 +154,7 @@ function GenerateCartItems(props) {
         <div key={i}>
           <GenerateItemDetails
             item={item._id}
-            size={item.size}
-            quantity={item.quantity}
+            orderInventory={item.orderInventory}
           />
           <div>
             <NavLink to="/shop/mycart/edit">
@@ -206,14 +211,13 @@ function GenerateShopPreview(props) {
 
 function GenerateItemAdded(props) {
   const item = props.item;
-  const size = props.size;
-  const quantity = props.quantity;
+  const orderInventory = props.orderInventory;
   const itemsPreview = props.items;
   return (
     <div>
       <div>
         <h1>Success!</h1>
-        <GenerateItemDetails item={item} size={size} quantity={quantity} />
+        <GenerateItemDetails item={item} orderInventory={orderInventory} />
         <NavLink to="/shop/mycart">
           <button>Go to Cart</button>
         </NavLink>
@@ -240,8 +244,7 @@ function GenerateCartPreview(props) {
         <div key={i}>
           <GenerateItemDetails
             item={item._id}
-            size={item.size}
-            quantity={item.quantity}
+            orderInventory={item.orderInventory}
           />
         </div>
       ))}

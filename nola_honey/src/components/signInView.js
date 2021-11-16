@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Redirect } from "react-router";
 
 class SignInView extends React.Component {
   constructor(props) {
@@ -7,7 +8,8 @@ class SignInView extends React.Component {
     this.state = {
       username: null,
       password: null,
-      formSubmitted: false,
+      redirect: null,
+      signedIn: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,9 +25,13 @@ class SignInView extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.userSignIn()
-      .then((res) => console.log(res))
+      .then((res) =>
+        this.setState({
+          redirect: res.data.redirect,
+          signedIn: res.data.signedIn,
+        })
+      )
       .catch((err) => console.error(err));
-    this.setState({ formSubmitted: true });
   }
 
   userSignIn = async () => {
@@ -44,9 +50,16 @@ class SignInView extends React.Component {
     }
   };
 
+  componentWillUnmount() {
+    const signedIn = this.state.signedIn;
+    localStorage.setItem("signedIn", signedIn);
+  }
+
   render() {
+    const redirect = this.state.redirect;
     return (
       <section className="form-section">
+        {redirect && <Redirect to={`${redirect}`} />}
         <form className="form" onSubmit={(e) => this.handleSubmit(e)}>
           <label className="form-label">
             Username

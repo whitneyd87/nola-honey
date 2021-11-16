@@ -37,9 +37,9 @@ function GenerateLinks(props) {
       to={`/${link === "|" ? "signin" : link.replace(" ", "")}`}
       key={i}
     >
-      {props.type === "main-nav" ? (
+      {props.type === "main-nav" && (
         <GenerateFigure type="comb" classes={props.classes} />
-      ) : null}
+      )}
       <li className={props.classes.navLinkText} key={i}>
         {props.type === "social-media-nav" ? [...link].slice(0, 1) : link}
       </li>
@@ -54,6 +54,7 @@ function GenerateNav(props) {
         type={props.type}
         classes={props.classes}
         navLinks={props.navLinks}
+        signedIn={props.signedIn}
       />
     </ul>
   );

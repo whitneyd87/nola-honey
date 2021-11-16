@@ -2,16 +2,36 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const OrderDetailsSchema = new Schema({
+  _id: false,
   item: [{ type: Schema.Types.ObjectId, ref: "Item" }],
-  size: [{ type: String, enum: [null, "xs", "s", "m", "l", "xl"] }],
-  quantity: Number,
+  orderInventory: [
+    {
+      _id: false,
+      size: {
+        type: String,
+        enum: [null, "xs", "s", "m", "l", "xl"],
+      },
+      quantity: Number,
+    },
+  ],
+});
+
+const PaymentMethodSchema = new Schema({
+  _id: Number,
+  cardName: String,
+  vendor: {
+    type: String,
+    enum: ["VISA", "MASTERCARD", "EXPRESS", "PAYPAL", "DISCOVER"],
+  },
+  cardNo: Number,
+  cvv: String,
+  expiration: Date,
 });
 
 const OrderSchema = new Schema({
-  confirmationNo: Schema.Types.Mixed,
   customer: [
     {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.uuid,
       ref: "User",
     },
   ],
@@ -27,19 +47,12 @@ const OrderSchema = new Schema({
       ref: "Address",
     },
   ],
-  orderedItems: [{ type: [OrderDetailsSchema] }],
+  orderedItems: [{ type: OrderDetailsSchema }],
   orderDate: Date,
-  orderNumber: Schema.Types.ObjectId,
   orderStatus: [
-    { type: String, enum: ["Pending", "Shipped", "Delivered", "Canceled"] },
+    { type: String, enum: ["Placed", "Shipped", "Delivered", "Cancelled"] },
   ],
-  paymentMethod: [
-    {
-      type: String,
-      enum: ["VISA", "MASTERCARD", "EXPRESS", "PAYPAL", "DISCOVER"],
-    },
-  ],
-  paymentMethodID: Number,
+  paymentMethod: [{ type: PaymentMethodSchema }],
 });
 
 module.exports = mongoose.model("Order", OrderSchema);

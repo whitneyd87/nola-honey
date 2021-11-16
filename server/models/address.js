@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const NameSchema = new Schema({
+  _id: false,
   firstName: String,
   lastName: String,
 });
@@ -14,11 +15,10 @@ const AddressSchema = new Schema({
     type: String,
     enum: ["billing", "shipping"],
   },
-  streetNumber: Number,
-  roadName: String,
-  city: String.length,
+  streetNumber: String,
+  city: String,
   state: String,
-  postalCode: Number,
+  zipCode: Number,
   user: [
     {
       type: Schema.Types.ObjectId,

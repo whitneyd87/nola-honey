@@ -1,34 +1,29 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const InventorySchema = new Schema({
-  quantity: Number,
-  size: {
-    type: String,
-    enum: [null, "xs", "s", "m", "l", "xl"],
+const SelectionSchema = new Schema({
+  _id: {
+    type: Schema.Types.ObjectId,
+    ref: "Item",
   },
+  orderInventory: [
+    {
+      _id: false,
+      size: {
+        type: String,
+        enum: [null, "xs", "s", "m", "l", "xl"],
+      },
+      quantity: Number,
+    },
+  ],
 });
 
 const CartSchema = new Schema({
-  items: [
-    {
-      _id: {
-        type: Schema.Types.ObjectId,
-        ref: "Item",
-      },
-      inventory: {
-        type: [InventorySchema],
-      },
-    },
-  ],
+  items: {
+    type: [SelectionSchema],
+  },
   mostRecentItem: {
-    _id: {
-      type: Schema.Types.ObjectId,
-      ref: "Item",
-    },
-    inventory: {
-      type: [InventorySchema],
-    },
+    type: [SelectionSchema],
   },
   user: {
     type: Schema.Types.ObjectId,

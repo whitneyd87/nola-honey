@@ -19,16 +19,15 @@ module.exports.registerUser = async (req, res, next) => {
 module.exports.signin = (req, res) => {
   try {
     // req.flash("success", "Welcome back!");
-    req.session.views = 1;
-    console.log(req.sessionID);
-    res.send({ signedIn: "Welcome! You are successfully logged in!" });
+    const redirectUrl = req.session.returnTo || "/myaccount";
+    res.send({ redirect: redirectUrl, signedIn: true });
   } catch (err) {
     console.error(err);
   }
 };
 
-module.exports.logout = (req, res) => {
+module.exports.signout = (req, res) => {
   req.logout();
   // req.flash("success", "You logged out!");
-  res.send({ loggedOut: "You've logged out!" });
+  res.send({ redirect: true });
 };

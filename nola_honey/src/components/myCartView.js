@@ -8,8 +8,8 @@ class MyCartView extends React.Component {
     super(props);
     this.state = {
       items: null,
-      refresh: false,
       deletedItem: null,
+      refresh: false,
     };
     this._emptyCart = false;
   }
@@ -39,16 +39,18 @@ class MyCartView extends React.Component {
 
   componentDidMount() {
     if (this.props.location.state) this.handleRefresh();
-
+    /*
     this.getCartData()
       .then((res) => this.setState({ items: res.data.items }))
       .catch((err) => console.error(err));
+      */
+    const items = JSON.parse(localStorage.getItem("cartItems"));
+    this.setState({ items });
   }
 
   render() {
     const items = this.state.items;
     const deletedItem = this.state.deletedItem;
-
     return (
       <section>
         {deletedItem && (
