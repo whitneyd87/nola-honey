@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const AddressSchema = require("../models/address");
 
 const OrderDetailsSchema = new Schema({
-  _id: false,
-  item: [{ type: Schema.Types.ObjectId, ref: "Item" }],
+  _id: { type: Schema.Types.ObjectId, ref: "Item" },
   orderInventory: [
     {
       _id: false,
       size: {
         type: String,
-        enum: [null, "xs", "s", "m", "l", "xl"],
+        enum: [null, "XS", "S", "M", "L", "XL"],
       },
       quantity: Number,
     },
@@ -29,30 +29,20 @@ const PaymentMethodSchema = new Schema({
 });
 
 const OrderSchema = new Schema({
-  customer: [
-    {
-      type: Schema.Types.uuid,
-      ref: "User",
-    },
-  ],
-  billingAddress: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Address",
-    },
-  ],
-  shippingAddress: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Address",
-    },
-  ],
-  orderedItems: [{ type: OrderDetailsSchema }],
+  items: [{ type: OrderDetailsSchema }],
+  billing: [{ type: AddressSchema }],
+  shipping: [{ type: AddressSchema }],
+  paymentMethod: [{ type: PaymentMethodSchema }],
   orderDate: Date,
   orderStatus: [
     { type: String, enum: ["Placed", "Shipped", "Delivered", "Cancelled"] },
   ],
-  paymentMethod: [{ type: PaymentMethodSchema }],
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Order", OrderSchema);

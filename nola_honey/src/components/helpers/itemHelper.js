@@ -38,12 +38,7 @@ function Selection(props) {
   return (
     <div>
       <label>Select Size:</label>
-      <select
-        className="item-selection"
-        name="size"
-        defaultValue={props.size}
-        onChange={props.onChange}
-      >
+      <select className="item-selection" name="size" onChange={props.onChange}>
         <option></option>
         <Options options={props.inventory} />
       </select>
@@ -53,6 +48,7 @@ function Selection(props) {
 
 const GenerateItemForm = React.forwardRef((props, ref) => {
   const item = props.item;
+  const orderInventory = props.orderInventory ?? false;
   return (
     <div>
       <figure className="item-figure">
@@ -68,38 +64,58 @@ const GenerateItemForm = React.forwardRef((props, ref) => {
       <p className="item-description">{item.description}</p>
       <p>Price: ${item.price}</p>
       <div className="selection-wrapper">
-        {item.inventory[0].size && (
-          <Selection
-            onChange={props.onChange}
-            size={props.size}
-            inventory={item.inventory}
-          />
+        {orderInventory ? (
+          orderInventory.map((inv, i) => {
+            return (
+              <div key={i}>
+                {inv.size && <p className="item-size">Size: {inv.size}</p>}
+                <label>Qty:</label>
+                <input
+                  onChange={props.onChange}
+                  className="item-qty"
+                  min="1"
+                  max={item.inventory[0].quantity}
+                  name="quantity"
+                  type="number"
+                  ref={ref}
+                  defaultValue={inv.quantity}
+                ></input>
+              </div>
+            );
+          })
+        ) : (
+          <div>
+            {item.inventory[0].size && (
+              <Selection
+                onChange={props.onChange}
+                size={item.inventory[0].size}
+                inventory={item.inventory}
+              />
+            )}
+            <label>Select Qty:</label>
+            <input
+              onChange={props.onChange}
+              className="item-qty"
+              min="1"
+              max={item.inventory[0].quantity}
+              name="quantity"
+              type="number"
+              ref={ref}
+            ></input>
+          </div>
         )}
-        <label>Select Qty:</label>
-        <input
-          onChange={props.onChange}
-          className="item-qty"
-          min="1"
-          max={props.maxQty}
-          placeholder="Qty"
-          name="quantity"
-          type="number"
-          ref={ref}
-          defaultValue={props.quantity}
-        ></input>
       </div>
     </div>
   );
 });
 
 const GenerateItemPreview = React.forwardRef((props, ref) => {
+  const item = props.item;
   return (
     <div className="item-wrapper">
       <form onSubmit={props.onSubmit}>
         <GenerateItemForm
-          item={props.item}
-          quantity={props.quantity}
-          size={props.size}
+          item={item}
           onChange={props.onChange}
           ref={ref}
           maxQty={props.maxQty}
@@ -142,7 +158,6 @@ function GenerateItemDetails(props) {
 // Cart View
 function GenerateCartItems(props) {
   const items = props.items;
-  console.log(items);
   return (
     <section>
       <div>
@@ -180,8 +195,7 @@ function GenerateEditCart(props) {
       <form onSubmit={props.onSubmit}>
         <GenerateItemForm
           item={item._id}
-          size={item.size}
-          quantity={item.quantity}
+          orderInventory={item.orderInventory}
           onChange={props.onChange}
         />
         <input className="item-btn" type="submit" value="update"></input>
@@ -213,6 +227,7 @@ function GenerateItemAdded(props) {
   const item = props.item;
   const orderInventory = props.orderInventory;
   const itemsPreview = props.items;
+
   return (
     <div>
       <div>

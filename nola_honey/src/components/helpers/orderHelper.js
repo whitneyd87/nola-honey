@@ -19,33 +19,30 @@ function GenerateAddresses(props) {
       <input name="state" type="text"></input>
       <label>Zip Code</label>
       <input name="zipCode" type="number"></input>
-      {/* submit */}
-      <input type="submit">Submit</input>
     </form>
   );
 }
 
 function GenerateAddressForm(props) {
   const onChange = props.onChange;
+  const type = props.type;
   return (
     <form>
+      <h2>Please Enter {type.toUpperCase()} Address</h2>
       {/* name */}
-      <label for="name">First &amp; Last Name</label>
+      <label>First &amp; Last Name</label>
       <input name="name" type="text" onChange={onChange}></input>
       {/* street  */}
-      <label for="streetNo">Street Address</label>
+      <label>Street Address</label>
       <input name="streetNo" type="text" onChange={onChange}></input>
       {/* city */}
-      <label for="city">City</label>
+      <label>City</label>
       <input name="city" type="text" onChange={onChange}></input>
       {/* state and code */}
-      <label for="state">State</label>
+      <label>State</label>
       <input name="state" type="text" onChange={onChange}></input>
-      <label for="zipCode">Zip Code</label>
-      <input name="zipCode" type="number" onChange={onChange}></input>
-      {/* same as billing */}
-      <input type="checkbox" name="sameBilling" onChange={onChange} />
-      <label for="sameBilling"> Same as Billing? </label>
+      <label>Zip Code</label>
+      <input name="zipCode" type="text" onChange={onChange}></input>
     </form>
   );
 }
@@ -54,31 +51,60 @@ function GeneratePaymentForm(props) {
   const onChange = props.onChange;
   return (
     <form>
-      <label for="cardName">Name on Card</label>
+      <label>Name on Card</label>
       <input type="text" name="cardName" onChange={onChange}></input>
-      <label for="vendor">Select One:</label>
+      <label>Select One:</label>
       <div>
-        <input type="radio" name="vendor" onChange={onChange}></input>
-        <img></img>
+        <input
+          type="radio"
+          name="vendor"
+          onChange={onChange}
+          value="VISA"
+        ></input>
+        <label>Visa</label>
+        {/* <img></img> */}
       </div>
       <div>
-        <input type="radio" name="vendor" onChange={onChange}></input>
-        <img></img>
+        <input
+          type="radio"
+          name="vendor"
+          onChange={onChange}
+          value="MASTERCARD"
+        ></input>
+        <label>Mastercard</label>
+        {/* <img></img> */}
       </div>
       <div>
-        <input type="radio" name="vendor" onChange={onChange}></input>
-        <img></img>
+        <input
+          type="radio"
+          name="vendor"
+          onChange={onChange}
+          value="AMERICAN EXPRESS"
+        ></input>
+        <label>American Express</label>
+        {/* <img></img> */}
       </div>
       <div>
-        <input type="radio" name="vendor" onChange={onChange}></input>
-        <img></img>
+        <input
+          type="radio"
+          name="vendor"
+          onChange={onChange}
+          value="DISCOVER"
+        ></input>
+        <label>Discover</label>
+        {/* <img></img> */}
       </div>
-      <label for="cardNo">Card Number</label>
-      <input type="number" name="cardNo" onChange={onChange}></input>
-      <label for="cvv">CVV</label>
-      <input type="number" max="4" name="CVV" onChange={onChange}></input>
-      <label for="expiration">Expires:</label>
-      <input type="date"></input>
+      <label>Card Number</label>
+      <input type="text" name="cardNo" onChange={onChange}></input>
+      <label>CVV</label>
+      <input type="text" max="4" name="cvv" onChange={onChange}></input>
+      <label>Expires:</label>
+      <input
+        type="text"
+        name="expires"
+        placeholder="mm/yy"
+        onChange={onChange}
+      ></input>
     </form>
   );
 }

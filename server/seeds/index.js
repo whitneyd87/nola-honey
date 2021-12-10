@@ -3,11 +3,7 @@ const { sizes } = require("./inventoryHelper");
 const Item = require("../models/item");
 const inventory = require("./inventory");
 
-mongoose.connect("mongodb://localhost:27017/nola-honey", {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect("mongodb://localhost:27017/nola-honey");
 
 const db = mongoose.connection;
 

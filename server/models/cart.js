@@ -11,7 +11,7 @@ const SelectionSchema = new Schema({
       _id: false,
       size: {
         type: String,
-        enum: [null, "xs", "s", "m", "l", "xl"],
+        enum: [null, "XS", "S", "M", "L", "XL"],
       },
       quantity: Number,
     },

@@ -1,8 +1,12 @@
 const Item = require("../models/item");
 
 module.exports.index = async (req, res) => {
-  const items = await Item.find({});
-  res.send({ items: items });
+  try {
+    const items = await Item.find({});
+    res.send({ items: items });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 module.exports.itemDetails = async (req, res) => {

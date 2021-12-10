@@ -1,24 +1,13 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const NameSchema = new Schema({
-  _id: false,
+const AddressSchema = new Schema({
   firstName: String,
   lastName: String,
-});
-
-const AddressSchema = new Schema({
-  recipient: {
-    type: [NameSchema],
-  },
-  addressType: {
-    type: String,
-    enum: ["billing", "shipping"],
-  },
-  streetNumber: String,
+  streetNo: String,
   city: String,
   state: String,
-  zipCode: Number,
+  zipCode: String,
   user: [
     {
       type: Schema.Types.ObjectId,
@@ -33,4 +22,4 @@ const AddressSchema = new Schema({
   ],
 });
 
-module.exports = mongoose.model("Address", AddressSchema);
+module.exports = mongoose.model("Address", AddressSchema).schema;

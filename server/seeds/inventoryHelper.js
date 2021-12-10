@@ -1,1 +1,1 @@
-module.exports.sizes = ["xs", "s", "m", "l", "xl"];
+module.exports.sizes = ["XS", "S", "M", "L", "XL"];

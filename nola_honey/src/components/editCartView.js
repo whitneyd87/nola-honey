@@ -14,16 +14,16 @@ class EditCartView extends React.Component {
   }
 
   handleChange(e) {
-    const currentItems = this.state.items;
+    const currentItems = [...this.state.items];
     const el = e.target;
-    const elName = el.name;
-    const elValue = el.value;
-    const elParent = el.closest(".item-wrapper");
-    const elIndex = parseInt(elParent.id.slice(elParent.id.length - 1));
+    const parent = el.closest(".item-wrapper");
+    const elIndex = parseInt(parent.id.slice(parent.id.length - 1));
+    const size = el.previousSibling.previousSibling.innerHTML.slice(-2).trim();
     const updatedItems = currentItems.map((item, i) => {
-      if (i === elIndex && elName === "quantity")
-        item[elName] = parseInt(elValue);
-      if (i === elIndex && elName === "size") item[elName] = elValue;
+      if (i === elIndex)
+        item.orderInventory.map((inv) =>
+          inv.size === size ? (inv.quantity = parseInt(el.value)) : inv
+        );
       return item;
     });
     this.setState({
@@ -34,7 +34,9 @@ class EditCartView extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     this.updateCartData()
-      .then((res) => console.log(res))
+      .then((res) =>
+        this.setState({ updatedItems: JSON.stringify(res.data.items) })
+      )
       .catch((err) => console.error(err));
     this.setState({ formSubmitted: true });
   };
@@ -66,16 +68,23 @@ class EditCartView extends React.Component {
   };
 
   componentDidMount() {
-    this.getCartData()
-      .then((res) =>
-        this.setState({ items: res.data.items, updatedItems: res.data.items })
-      )
-      .catch((err) => console.error(err));
+    // this.getCartData()
+    // .then((res) =>
+    // this.setState({ items: res.data.items, updatedItems: res.data.items })
+    // )
+    // .catch((err) => console.error(err));
+    const items = JSON.parse(localStorage.getItem("cartItems"));
+    this.setState({ items });
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem("cartItems", this.state.updatedItems);
   }
 
   render() {
     const items = this.state.items;
     const formSubmitted = this.state.formSubmitted;
+    console.log(this.state.updatedItems);
     return (
       <section>
         {formSubmitted && (

@@ -9,7 +9,7 @@ const ImageSchema = new Schema({
 const InventorySchema = new Schema({
   size: {
     type: String,
-    enum: ["xs", "s", "m", "l", "xl"],
+    enum: ["XS", "S", "M", "L", "XL"],
   },
   quantity: Number,
 });

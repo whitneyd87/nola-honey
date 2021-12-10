@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 module.exports.addItem = async (req, res) => {
   try {
     const { _id, orderInventory } = req.body;
+    console.log(orderInventory);
     const itemID = mongoose.Types.ObjectId(_id);
     const cartID = req.session.cartID ?? false;
     let myCart;
@@ -26,7 +27,7 @@ module.exports.addItem = async (req, res) => {
       const currentInventory = myCart.items.filter(
         (item) => item._id === itemID && item.size === orderInventory[0].size
       );
-      console.log(currentInventory);
+      // console.log(currentInventory);
       const updateQty =
         currentInventory.length === 0
           ? parseInt(orderInventory[0].quantity)
@@ -37,7 +38,6 @@ module.exports.addItem = async (req, res) => {
         quantity: updateQty,
       };
 
-      console.log(updateInventory);
       await myCart.updateOne([
         {
           $set: {
@@ -170,15 +170,15 @@ module.exports.updateCart = async (req, res) => {
   try {
     const cartID = req.session.cartID;
     const { updatedItems } = req.body;
-    const resetItemIDs = updatedItems.map((item) => {
+    const items = updatedItems.map((item) => {
       item._id = item._id._id;
       return item;
     });
     const myCart = await Cart.findByIdAndUpdate(cartID, {
-      items: resetItemIDs,
+      items,
     });
     await myCart.save();
-    res.send({ success: "Cart successfully updated!" });
+    res.send({ items: myCart.items });
   } catch (err) {
     console.error(err);
   }

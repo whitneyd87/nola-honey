@@ -20,16 +20,12 @@ const reviewRoutes = require("./routes/review");
 const orderRoutes = require("./routes/order");
 
 const clientPromise = mongoose
-  .connect("mongodb://localhost:27017/nola-honey", {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
-  .then((m) => m.connection.getClient());
+  .connect("mongodb://localhost:27017/nola-honey")
+  .then((m) => m.connection.getClient())
+  .catch((err) => console.error(err));
+
 /*
 const db = mongoose.connection;
-
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("Database connected!");
@@ -76,7 +72,7 @@ passport.deserializeUser(User.deserializeUser());
 //Routes
 app.use("/", userRoutes);
 app.use("/shop", shopRoutes);
-// app.use("/order", orderRoutes);
+app.use("/order", orderRoutes);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));
