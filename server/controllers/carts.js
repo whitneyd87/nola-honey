@@ -176,7 +176,14 @@ module.exports.updateCart = async (req, res) => {
     });
     const myCart = await Cart.findByIdAndUpdate(cartID, {
       items,
-    });
+    })
+      .populate({
+        path: "items",
+        populate: {
+          path: "_id",
+        },
+      })
+      .populate("_id");
     await myCart.save();
     res.send({ items: myCart.items });
   } catch (err) {

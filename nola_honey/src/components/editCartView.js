@@ -18,7 +18,8 @@ class EditCartView extends React.Component {
     const el = e.target;
     const parent = el.closest(".item-wrapper");
     const elIndex = parseInt(parent.id.slice(parent.id.length - 1));
-    const size = el.previousSibling.previousSibling.innerHTML.slice(-2).trim();
+    const elSize = el.previousSibling.previousSibling;
+    const size = elSize === null ? null : elSize.innerHTML.slice(-2).trim();
     const updatedItems = currentItems.map((item, i) => {
       if (i === elIndex)
         item.orderInventory.map((inv) =>
@@ -31,14 +32,19 @@ class EditCartView extends React.Component {
     });
   }
 
+  // setCartData(items) {
+  // const cartItems = JSON.stringify(items);
+  // console.log(cartItems);
+  // localStorage.setItem("cartItems", cartItems);
+  // }
+
   handleSubmit = async (e) => {
     e.preventDefault();
     this.updateCartData()
       .then((res) =>
-        this.setState({ updatedItems: JSON.stringify(res.data.items) })
+        this.setState({ updatedItems: res.data.items, formSubmitted: true })
       )
       .catch((err) => console.error(err));
-    this.setState({ formSubmitted: true });
   };
 
   getCartData = async () => {
@@ -77,19 +83,18 @@ class EditCartView extends React.Component {
     this.setState({ items });
   }
 
-  componentWillUnmount() {
-    localStorage.setItem("cartItems", this.state.updatedItems);
-  }
-
   render() {
     const items = this.state.items;
+    const updatedItems = this.state.updatedItems;
     const formSubmitted = this.state.formSubmitted;
-    console.log(this.state.updatedItems);
     return (
       <section>
         {formSubmitted && (
           <Redirect
-            to={{ pathname: "/shop/mycart", state: { redirect: true } }}
+            to={{
+              pathname: "/shop/mycart",
+              state: { redirect: true, items: updatedItems },
+            }}
           />
         )}
         {items && (
