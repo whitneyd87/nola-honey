@@ -1,4 +1,5 @@
 import React from "react";
+import { GenerateCartPreview } from "./itemHelper";
 
 function GenerateAddresses(props) {
   return (
@@ -109,5 +110,28 @@ function GeneratePaymentForm(props) {
   );
 }
 
+function GenerateOrderDetails(props) {
+  const order = props.order;
+  const shipping = order.shipping[0];
+  const payment = order.paymentMethod[0];
+  return (
+    <div>
+      <h1>These are the details:</h1>
+      <h3>Items</h3>
+      <GenerateCartPreview items={order.items} />
+      <h3>Shipped To:</h3>
+      <p>
+        {shipping.firstName} {shipping.lastName}
+      </p>
+      <p>
+        {shipping.streetNo}, {shipping.city}, {shipping.state}{" "}
+        {shipping.zipCode}
+      </p>
+      <h3>Payment Method:</h3>
+      <p>{payment.vendor}</p>
+    </div>
+  );
+}
+
 export default GenerateAddressForm;
-export { GeneratePaymentForm };
+export { GeneratePaymentForm, GenerateOrderDetails };

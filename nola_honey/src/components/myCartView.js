@@ -15,10 +15,10 @@ class MyCartView extends React.Component {
   }
 
   handleDelete(e) {
-    const parentEl = e.target.closest(".item-wrapper");
-    const itemID = parentEl.id;
+    const el = e.target.parentNode.previousSibling.previousSibling;
+    const itemID = el.id;
     const items = this.state.items;
-    const deletedItem = items.filter((item) => item._id === itemID);
+    const deletedItem = items.filter((item) => item._id._id === itemID);
     this.setState({ deletedItem: deletedItem });
   }
 
@@ -57,7 +57,6 @@ class MyCartView extends React.Component {
   render() {
     const items = this.state.items;
     const deletedItem = this.state.deletedItem;
-    // console.log(items);
     return (
       <section>
         {deletedItem && (

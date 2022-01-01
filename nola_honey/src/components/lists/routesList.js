@@ -15,6 +15,7 @@ import AccountDetailsView, {
   ReviewsHistoryView,
 } from "../helpers/accountHelper";
 import CheckoutView from "../checkoutView";
+import OrderSuccessView from "../orderPlacedView";
 
 const routes = [
   {
@@ -52,6 +53,10 @@ const routes = [
   {
     path: "/shop/:id/addtocart",
     component: AddToCartView,
+  },
+  {
+    path: "/order/:orderID",
+    component: OrderSuccessView,
   },
   {
     path: "/contact",

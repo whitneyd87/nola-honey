@@ -21,8 +21,27 @@ module.exports.createOrder = async (req, res) => {
       orderStatus,
     });
     if (req.session.user) order.user = req.session.user;
-    console.log(order);
+    const cardNo = [...paymentMethod.cardNo];
+    // order.paymentMethod.cardID
     await order.save();
+    res.send({ redirect: true, orderID: order._id });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+module.exports.orderDetails = async (req, res) => {
+  try {
+    const { orderID } = req.params;
+    const order = await Order.findById(orderID)
+      .populate({
+        path: "items",
+        populate: {
+          path: "_id",
+        },
+      })
+      .populate("_id");
+    res.send({ order });
   } catch (err) {
     console.error(err);
   }

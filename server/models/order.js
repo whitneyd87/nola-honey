@@ -17,15 +17,16 @@ const OrderDetailsSchema = new Schema({
 });
 
 const PaymentMethodSchema = new Schema({
-  _id: Number,
+  _id: false,
   cardName: String,
   vendor: {
     type: String,
-    enum: ["VISA", "MASTERCARD", "EXPRESS", "PAYPAL", "DISCOVER"],
+    enum: ["VISA", "MASTERCARD", "AMERICAN EXPRESS", "PAYPAL", "DISCOVER"],
   },
   cardNo: Number,
   cvv: String,
   expiration: Date,
+  cardID: String,
 });
 
 const OrderSchema = new Schema({

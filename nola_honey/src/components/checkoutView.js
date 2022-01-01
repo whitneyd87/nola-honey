@@ -5,6 +5,7 @@ import { GenerateCartPreview } from "./helpers/itemHelper";
 import GenerateAddressForm, {
   GeneratePaymentForm,
 } from "./helpers/orderHelper";
+import { Redirect } from "react-router-dom";
 
 class CheckoutView extends React.Component {
   constructor(props) {
@@ -35,6 +36,8 @@ class CheckoutView extends React.Component {
         cvv: null,
         expires: null,
       },
+      redirect: false,
+      orderID: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,7 +64,7 @@ class CheckoutView extends React.Component {
     this.setState({ sameBilling });
   }
 
-  handleSubmit = async () => {
+  placeOrder = async () => {
     try {
       const billing =
         this.state.billing.firstName === null
@@ -77,12 +80,22 @@ class CheckoutView extends React.Component {
         },
         { withCredentials: true }
       );
-      console.log("Form submitted");
       return data;
     } catch (err) {
       console.error(err);
     }
   };
+
+  handleSubmit() {
+    this.placeOrder()
+      .then((res) =>
+        this.setState({
+          redirect: res.data.redirect,
+          orderID: res.data.orderID,
+        })
+      )
+      .catch((err) => console.error(err));
+  }
 
   getCartData = async () => {
     try {
@@ -104,9 +117,11 @@ class CheckoutView extends React.Component {
   render() {
     const items = this.state.items;
     const sameBilling = this.state.sameBilling;
-    console.log(this.state.shipping);
+    const redirect = this.state.redirect;
+    const orderID = this.state.orderID;
     return (
       <section>
+        {redirect && <Redirect to={`/order/${orderID}`} />}
         {items && (
           <div>
             <NavLink to="/shop/mycart">
