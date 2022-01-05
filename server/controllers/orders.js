@@ -21,8 +21,8 @@ module.exports.createOrder = async (req, res) => {
       orderStatus,
     });
     if (req.session.user) order.user = req.session.user;
-    const cardNo = [...paymentMethod.cardNo];
-    // order.paymentMethod.cardID
+    const cardNo = [...paymentMethod.cardNo].slice(-4);
+    order.paymentMethod[0].cardID = cardNo.join("");
     await order.save();
     res.send({ redirect: true, orderID: order._id });
   } catch (err) {

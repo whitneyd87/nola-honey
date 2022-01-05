@@ -128,7 +128,9 @@ function GenerateOrderDetails(props) {
         {shipping.zipCode}
       </p>
       <h3>Payment Method:</h3>
-      <p>{payment.vendor}</p>
+      <p>
+        Card: {payment.vendor} Last Four: {payment.cardID}
+      </p>
     </div>
   );
 }

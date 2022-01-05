@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { GenerateItemPreview } from "./helpers/itemHelper";
+import GenerateReviewForm from "./helpers/reviewHelper";
 
 class ItemView extends React.Component {
   constructor(props) {
@@ -102,13 +103,16 @@ class ItemView extends React.Component {
           />
         )}
         {item && (
-          <GenerateItemPreview
-            ref={this.qtyRef}
-            item={item}
-            maxQty={maxQty}
-            onSubmit={this.handleSubmit}
-            onChange={(e) => this.handleChange(e)}
-          />
+          <div>
+            <GenerateItemPreview
+              ref={this.qtyRef}
+              item={item}
+              maxQty={maxQty}
+              onSubmit={this.handleSubmit}
+              onChange={(e) => this.handleChange(e)}
+            />
+            <GenerateReviewForm />
+          </div>
         )}
       </section>
     );
