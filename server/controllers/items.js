@@ -12,7 +12,14 @@ module.exports.index = async (req, res) => {
 module.exports.itemDetails = async (req, res) => {
   try {
     const { id } = req.params;
-    const item = await Item.findById(id);
+    const item = await Item.findById(id)
+      .populate({
+        path: "reviews",
+        populate: {
+          path: "_id",
+        },
+      })
+      .populate("_id");
     res.send({ item: item });
   } catch (err) {
     console.error(err);

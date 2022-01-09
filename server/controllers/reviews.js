@@ -2,14 +2,28 @@ const Item = require("../models/item.js");
 const Review = require("../models/review.js");
 
 module.exports.createReview = async (req, res) => {
-  const item = await Item.findById(req.params.id);
-  const review = new Review(req.body.review);
-  review.author = req.user._id;
-  item.reviews.push(review);
-  await review.save();
-  await item.save();
-  req.flash("success", "Created new review!");
-  res.redirect(`/items/${item._id}`);
+  try {
+    const { rating, title, comment, itemID } = req.body;
+    const date = new Date();
+    const author = req.session.user ?? "guest";
+    const item = await Item.findById(itemID)
+      .populate({
+        path: "reviews",
+        populate: {
+          path: "_id",
+        },
+      })
+      .populate("_id");
+    const review = new Review({ rating, title, comment, author, itemID, date });
+    await review.save();
+    item.reviews.push(review);
+    await item.save();
+    // req.flash("success", "Created new review!");
+    // res.redirect(`/items/${item._id}`);
+    res.send({ reviews: item.reviews });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 module.exports.deleteReview = async (req, res) => {

@@ -72,6 +72,7 @@ passport.deserializeUser(User.deserializeUser());
 //Routes
 app.use("/", userRoutes);
 app.use("/shop", shopRoutes);
+app.use("/shop/:id/review", reviewRoutes);
 app.use("/order", orderRoutes);
 
 app.all("*", (req, res, next) => {
