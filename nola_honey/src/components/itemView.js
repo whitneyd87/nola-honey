@@ -134,7 +134,7 @@ class ItemView extends React.Component {
     const formSubmitted = this.state.formSubmitted;
     const rating = this.state.rating;
     const reviews = this.state.reviews;
-
+    console.log(reviews);
     return (
       <section>
         {formSubmitted && (
@@ -154,18 +154,18 @@ class ItemView extends React.Component {
               onSubmit={this.handleSubmit}
               onChange={(e) => this.handleChange(e)}
             />
-            <div>
-              <h3>Leave a Review</h3>
-              <GenerateReviewForm
-                onChange={(e) => this.handleChange(e)}
-                onRating={(value) => this.handleRating(value)}
-                rating={rating}
-                onClick={(e) => this.handleSubmitReview(e)}
-              />
-              {reviews && <GenerateReviews reviews={reviews} />}
-            </div>
           </div>
         )}
+        <div>
+          <h3>Leave a Review</h3>
+          <GenerateReviewForm
+            onChange={(e) => this.handleChange(e)}
+            onRating={(value) => this.handleRating(value)}
+            rating={rating}
+            onClick={(e) => this.handleSubmitReview(e)}
+          />
+          {reviews && <GenerateReviews reviews={reviews} />}
+        </div>
       </section>
     );
   }

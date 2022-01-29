@@ -23,7 +23,8 @@ class MyCartView extends React.Component {
   }
 
   handleRefresh() {
-    if (this.props.location.state.items) {
+    if (this.props.location.state) {
+      // console.log(this.props.location.state.items);
       this.setState({ items: this.props.location.state.items });
       const items = JSON.stringify(this.props.location.state.items);
       localStorage.setItem("cartItems", items);
@@ -42,8 +43,10 @@ class MyCartView extends React.Component {
   };
 
   componentDidMount() {
-    if (this.props.location.state) this.handleRefresh();
-    else {
+    if (this.props.location.state && this.props.location.state.items) {
+      this.handleRefresh();
+      // console.log(this.state.items);
+    } else {
       const items = JSON.parse(localStorage.getItem("cartItems"));
       this.setState({ items });
     }
@@ -53,10 +56,14 @@ class MyCartView extends React.Component {
       .catch((err) => console.error(err));
       */
   }
+  componentWillUnmount() {
+    this.setState({ items: null });
+  }
 
   render() {
     const items = this.state.items;
     const deletedItem = this.state.deletedItem;
+    console.log(deletedItem);
     return (
       <section>
         {deletedItem && (

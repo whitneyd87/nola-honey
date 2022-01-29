@@ -13,9 +13,10 @@ class DeleteCartItemView extends React.Component {
 
   deleteCartItem = async () => {
     try {
+      const itemID = this.state.deletedItem[0]._id._id;
+      const size = this.state.deletedItem[0].orderInventory[0].size;
       const data = await axios.delete(
-        `http://localhost:3001/shop/mycart`,
-        { deletedItem: this.state.deletedItem },
+        `http://localhost:3001/shop/mycart/${itemID}/${size}`,
         {
           withCredentials: true,
         }
@@ -35,7 +36,8 @@ class DeleteCartItemView extends React.Component {
   }
 
   render() {
-    console.log(this.state.deletedItem);
+    const deleteMyItem = this.state.deletedItem;
+    console.log(deleteMyItem);
     return (
       <section>
         {this.state.redirect && (

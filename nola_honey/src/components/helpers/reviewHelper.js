@@ -31,24 +31,28 @@ function ReformateDate(props) {
 function GenerateReviews(props) {
   const reviews = props.reviews;
   const rating = parseInt(props.rating);
-  return reviews.map((review, i) => {
-    <div key={i}>
-      <p>Rating:</p>
-      <StarsRating
-        value={rating}
-        edit={false}
-        count={5}
-        size={24}
-        color2={"#fbb03b"}
-      />
-      <h4>{review.title}</h4>
-      <p>{review.comment}</p>
-      <p>{review.author}</p>
-      <p>
-        <ReformateDate reviews={review.date} />
-      </p>
-    </div>;
-  });
+  return (
+    <section>
+      {reviews.map((review, i) => {
+        <div key={i}>
+          <p>Rating:</p>
+          <StarsRating
+            value={rating}
+            edit={false}
+            count={5}
+            size={24}
+            color2={"#fbb03b"}
+          />
+          <h4>{review.title}</h4>
+          <p>{review.comment}</p>
+          <p>{review.author}</p>
+          <p>
+            <ReformateDate reviews={review.date} />
+          </p>
+        </div>;
+      })}
+    </section>
+  );
 }
 
 export default GenerateReviewForm;

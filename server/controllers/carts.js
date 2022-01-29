@@ -193,21 +193,21 @@ module.exports.updateCart = async (req, res) => {
 
 module.exports.deleteCartItem = async (req, res) => {
   try {
-    const { deletedItem } = req.body;
-    console.log(req.body);
-    // const { _id, size } = deletedItem;
-    // const cartID = req.session.cartID;
-    // const myCart = await Cart.findById(cartID);
-    // if (!size)
-    //   await myCart.updateOne({
-    //     $pull: { items: { _id: { $in: _id } } },
-    //   });
-    // else
-    //   await myCart.updateOne(
-    //     { items: { _id: { $in: _id } } },
-    //     { $pull: { inventory: { size: { $in: size } } } }
-    //   );
-    // await myCart.save();
+    console.log(req.params);
+    const { id, size } = req.params;
+    const _id = id;
+    const cartID = req.session.cartID;
+    const myCart = await Cart.findById(cartID);
+    if (!size)
+      await myCart.updateOne({
+        $pull: { items: { _id: { $in: _id } } },
+      });
+    else
+      await myCart.updateOne(
+        { items: { _id: { $in: _id } } },
+        { $pull: { inventory: { size: { $in: size } } } }
+      );
+    await myCart.save();
     res.send({ redirect: true });
   } catch (err) {
     console.error(err);
