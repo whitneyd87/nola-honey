@@ -3,7 +3,6 @@ const router = express.Router();
 const catchAsync = require("../utils/catchAsync");
 const items = require("../controllers/items");
 const carts = require("../controllers/carts");
-// const { isSignedIn } = require("../middleware.js");
 
 router.route("/").get(catchAsync(items.index));
 router

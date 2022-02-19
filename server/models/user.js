@@ -20,10 +20,18 @@ const UserSchema = new Schema({
       ref: "Order",
     },
   ],
-  cart: {
-    type: Schema.Types.ObjectId,
-    ref: "Cart",
-  },
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
+  cart: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Cart",
+    },
+  ],
 });
 
 UserSchema.plugin(passportLocalMongoose);

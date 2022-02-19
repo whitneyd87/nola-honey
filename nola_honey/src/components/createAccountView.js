@@ -10,7 +10,7 @@ class CreateAccountView extends React.Component {
       email: null,
       password: null,
       reenterPassword: null,
-      formSubmitted: false,
+      errorMessage: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,9 +21,14 @@ class CreateAccountView extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     this.registerUser()
-      .then((res) => console.log(res))
+      .then((res) =>
+        res.data.redirect === true
+          ? this.props.history.push("/signin")
+          : this.setState({ errorMessage: "Something went wrong" })
+      )
       .catch((err) => console.error(err));
   }
 
@@ -41,7 +46,6 @@ class CreateAccountView extends React.Component {
   };
 
   render() {
-    if (this.state.formSubmitted) return <Redirect to="/signin" />;
     return (
       <section className="form-section">
         <form className="form" onSubmit={this.handleSubmit}>
@@ -81,12 +85,13 @@ class CreateAccountView extends React.Component {
               className="form-input"
             ></input>
           </label>
-          <input
-            onChange={(e) => this.handleChange(e)}
+          <button
             type="submit"
-            value="create account"
+            onClick={(e) => this.handleSubmit(e)}
             className="form-btn"
-          ></input>
+          >
+            Create Account
+          </button>
         </form>
       </section>
     );

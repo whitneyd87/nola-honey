@@ -8,8 +8,9 @@ class SignInView extends React.Component {
     this.state = {
       username: null,
       password: null,
-      redirect: null,
       signedIn: false,
+      redirect: null,
+      errorMessage: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,12 +27,16 @@ class SignInView extends React.Component {
     e.preventDefault();
     this.userSignIn()
       .then((res) =>
-        this.setState({
-          redirect: res.data.redirect,
-          signedIn: res.data.signedIn,
-        })
+        res.data.signedIn
+          ? this.setState({
+              signedIn: res.data.signedIn,
+              redirect: res.data.redirect,
+            })
+          : this.setState({ errorMessage: "Something went wrong." })
       )
       .catch((err) => console.error(err));
+    if (this.state.redirect) this.props.history.push(this.state.redirect);
+    localStorage.setItem("signedIn", this.state.signedIn);
   }
 
   userSignIn = async () => {
@@ -50,16 +55,9 @@ class SignInView extends React.Component {
     }
   };
 
-  componentWillUnmount() {
-    const signedIn = this.state.signedIn;
-    localStorage.setItem("signedIn", signedIn);
-  }
-
   render() {
-    const redirect = this.state.redirect;
     return (
       <section className="form-section">
-        {redirect && <Redirect to={`${redirect}`} />}
         <form className="form" onSubmit={(e) => this.handleSubmit(e)}>
           <label className="form-label">
             Username

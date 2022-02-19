@@ -8,8 +8,8 @@ module.exports.registerUser = async (req, res, next) => {
     req.login(registeredUser, (err) => {
       if (err) return next(err);
       // req.flash("success", "Success! Welcome to Nola Honey!");
-      // res.redirect("/shop");
     });
+    return res.send({ redirect: true });
   } catch (err) {
     // req.flash("error", err.message);
     console.error(err);
@@ -19,8 +19,22 @@ module.exports.registerUser = async (req, res, next) => {
 module.exports.signin = (req, res) => {
   try {
     // req.flash("success", "Welcome back!");
-    const redirectUrl = req.session.returnTo || "/myaccount";
-    res.send({ redirect: redirectUrl, signedIn: true });
+    const redirectUrl = req.session.returnTo || "/shop";
+    res.send({ signedIn: true, redirect: redirectUrl });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+module.exports.accountInfo = async (req, res) => {
+  try {
+    const username = req.session.passport.user;
+    const user = await User.findOne({ username });
+    res.send({
+      addresses: user.addresses,
+      orders: user.orders,
+      reviews: user.reviews,
+    });
   } catch (err) {
     console.error(err);
   }
