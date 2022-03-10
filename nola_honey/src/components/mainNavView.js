@@ -5,6 +5,7 @@ import {
   GenerateNav,
   GenerateHive,
 } from "./helpers/navHelper.js";
+import HoneyJarIcon from "../images/honeyjaricon.png";
 
 class MainNavView extends React.Component {
   constructor(props) {
@@ -100,6 +101,9 @@ class MainNavView extends React.Component {
               navLinks={navLinks.logInNav}
               signedIn={signedIn}
             />
+            <figure className="honey-jar-icon">
+              <img src={HoneyJarIcon} alt="honey jar icon" />
+            </figure>
             <GenerateNav
               classes={classes}
               type="social-media-nav"

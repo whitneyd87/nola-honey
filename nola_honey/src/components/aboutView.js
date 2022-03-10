@@ -8,9 +8,6 @@ class AboutView extends React.Component {
   render() {
     return (
       <section className="about-wrapper">
-        <button>
-          <NavLink to="/shop/addtocart">Go to AddedToCart</NavLink>
-        </button>
         <div className="origin-story">
           <figure className="about-figure">
             <img

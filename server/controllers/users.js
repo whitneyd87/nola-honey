@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Order = require("../models/order");
 
 module.exports.registerUser = async (req, res, next) => {
   try {

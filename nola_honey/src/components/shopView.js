@@ -30,10 +30,6 @@ class ShopView extends React.Component {
     const items = this.state.items;
     return (
       <section className="shop-wrapper">
-        <NavLink to="/shop/mycart">
-          <button>Go To Cart</button>
-        </NavLink>
-
         {items && <GenerateShopItems items={items} type="index" />}
       </section>
     );

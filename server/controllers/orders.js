@@ -20,7 +20,13 @@ module.exports.createOrder = async (req, res) => {
       orderDate,
       orderStatus,
     });
-    if (req.session.user) order.user = req.session.user;
+    if (req.user) {
+      order.user = req.user._id;
+      const user = await User.findOneAndUpdate(
+        { _id: req.user._id },
+        { $addToSet: { orders: order._id } }
+      );
+    }
     const cardNo = [...paymentMethod.cardNo].slice(-4);
     order.paymentMethod[0].cardID = cardNo.join("");
     await order.save();

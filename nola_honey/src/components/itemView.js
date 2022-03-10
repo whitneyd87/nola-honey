@@ -136,7 +136,7 @@ class ItemView extends React.Component {
     const reviews = this.state.reviews;
     console.log(reviews);
     return (
-      <section>
+      <section className="single-item-view">
         {formSubmitted && (
           <Redirect
             to={{
@@ -146,15 +146,13 @@ class ItemView extends React.Component {
           />
         )}
         {item && (
-          <div>
-            <GenerateItemPreview
-              ref={this.qtyRef}
-              item={item}
-              maxQty={maxQty}
-              onSubmit={this.handleSubmit}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
+          <GenerateItemPreview
+            ref={this.qtyRef}
+            item={item}
+            maxQty={maxQty}
+            onSubmit={this.handleSubmit}
+            onChange={(e) => this.handleChange(e)}
+          />
         )}
         <div>
           <h3>Leave a Review</h3>

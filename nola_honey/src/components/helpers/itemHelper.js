@@ -62,12 +62,12 @@ const GenerateItemForm = React.forwardRef((props, ref) => {
         {item.title} {item.itemType}
       </h4>
       <p className="item-description">{item.description}</p>
-      <p>Price: ${item.price}</p>
+      <p className="item-price">Price: ${item.price}</p>
       <div className="selection-wrapper">
         {orderInventory ? (
           orderInventory.map((inv, i) => {
             return (
-              <div key={i}>
+              <div key={i} className="item-qty-wrapper">
                 {inv.size && <p className="item-size">Size: {inv.size}</p>}
                 <label>Qty:</label>
                 <input
@@ -84,7 +84,7 @@ const GenerateItemForm = React.forwardRef((props, ref) => {
             );
           })
         ) : (
-          <div>
+          <div className="item-size-qty-wrapper">
             {item.inventory[0].size && (
               <Selection
                 onChange={props.onChange}
@@ -92,16 +92,18 @@ const GenerateItemForm = React.forwardRef((props, ref) => {
                 inventory={item.inventory}
               />
             )}
-            <label>Select Qty:</label>
-            <input
-              onChange={props.onChange}
-              className="item-qty"
-              min="1"
-              max={item.inventory[0].quantity}
-              name="quantity"
-              type="number"
-              ref={ref}
-            ></input>
+            <div>
+              <label>Select Qty:</label>
+              <input
+                onChange={props.onChange}
+                className="item-qty"
+                min="1"
+                max={item.inventory[0].quantity}
+                name="quantity"
+                type="number"
+                ref={ref}
+              ></input>
+            </div>
           </div>
         )}
       </div>

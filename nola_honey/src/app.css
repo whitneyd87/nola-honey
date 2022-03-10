@@ -262,6 +262,17 @@
   text-align: right;
 }
 
+/* My Cart Honey Jar Icon */
+.honey-jar-icon {
+  height: auto;
+  margin: 0;
+  width: 35px;
+}
+
+.honey-jar-icon img {
+  width: 100%;
+}
+
 /* Nav animation classes */
 .hide {
   visibility: hidden;
@@ -418,6 +429,15 @@
   flex-wrap: wrap;
 }
 
+/* Single Item View */
+.single-item-view {
+  align-items: row;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .item-wrapper {
   align-items: center;
   display: flex;
@@ -468,22 +488,36 @@
   text-transform: capitalize;
 }
 
+.item-price {
+  width: 50%;
+}
+
 .selection-wrapper {
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
   width: 100%;
 }
 
 .item-selection {
   margin-right: 1em;
-  width: 100px;
+  width: 100%;
+}
+
+.item-size-qty-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .item-qty {
-  margin: 0;
+  margin: 0 0 0 10px;
   width: 40%;
+}
+.item-wrapper .item-btn {
+  width: 100%;
 }
 
 .item-btn,
@@ -574,7 +608,6 @@
 }
 
 /* Form Styles */
-
 .form-section {
   width: 90%;
 }
