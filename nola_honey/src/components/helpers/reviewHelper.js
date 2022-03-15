@@ -3,8 +3,8 @@ import StarsRating from "stars-rating";
 
 function GenerateReviewForm(props) {
   return (
-    <form>
-      <label>Rating:</label>
+    <form className="form">
+      <label className="form-label">Rating:</label>
       <StarsRating
         count={5}
         size={24}
@@ -12,11 +12,25 @@ function GenerateReviewForm(props) {
         onChange={props.onRating}
         value={props.rating}
       />
-      <label>Title:</label>
-      <input type="text" onChange={props.onChange} name="title"></input>
-      <label>Comment:</label>
-      <textarea onChange={props.onChange} name="comment"></textarea>
-      <input onClick={props.onClick} type="button" value="Leave Review"></input>
+      <label className="form-label">Title:</label>
+      <input
+        type="text"
+        onChange={props.onChange}
+        name="title"
+        className="form-input"
+      ></input>
+      <label className="form-label">Comment:</label>
+      <textarea
+        className="form-text"
+        onChange={props.onChange}
+        name="comment"
+      ></textarea>
+      <input
+        onClick={props.onClick}
+        type="button"
+        value="Leave Review"
+        className="form-btn"
+      ></input>
     </form>
   );
 }

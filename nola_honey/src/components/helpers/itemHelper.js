@@ -17,8 +17,7 @@ function GenerateShopIndex(props) {
         <h4 className="item-title">
           {item.title} {item.itemType}
         </h4>
-        <p className="item-description">{item.description}</p>
-        <p>${item.price}</p>
+        <p className="item-price">${item.price}</p>
       </NavLink>
     </div>
   ));
@@ -51,13 +50,6 @@ const GenerateItemForm = React.forwardRef((props, ref) => {
   const orderInventory = props.orderInventory ?? false;
   return (
     <div>
-      <figure className="item-figure">
-        <img
-          className="item-image"
-          src={item.image[0].url}
-          alt={item.title}
-        ></img>
-      </figure>
       <h4 className="item-title">
         {item.title} {item.itemType}
       </h4>
@@ -115,6 +107,13 @@ const GenerateItemPreview = React.forwardRef((props, ref) => {
   const item = props.item;
   return (
     <div className="item-wrapper">
+      <figure className="item-figure">
+        <img
+          className="item-image"
+          src={item.image[0].url}
+          alt={item.title}
+        ></img>
+      </figure>
       <form onSubmit={props.onSubmit}>
         <GenerateItemForm
           item={item}

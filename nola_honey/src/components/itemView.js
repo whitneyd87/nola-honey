@@ -154,8 +154,8 @@ class ItemView extends React.Component {
             onChange={(e) => this.handleChange(e)}
           />
         )}
-        <div>
-          <h3>Leave a Review</h3>
+        <div className="review-wrapper">
+          <h3 className="review-title">Leave a Review</h3>
           <GenerateReviewForm
             onChange={(e) => this.handleChange(e)}
             onRating={(value) => this.handleRating(value)}
