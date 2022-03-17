@@ -99,19 +99,17 @@ class CheckoutView extends React.Component {
 
   getCartData = async () => {
     try {
-      // const data = await axios.get(`http://localhost:3001/shop/mycart`);
-      // return data;
+      const data = await axios.get(`http://localhost:3001/shop/mycart`);
+      return data;
     } catch (err) {
       console.error(err);
     }
   };
 
   componentDidMount() {
-    const items = JSON.parse(localStorage.getItem("cartItems"));
-    this.setState({ items });
-    // this.getCartData()
-    // .then((res) => this.setState({ items: res.data.items }))
-    // .catch((err) => console.error(err));
+    this.getCartData()
+      .then((res) => this.setState({ items: res.data.items }))
+      .catch((err) => console.error(err));
   }
 
   render() {

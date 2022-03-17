@@ -187,6 +187,7 @@
   justify-content: center;
   flex-direction: column;
   margin: 0;
+  padding: 5em 0;
   height: 50%;
   width: 90%;
 }

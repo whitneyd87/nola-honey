@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 class CreateAccountView extends React.Component {
   constructor(props) {

@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { NavHashLink as NavLink } from "react-router-hash-link";
 import { GenerateOrderDetails } from "./helpers/orderHelper";
 
 class OrderSuccessView extends React.Component {
@@ -15,7 +14,6 @@ class OrderSuccessView extends React.Component {
   getOrderData = async () => {
     try {
       const { orderID } = this.props.match.params;
-      console.log(orderID);
       const data = await axios.get(`http://localhost:3001/order/${orderID}`, {
         withCredentials: true,
       });
@@ -33,7 +31,6 @@ class OrderSuccessView extends React.Component {
 
   render() {
     const order = this.state.order;
-    console.log(order);
     return (
       <section>
         <h1>Success! Order Placed!</h1>

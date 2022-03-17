@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 module.exports.addItem = async (req, res) => {
   try {
     const { _id, orderInventory } = req.body;
-    console.log(orderInventory);
     const itemID = mongoose.Types.ObjectId(_id);
     const cartID = req.session.cartID ?? false;
     let myCart;
@@ -23,21 +22,24 @@ module.exports.addItem = async (req, res) => {
       // set cartID
       req.session.cartID = myCart._id;
     } else {
+      let updateInventory;
       myCart = await Cart.findById(cartID);
       const currentInventory = myCart.items.filter(
-        (item) => item._id === itemID && item.size === orderInventory[0].size
+        (item) => item._id.toString() === itemID.toString()
       );
-      // console.log(currentInventory);
-      const updateQty =
-        currentInventory.length === 0
-          ? parseInt(orderInventory[0].quantity)
-          : currentInventory[0].orderInventory[0].quantity +
-            parseInt(orderInventory[0].quantity);
-      const updateInventory = {
-        size: orderInventory[0].size,
-        quantity: updateQty,
-      };
 
+      if (currentInventory.length !== 0) {
+        const updateQty = currentInventory[0].orderInventory.map((inv) =>
+          inv.size === orderInventory[0].size
+            ? parseInt(inv.quantity) + parseInt(orderInventory[0].quantity)
+            : inv
+        );
+        updateInventory = {
+          size: orderInventory[0].size,
+          quantity: updateQty[0],
+        };
+      }
+      console.log(updateInventory);
       await myCart.updateOne([
         {
           $set: {
@@ -103,7 +105,7 @@ module.exports.addItem = async (req, res) => {
                     [
                       {
                         _id: itemID,
-                        orderInventory: [updateInventory],
+                        orderInventory: [orderInventory],
                       },
                     ],
                   ],
@@ -155,12 +157,10 @@ module.exports.itemDetails = async (req, res) => {
 
 module.exports.myCart = async (req, res) => {
   try {
-    // const cartID = req.session.cartID;
-    // console.log(cartID);
-    // const myCart = await Cart.findById(cartID);
-    // console.log(myCart);
-    // const items = myCart.items;
-    res.send({ items: "hello" });
+    const cartID = req.session.cartID;
+    const myCart = await Cart.findById(cartID);
+    const items = myCart.items;
+    res.send({ items });
   } catch (err) {
     console.error(err);
   }

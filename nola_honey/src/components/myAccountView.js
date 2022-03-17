@@ -16,7 +16,7 @@ class MyAccountView extends React.Component {
     };
   }
 
-  getUserInfo = async (req, res) => {
+  getUserInfo = async () => {
     try {
       const data = await axios.get("http://localhost:3001/myaccount", {
         withCredentials: true,

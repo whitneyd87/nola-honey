@@ -36,8 +36,6 @@ class DeleteCartItemView extends React.Component {
   }
 
   render() {
-    const deleteMyItem = this.state.deletedItem;
-    console.log(deleteMyItem);
     return (
       <section>
         {this.state.redirect && (

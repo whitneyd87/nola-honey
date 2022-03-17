@@ -22,15 +22,6 @@ class MyCartView extends React.Component {
     this.setState({ deletedItem: deletedItem });
   }
 
-  handleRefresh() {
-    if (this.props.location.state) {
-      // console.log(this.props.location.state.items);
-      this.setState({ items: this.props.location.state.items });
-      const items = JSON.stringify(this.props.location.state.items);
-      localStorage.setItem("cartItems", items);
-    } else this.setState({ refresh: true });
-  }
-
   getCartData = async () => {
     try {
       const data = await axios.get(`http://localhost:3001/shop/mycart`, {
@@ -43,21 +34,9 @@ class MyCartView extends React.Component {
   };
 
   componentDidMount() {
-    if (this.props.location.state && this.props.location.state.items) {
-      this.handleRefresh();
-      // console.log(this.state.items);
-    } else {
-      const items = JSON.parse(localStorage.getItem("cartItems"));
-      this.setState({ items });
-    }
-    /*
     this.getCartData()
       .then((res) => this.setState({ items: res.data.items }))
       .catch((err) => console.error(err));
-      */
-  }
-  componentWillUnmount() {
-    this.setState({ items: null });
   }
 
   render() {

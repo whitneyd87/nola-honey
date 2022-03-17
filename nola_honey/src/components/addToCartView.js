@@ -30,12 +30,6 @@ class AddToCartView extends React.Component {
     }
   };
 
-  // Set localStorage item "cartItems" with cart items data
-  setCartData() {
-    const cartItems = JSON.stringify(this.state.cartItems);
-    localStorage.setItem("cartItems", cartItems);
-  }
-
   handleRefresh() {
     this.setState({ refresh: true });
   }
@@ -54,16 +48,12 @@ class AddToCartView extends React.Component {
       .catch((err) => console.error(err));
   }
 
-  componentWillUnmount() {
-    this.setCartData();
-  }
-
   render() {
     const item = this.state.item;
     const orderInventory = this.state.orderInventory;
     const itemsPreview = this.state.itemsPreview;
     return (
-      <section>
+      <section className="item-added-view">
         {item && (
           <GenerateItemAdded
             item={item}

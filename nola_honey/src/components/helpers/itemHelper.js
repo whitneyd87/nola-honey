@@ -131,6 +131,7 @@ const GenerateItemPreview = React.forwardRef((props, ref) => {
 function GenerateItemDetails(props) {
   const item = props.item;
   const orderInventory = props.orderInventory;
+  console.log(orderInventory);
   return (
     <div className="item-wrapper" id={item._id}>
       <figure>
@@ -209,7 +210,7 @@ function GenerateEditCart(props) {
 function GenerateShopPreview(props) {
   const items = props.items;
   return items.map((item, i) => (
-    <div key={i}>
+    <div key={i} className="shop-preview-wrapper">
       <NavLink to={`/shop/${item._id}`}>
         <figure>
           <img src={item.image[0].url} alt={item.itemType} />
@@ -217,7 +218,6 @@ function GenerateShopPreview(props) {
         <p>
           {item.title} {item.itemType}
         </p>
-        <p>{item.department}</p>
         <p>Price: ${item.price}</p>
       </NavLink>
     </div>
@@ -230,21 +230,19 @@ function GenerateItemAdded(props) {
   const itemsPreview = props.items;
 
   return (
-    <div>
-      <div>
+    <div className="item-added-wrapper">
+      <div className="item-details-wrapper">
         <h1>Success!</h1>
         <GenerateItemDetails item={item} orderInventory={orderInventory} />
         <NavLink to="/shop/mycart">
           <button>Go to Cart</button>
         </NavLink>
       </div>
-      <div>
+      <div className="continue-shopping-wrapper">
         <NavLink to="/shop">
           <button>Continue Shopping</button>
         </NavLink>
-        <div>
-          <GenerateShopPreview items={itemsPreview} />
-        </div>
+        <GenerateShopPreview items={itemsPreview} />
       </div>
     </div>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import Yummy from "../images/yummyEmoji.png";
 import HiveCell from "../images/hiveCell.jpg";
 import Bees from "../images/bees.jpg";
-import { NavHashLink as NavLink } from "react-router-hash-link";
 
 class AboutView extends React.Component {
   render() {

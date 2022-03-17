@@ -32,12 +32,6 @@ class EditCartView extends React.Component {
     });
   }
 
-  // setCartData(items) {
-  // const cartItems = JSON.stringify(items);
-  // console.log(cartItems);
-  // localStorage.setItem("cartItems", cartItems);
-  // }
-
   handleSubmit = async (e) => {
     e.preventDefault();
     this.updateCartData()
@@ -74,13 +68,11 @@ class EditCartView extends React.Component {
   };
 
   componentDidMount() {
-    // this.getCartData()
-    // .then((res) =>
-    // this.setState({ items: res.data.items, updatedItems: res.data.items })
-    // )
-    // .catch((err) => console.error(err));
-    const items = JSON.parse(localStorage.getItem("cartItems"));
-    this.setState({ items });
+    this.getCartData()
+      .then((res) =>
+        this.setState({ items: res.data.items, updatedItems: res.data.items })
+      )
+      .catch((err) => console.error(err));
   }
 
   render() {

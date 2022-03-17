@@ -43,7 +43,6 @@ class ItemView extends React.Component {
 
   //Reviews
   handleRating(value) {
-    console.log(value);
     this.setState({ rating: value });
   }
 
@@ -134,7 +133,6 @@ class ItemView extends React.Component {
     const formSubmitted = this.state.formSubmitted;
     const rating = this.state.rating;
     const reviews = this.state.reviews;
-    console.log(reviews);
     return (
       <section className="single-item-view">
         {formSubmitted && (
