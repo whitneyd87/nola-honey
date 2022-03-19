@@ -131,7 +131,6 @@ const GenerateItemPreview = React.forwardRef((props, ref) => {
 function GenerateItemDetails(props) {
   const item = props.item;
   const orderInventory = props.orderInventory;
-  console.log(orderInventory);
   return (
     <div className="item-wrapper" id={item._id}>
       <figure>
@@ -228,7 +227,6 @@ function GenerateItemAdded(props) {
   const item = props.item;
   const orderInventory = props.orderInventory;
   const itemsPreview = props.items;
-
   return (
     <div className="item-added-wrapper">
       <div className="item-details-wrapper">

@@ -7,6 +7,10 @@ module.exports.addItem = async (req, res) => {
     const { _id, orderInventory } = req.body;
     const itemID = mongoose.Types.ObjectId(_id);
     const cartID = req.session.cartID ?? false;
+    const orderInv = orderInventory.map((inv) => {
+      inv.quantity = parseInt(inv.quantity);
+      return inv;
+    });
     let myCart;
 
     // if no cartID, create cart and add item
@@ -15,31 +19,28 @@ module.exports.addItem = async (req, res) => {
         items: [
           {
             _id: itemID,
-            orderInventory: orderInventory,
+            orderInventory: orderInv,
           },
         ],
       });
       // set cartID
       req.session.cartID = myCart._id;
     } else {
-      let updateInventory;
+      let updateInventory = {};
       myCart = await Cart.findById(cartID);
       const currentInventory = myCart.items.filter(
         (item) => item._id.toString() === itemID.toString()
       );
-
       if (currentInventory.length !== 0) {
-        const updateQty = currentInventory[0].orderInventory.map((inv) =>
-          inv.size === orderInventory[0].size
-            ? parseInt(inv.quantity) + parseInt(orderInventory[0].quantity)
-            : inv
-        );
+        const updateQty = currentInventory[0].orderInventory
+          .filter((inv) => inv.size === orderInv[0].size)
+          .map((inv) => inv.quantity + orderInv[0].quantity);
         updateInventory = {
-          size: orderInventory[0].size,
+          size: orderInv[0].size,
           quantity: updateQty[0],
         };
       }
-      console.log(updateInventory);
+
       await myCart.updateOne([
         {
           $set: {
@@ -86,7 +87,7 @@ module.exports.addItem = async (req, res) => {
                                   orderInventory: {
                                     $concatArrays: [
                                       "$$this.orderInventory",
-                                      [updateInventory],
+                                      orderInv,
                                     ],
                                   },
                                 },
@@ -105,7 +106,7 @@ module.exports.addItem = async (req, res) => {
                     [
                       {
                         _id: itemID,
-                        orderInventory: [orderInventory],
+                        orderInventory: orderInv,
                       },
                     ],
                   ],
@@ -117,7 +118,7 @@ module.exports.addItem = async (req, res) => {
       ]);
     }
     // update most recent item
-    myCart.mostRecentItem = { _id: itemID, orderInventory };
+    myCart.mostRecentItem = { _id: itemID, orderInventory: orderInv };
 
     // save cart
     await myCart.save();
@@ -144,6 +145,7 @@ module.exports.itemDetails = async (req, res) => {
     const items = await Item.find({});
     const itemsPreview = items.splice(1, 4);
     const orderInventory = myCart.mostRecentItem[0].orderInventory;
+    console.log(orderInventory);
     res.send({
       item: item,
       cartItems: cartItems,
