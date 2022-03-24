@@ -1,7 +1,6 @@
 import React from "react";
-import GenerateShopItems from "./helpers/itemHelper.js";
+import GenerateItemsIndex from "./helpers/itemHelper.js";
 import axios from "axios";
-import { NavHashLink as NavLink } from "react-router-hash-link";
 
 class ShopView extends React.Component {
   constructor(props) {
@@ -30,7 +29,9 @@ class ShopView extends React.Component {
     const items = this.state.items;
     return (
       <section className="shop-wrapper">
-        {items && <GenerateShopItems items={items} type="index" />}
+        {items && (
+          <GenerateItemsIndex items={items} wrapperClass="item-wrapper" />
+        )}
       </section>
     );
   }

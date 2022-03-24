@@ -6,14 +6,14 @@ const carts = require("../controllers/carts");
 
 router.route("/").get(catchAsync(items.index));
 router
-  .route("/:id")
-  .get(catchAsync(items.itemDetails))
-  .post(catchAsync(carts.addItem));
-router.route("/:id/addtocart").get(catchAsync(carts.itemDetails));
-router
   .route("/mycart")
   .get(catchAsync(carts.myCart))
   .put(catchAsync(carts.updateCart));
 router.route("/mycart/:id/:sizeID").delete(catchAsync(carts.deleteCartItem));
+router
+  .route("/:id")
+  .get(catchAsync(items.itemDetails))
+  .post(catchAsync(carts.addItem));
+router.route("/:id/addtocart").get(catchAsync(carts.itemDetails));
 
 module.exports = router;

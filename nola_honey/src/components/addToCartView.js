@@ -52,7 +52,6 @@ class AddToCartView extends React.Component {
     const item = this.state.item;
     const orderInventory = this.state.orderInventory;
     const itemsPreview = this.state.itemsPreview;
-    console.log(orderInventory);
     return (
       <section className="item-added-view">
         {item && (

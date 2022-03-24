@@ -145,7 +145,6 @@ module.exports.itemDetails = async (req, res) => {
     const items = await Item.find({});
     const itemsPreview = items.splice(1, 4);
     const orderInventory = myCart.mostRecentItem[0].orderInventory;
-    console.log(orderInventory);
     res.send({
       item: item,
       cartItems: cartItems,
@@ -158,9 +157,16 @@ module.exports.itemDetails = async (req, res) => {
 };
 
 module.exports.myCart = async (req, res) => {
+  const cartID = req.session.cartID;
   try {
-    const cartID = req.session.cartID;
-    const myCart = await Cart.findById(cartID);
+    const myCart = await Cart.findById(cartID)
+      .populate({
+        path: "items",
+        populate: {
+          path: "_id",
+        },
+      })
+      .populate("_id");
     const items = myCart.items;
     res.send({ items });
   } catch (err) {

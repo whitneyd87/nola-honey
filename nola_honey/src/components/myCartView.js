@@ -42,7 +42,6 @@ class MyCartView extends React.Component {
   render() {
     const items = this.state.items;
     const deletedItem = this.state.deletedItem;
-    console.log(deletedItem);
     return (
       <section>
         {deletedItem && (

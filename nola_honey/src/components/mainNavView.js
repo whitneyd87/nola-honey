@@ -6,6 +6,7 @@ import {
   GenerateHive,
 } from "./helpers/navHelper.js";
 import HoneyJarIcon from "../images/honeyjaricon.png";
+import { NavHashLink as NavLink } from "react-router-hash-link";
 
 class MainNavView extends React.Component {
   constructor(props) {
@@ -101,9 +102,11 @@ class MainNavView extends React.Component {
               navLinks={navLinks.logInNav}
               signedIn={signedIn}
             />
-            <figure className="honey-jar-icon">
-              <img src={HoneyJarIcon} alt="honey jar icon" />
-            </figure>
+            <NavLink to="/shop/mycart">
+              <figure className="honey-jar-icon">
+                <img src={HoneyJarIcon} alt="honey jar icon" />
+              </figure>
+            </NavLink>
             <GenerateNav
               classes={classes}
               type="social-media-nav"

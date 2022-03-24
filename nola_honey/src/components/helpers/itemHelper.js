@@ -2,10 +2,10 @@ import React from "react";
 import { NavHashLink as NavLink } from "react-router-hash-link";
 
 // Shop Index
-function GenerateShopIndex(props) {
+function GenerateItemsIndex(props) {
   const items = props.items;
   return items.map((item, i) => (
-    <div className="item-wrapper" key={i}>
+    <div className={props.wrapperClass} key={i}>
       <NavLink className="item-link" to={`/shop/${item._id}`}>
         <figure className="item-figure">
           <img
@@ -159,11 +159,14 @@ function GenerateItemDetails(props) {
 // Cart View
 function GenerateCartItems(props) {
   const items = props.items;
+
   return (
     <section>
       <div>
         <NavLink to="/shop/mycart/checkout">
-          <button type="submit">Proceed to Checkout</button>
+          <button className="form-btn" type="submit">
+            Proceed to Checkout
+          </button>
         </NavLink>
       </div>
       {items.map((item, i) => (
@@ -174,11 +177,11 @@ function GenerateCartItems(props) {
           />
           <div>
             <NavLink to="/shop/mycart/edit">
-              <button>Edit</button>
+              <button className="form-btn">Edit</button>
             </NavLink>
           </div>
           <div>
-            <button type="submit" onClick={props.onClick}>
+            <button className="form-btn" type="submit" onClick={props.onClick}>
               Delete
             </button>
           </div>
@@ -205,24 +208,6 @@ function GenerateEditCart(props) {
   ));
 }
 
-// Item Added View
-function GenerateShopPreview(props) {
-  const items = props.items;
-  return items.map((item, i) => (
-    <div key={i} className="shop-preview-wrapper">
-      <NavLink to={`/shop/${item._id}`}>
-        <figure>
-          <img src={item.image[0].url} alt={item.itemType} />
-        </figure>
-        <p>
-          {item.title} {item.itemType}
-        </p>
-        <p>Price: ${item.price}</p>
-      </NavLink>
-    </div>
-  ));
-}
-
 function GenerateItemAdded(props) {
   const item = props.item;
   const orderInventory = props.orderInventory;
@@ -233,14 +218,17 @@ function GenerateItemAdded(props) {
         <h1>Success!</h1>
         <GenerateItemDetails item={item} orderInventory={orderInventory} />
         <NavLink to="/shop/mycart">
-          <button>Go to Cart</button>
+          <button className="form-btn">Go to Cart</button>
         </NavLink>
       </div>
       <div className="continue-shopping-wrapper">
         <NavLink to="/shop">
-          <button>Continue Shopping</button>
+          <button className="form-btn">Continue Shopping</button>
         </NavLink>
-        <GenerateShopPreview items={itemsPreview} />
+        <GenerateItemsIndex
+          items={itemsPreview}
+          wrapperClass="shop-preview-wrapper"
+        />
       </div>
     </div>
   );
@@ -264,7 +252,7 @@ function GenerateCartPreview(props) {
   );
 }
 
-export default GenerateShopIndex;
+export default GenerateItemsIndex;
 export {
   GenerateItemDetails,
   GenerateItemPreview,
