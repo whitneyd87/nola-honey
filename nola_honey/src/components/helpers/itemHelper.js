@@ -5,7 +5,7 @@ import { NavHashLink as NavLink } from "react-router-hash-link";
 function GenerateItemsIndex(props) {
   const items = props.items;
   return items.map((item, i) => (
-    <div className={props.wrapperClass} key={i}>
+    <div className="item-wrapper" key={i}>
       <NavLink className="item-link" to={`/shop/${item._id}`}>
         <figure className="item-figure">
           <img
@@ -133,22 +133,28 @@ function GenerateItemDetails(props) {
   const orderInventory = props.orderInventory;
   return (
     <div className="item-wrapper" id={item._id}>
-      <figure>
-        <img src={item.image[0].url} alt={item.itemType} />
+      <figure className="item-figure">
+        <img
+          className="item-image"
+          src={item.image[0].url}
+          alt={item.itemType}
+        />
       </figure>
-      <div>
-        <p>
+      <div className="title-wrapper">
+        <p className="item-title">
           {item.title} {item.itemType}
         </p>
-        <p>{item.department}</p>
+        <p className="item-dept">{item.department}</p>
       </div>
       {orderInventory.map((inv, i) =>
         inv.size === null ? (
-          <p key={i}>Qty: {inv.quantity}</p>
+          <div className="selection-wrapper" key={i}>
+            <p className="item-qty">Qty: {inv.quantity}</p>
+          </div>
         ) : (
-          <div key={i}>
-            <p>Size: {inv.size}</p>
-            <p>Qty: {inv.quantity}</p>
+          <div key={i} className="selection-wrapper">
+            <p className="item-size">Size: {inv.size}</p>
+            <p className="item-qty">Qty: {inv.quantity}</p>
           </div>
         )
       )}
@@ -161,7 +167,7 @@ function GenerateCartItems(props) {
   const items = props.items;
 
   return (
-    <section>
+    <div className="cart-items">
       <div>
         <NavLink to="/shop/mycart/checkout">
           <button className="form-btn" type="submit">
@@ -170,24 +176,22 @@ function GenerateCartItems(props) {
         </NavLink>
       </div>
       {items.map((item, i) => (
-        <div key={i}>
+        <div key={i} className="cart-item-wrapper">
           <GenerateItemDetails
             item={item._id}
             orderInventory={item.orderInventory}
           />
-          <div>
+          <div className="btn-wrapper">
             <NavLink to="/shop/mycart/edit">
               <button className="form-btn">Edit</button>
             </NavLink>
-          </div>
-          <div>
             <button className="form-btn" type="submit" onClick={props.onClick}>
               Delete
             </button>
           </div>
         </div>
       ))}
-    </section>
+    </div>
   );
 }
 
@@ -217,25 +221,21 @@ function GenerateItemAdded(props) {
       <div className="item-details-wrapper">
         <h1>Success!</h1>
         <GenerateItemDetails item={item} orderInventory={orderInventory} />
-        <NavLink to="/shop/mycart">
+        <NavLink className="btn-link" to="/shop/mycart">
           <button className="form-btn">Go to Cart</button>
         </NavLink>
       </div>
-      <div className="continue-shopping-wrapper">
-        <NavLink to="/shop">
+      <div className="continue-shopping">
+        <NavLink className="btn-link" to="/shop">
           <button className="form-btn">Continue Shopping</button>
         </NavLink>
-        <GenerateItemsIndex
-          items={itemsPreview}
-          wrapperClass="shop-preview-wrapper"
-        />
+        <GenerateItemsIndex items={itemsPreview} />
       </div>
     </div>
   );
 }
 
 // Checkout View
-
 function GenerateCartPreview(props) {
   const items = props.items;
   return (

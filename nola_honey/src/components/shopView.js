@@ -29,9 +29,7 @@ class ShopView extends React.Component {
     const items = this.state.items;
     return (
       <section className="shop-wrapper">
-        {items && (
-          <GenerateItemsIndex items={items} wrapperClass="item-wrapper" />
-        )}
+        {items && <GenerateItemsIndex items={items} />}
       </section>
     );
   }
