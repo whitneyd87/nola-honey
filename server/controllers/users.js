@@ -20,7 +20,7 @@ module.exports.registerUser = async (req, res, next) => {
 module.exports.signin = (req, res) => {
   try {
     // req.flash("success", "Welcome back!");
-    const redirectUrl = req.session.returnTo || "/shop";
+    const redirectUrl = "/shop";
     res.send({ signedIn: true, redirect: redirectUrl });
   } catch (err) {
     console.error(err);

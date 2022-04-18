@@ -6,7 +6,7 @@ const ReviewSchema = new Schema({
   title: String,
   comment: String,
   author: String,
-  item: {
+  itemID: {
     type: Schema.Types.ObjectId,
     ref: "Item",
   },

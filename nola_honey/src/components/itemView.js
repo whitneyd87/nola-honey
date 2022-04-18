@@ -13,7 +13,7 @@ class ItemView extends React.Component {
       quantity: null,
       maxQty: 10,
       formSubmitted: false,
-      rating: null,
+      // rating: null,
       title: null,
       comment: null,
       reviews: null,
@@ -21,7 +21,7 @@ class ItemView extends React.Component {
     this.qtyRef = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleRating = this.handleRating.bind(this);
+    // this.handleRating = this.handleRating.bind(this);
   }
 
   // Item
@@ -42,9 +42,9 @@ class ItemView extends React.Component {
   }
 
   //Reviews
-  handleRating(value) {
-    this.setState({ rating: value });
-  }
+  // handleRating(rating) {
+  // setRating({ rating });
+  // }
 
   handleSubmitReview(e) {
     e.preventDefault();
@@ -131,8 +131,9 @@ class ItemView extends React.Component {
     const item = this.state.item;
     const maxQty = this.state.maxQty;
     const formSubmitted = this.state.formSubmitted;
-    const rating = this.state.rating;
+    // const rating = this.state.rating;
     const reviews = this.state.reviews;
+    console.log(reviews);
     return (
       <section className="single-item-view">
         {formSubmitted && (
@@ -156,12 +157,12 @@ class ItemView extends React.Component {
           <h3 className="review-title">Leave a Review</h3>
           <GenerateReviewForm
             onChange={(e) => this.handleChange(e)}
-            onRating={(value) => this.handleRating(value)}
-            rating={rating}
+            // onRating={(rating) => this.handleRating(rating)}
+            // rating={rating}
             onClick={(e) => this.handleSubmitReview(e)}
           />
-          {reviews && <GenerateReviews reviews={reviews} />}
         </div>
+        {reviews && <GenerateReviews reviews={reviews} />}
       </section>
     );
   }

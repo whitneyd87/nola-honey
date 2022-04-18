@@ -1,16 +1,22 @@
-import React from "react";
-import StarsRating from "stars-rating";
+import React, { useState } from "react";
+import { Rating } from "react-simple-star-rating";
 
 function GenerateReviewForm(props) {
+  const [rating, setRating] = useState(0);
+
+  const handleRating = (rate) => {
+    setRating(rate);
+  };
   return (
     <form className="form">
       <label className="form-label">Rating:</label>
-      <StarsRating
-        count={5}
+      <Rating
+        ratingValue={rating}
+        iconsCount={5}
         size={24}
-        color2={"#fbb03b"}
-        onChange={props.onRating}
-        value={props.rating}
+        fillColor={"#fbb03b"}
+        onClick={handleRating}
+        allowHalfIcon={true}
       />
       <label className="form-label">Title:</label>
       <input
@@ -44,29 +50,22 @@ function ReformateDate(props) {
 
 function GenerateReviews(props) {
   const reviews = props.reviews;
-  const rating = parseInt(props.rating);
-  return (
-    <section>
-      {reviews.map((review, i) => {
-        <div key={i}>
-          <p>Rating:</p>
-          <StarsRating
-            value={rating}
-            edit={false}
-            count={5}
-            size={24}
-            color2={"#fbb03b"}
-          />
-          <h4>{review.title}</h4>
-          <p>{review.comment}</p>
-          <p>{review.author}</p>
-          <p>
-            <ReformateDate reviews={review.date} />
-          </p>
-        </div>;
-      })}
-    </section>
-  );
+  console.log(reviews);
+  return reviews.map((review, i) => {
+    <div key={i}>
+      <p>Rating:</p>
+      <Rating
+        ratingValue={parseInt(review.rating)}
+        readonly={true}
+        iconsCount={5}
+        size={24}
+        fillColor={"#fbb03b"}
+      />
+      <h4>{review.title}</h4>
+      <p>{review.comment}</p>
+      <p>{review.author}</p>
+    </div>;
+  });
 }
 
 export default GenerateReviewForm;
