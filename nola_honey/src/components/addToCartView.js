@@ -9,7 +9,6 @@ class AddToCartView extends React.Component {
       item: null,
       orderInventory: null,
       itemsPreview: null,
-      cartItems: null,
       refresh: false,
     };
   }
@@ -42,7 +41,6 @@ class AddToCartView extends React.Component {
           item: res.data.item,
           orderInventory: res.data.orderInventory,
           itemsPreview: res.data.itemsPreview,
-          cartItems: res.data.cartItems,
         })
       )
       .catch((err) => console.error(err));

@@ -43,6 +43,7 @@ class MyAccountView extends React.Component {
     const userInfo = this.state.userInfo;
     const orderHistory = this.state.orderHistory;
     const reviewsHistory = this.state.reviewsHistory;
+    console.log(userInfo);
     return (
       <div>
         {userInfo && (

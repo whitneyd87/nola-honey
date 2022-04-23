@@ -14,6 +14,6 @@ router
   .route("/:id")
   .get(catchAsync(items.itemDetails))
   .post(catchAsync(carts.addItem));
-router.route("/:id/addtocart").get(catchAsync(carts.itemDetails));
+router.route("/:id/addtocart").get(catchAsync(carts.myCart));
 
 module.exports = router;

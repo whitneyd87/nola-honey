@@ -48,25 +48,25 @@ function ReformateDate(props) {
   return reformatedDate;
 }
 
-function GenerateReviews(props) {
-  const reviews = props.reviews;
-  console.log(reviews);
-  return reviews.map((review, i) => {
-    <div key={i}>
-      <p>Rating:</p>
-      <Rating
-        ratingValue={parseInt(review.rating)}
-        readonly={true}
-        iconsCount={5}
-        size={24}
-        fillColor={"#fbb03b"}
-      />
-      <h4>{review.title}</h4>
-      <p>{review.comment}</p>
-      <p>{review.author}</p>
-    </div>;
-  });
-}
+// function GenerateReviews(props) {
+//   const reviews = props.reviews;
+//   console.log(reviews);
+//   return reviews.map((review, i) => {
+//     <div key={i}>
+//       <p>Rating:</p>
+//       <Rating
+//         ratingValue={parseInt(review.rating)}
+//         readonly={true}
+//         iconsCount={5}
+//         size={24}
+//         fillColor={"#fbb03b"}
+//       />
+//       <h4>{review.title}</h4>
+//       <p>{review.comment}</p>
+//       <p>{review.author}</p>
+//     </div>;
+//   });
+// }
 
 export default GenerateReviewForm;
-export { GenerateReviews };
+// export { GenerateReviews };

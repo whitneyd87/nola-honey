@@ -31,6 +31,7 @@ module.exports.accountInfo = async (req, res) => {
   try {
     const username = req.session.passport.user;
     const user = await User.findOne({ username });
+    console.log(user);
     res.send({
       addresses: user.addresses,
       orders: user.orders,

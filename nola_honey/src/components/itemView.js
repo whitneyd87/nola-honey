@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { GenerateItemPreview } from "./helpers/itemHelper";
-import GenerateReviewForm, { GenerateReviews } from "./helpers/reviewHelper";
+import GenerateReviewForm from "./helpers/reviewHelper";
+import { Rating } from "react-simple-star-rating";
 
 class ItemView extends React.Component {
   constructor(props) {
@@ -133,7 +134,6 @@ class ItemView extends React.Component {
     const formSubmitted = this.state.formSubmitted;
     // const rating = this.state.rating;
     const reviews = this.state.reviews;
-    console.log(reviews);
     return (
       <section className="single-item-view">
         {formSubmitted && (
@@ -161,8 +161,26 @@ class ItemView extends React.Component {
             // rating={rating}
             onClick={(e) => this.handleSubmitReview(e)}
           />
+          {reviews &&
+            reviews.map((review, i) => (
+              <div className="reviews-list" key={i}>
+                <p>
+                  Rating:
+                  <Rating
+                    initialValue={parseInt(review.rating)}
+                    readonly={true}
+                    iconsCount={5}
+                    size={24}
+                    fillColor={"#fbb03b"}
+                  />
+                </p>
+                <h4 className="review-title">{review.title}</h4>
+                <p>{review.comment}</p>
+                <p>By: {review.author}</p>
+                <hr></hr>
+              </div>
+            ))}
         </div>
-        {reviews && <GenerateReviews reviews={reviews} />}
       </section>
     );
   }

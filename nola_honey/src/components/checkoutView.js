@@ -11,7 +11,7 @@ class CheckoutView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: null,
+      cartItems: null,
       shipping: {
         firstName: null,
         lastName: null,
@@ -73,7 +73,7 @@ class CheckoutView extends React.Component {
       const data = await axios.put(
         "http://localhost:3001/order",
         {
-          items: this.state.items,
+          cartItems: this.state.cartItems,
           shipping: this.state.shipping,
           billing: billing,
           paymentMethod: this.state.paymentMethod,
@@ -99,7 +99,9 @@ class CheckoutView extends React.Component {
 
   getCartData = async () => {
     try {
-      const data = await axios.get(`http://localhost:3001/shop/mycart`);
+      const data = await axios.get(`http://localhost:3001/shop/mycart`, {
+        withCredentials: true,
+      });
       return data;
     } catch (err) {
       console.error(err);
@@ -108,12 +110,12 @@ class CheckoutView extends React.Component {
 
   componentDidMount() {
     this.getCartData()
-      .then((res) => this.setState({ items: res.data.items }))
+      .then((res) => this.setState({ cartItems: res.data.cartItems }))
       .catch((err) => console.error(err));
   }
 
   render() {
-    const items = this.state.items;
+    const items = this.state.cartItems;
     const sameBilling = this.state.sameBilling;
     const redirect = this.state.redirect;
     const orderID = this.state.orderID;

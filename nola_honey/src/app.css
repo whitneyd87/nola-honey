@@ -854,6 +854,11 @@ footer {
   .single-item-view .item-wrapper form {
     width: 50%;
   }
+
+  .single-item-view .reviews-list {
+    text-align: left;
+    margin: auto;
+  }
 }
 
 @media only screen and (min-width: 1200px) {

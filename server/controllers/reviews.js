@@ -5,7 +5,7 @@ module.exports.createReview = async (req, res) => {
   try {
     const { rating, title, comment, itemID } = req.body;
     const date = new Date();
-    const author = req.session.user ?? "guest";
+    const author = req.session.passport.user ?? "guest";
     const item = await Item.findById(itemID)
       .populate({
         path: "reviews",

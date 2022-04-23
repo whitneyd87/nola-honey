@@ -1,12 +1,14 @@
 const Cart = require("../models/cart");
 const Item = require("../models/item");
 const mongoose = require("mongoose");
+const User = require("../models/user");
 
 module.exports.addItem = async (req, res) => {
   try {
     const { _id, orderInventory } = req.body;
     const itemID = mongoose.Types.ObjectId(_id);
     const cartID = req.session.cartID ?? false;
+    const username = req.session.passport.user;
     const orderInv = orderInventory.map((inv) => {
       inv.quantity = parseInt(inv.quantity);
       return inv;
@@ -24,7 +26,11 @@ module.exports.addItem = async (req, res) => {
         ],
       });
       // set cartID
-      req.session.cartID = myCart._id;
+      const [currentUser] = await User.find({ username });
+      currentUser
+        ? currentUser.cart.push({ _id: myCart._id })
+        : (req.session.cartID = myCart._id);
+      await currentUser.save();
     } else {
       let updateInventory = {};
       myCart = await Cart.findById(cartID);
@@ -128,8 +134,9 @@ module.exports.addItem = async (req, res) => {
   }
 };
 
-module.exports.itemDetails = async (req, res) => {
-  const cartID = req.session.cartID;
+module.exports.myCart = async (req, res) => {
+  const [user] = await User.find({ username: req.session.passport.user });
+  const cartID = req.session.cartID ?? user.cart[0]._id;
   try {
     const myCart = await Cart.findById(cartID)
       .populate({
@@ -151,24 +158,6 @@ module.exports.itemDetails = async (req, res) => {
       orderInventory: orderInventory,
       itemsPreview: itemsPreview,
     });
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-module.exports.myCart = async (req, res) => {
-  const cartID = req.session.cartID;
-  try {
-    const myCart = await Cart.findById(cartID)
-      .populate({
-        path: "items",
-        populate: {
-          path: "_id",
-        },
-      })
-      .populate("_id");
-    const items = myCart.items;
-    res.send({ items });
   } catch (err) {
     console.error(err);
   }

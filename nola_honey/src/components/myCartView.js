@@ -7,7 +7,7 @@ class MyCartView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: null,
+      cartItems: null,
       deletedItem: null,
       refresh: false,
     };
@@ -35,7 +35,7 @@ class MyCartView extends React.Component {
 
   componentDidMount() {
     this.getCartData()
-      .then((res) => this.setState({ items: res.data.items }))
+      .then((res) => this.setState({ items: res.data.cartItems }))
       .catch((err) => console.error(err));
   }
 
